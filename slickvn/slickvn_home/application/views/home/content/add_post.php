@@ -384,7 +384,6 @@ function onclickLiCheckListing_Culinary_Style(obj){
      content=escapeHtml(content);
      
    //get string image name of content
-
     var elem_img_content_post = document.getElementsByClassName("img_content_post");
     var img_content_post="";
     

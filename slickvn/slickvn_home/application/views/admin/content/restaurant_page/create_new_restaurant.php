@@ -17,52 +17,50 @@
        <span>ẢNH AVATAR ĐẠI DIỆN</span><br>
        <span>(Tải ảnh lên)</span>
         <script type="text/javascript" src="<?php echo $url;?>includes/plugins/post/scripts/jquery.min.js"></script>
-          <script type="text/javascript" src="<?php echo $url;?>includes/plugins/post/scripts/jquery.form.js"></script>
-          <script type="text/javascript" >
-           $(document).ready(function() { 
+        <script type="text/javascript" src="<?php echo $url;?>includes/plugins/post/scripts/jquery.form.js"></script>
+        <script type="text/javascript" >
+         $(document).ready(function() { 
 
-              $('#photoimg').live('change', function()			{ 
-                    $("#preview").html('');
-                    $("#preview").html('<img src="<?php echo $url;?>includes/plugins/post/loader.gif" alt="Uploading...."/>');
-                    $("#imageform").ajaxForm({
-                      target: '#preview',
-                      success: function(data) {
-                        console.log(data);
-                      }
-                    }).submit();
+            $('#photoimg').live('change', function()			{ 
+                  $("#preview").html('');
+                  $("#preview").html('<img src="<?php echo $url;?>includes/plugins/post/loader.gif" alt="Uploading...."/>');
+                  $("#imageform").ajaxForm({
+                    target: '#preview',
+                    success: function(data) {
+                      console.log(data);
+                    }
+                  }).submit();
 
-              });
-            }); 
-          </script>
-          <form id="imageform" method="post" enctype="multipart/form-data" action="http://localhost/slickvn/slickvn_api/include/modul_upload/avatar.php?url=<?php echo $url; ?>">
-          <input type="file" name="photoimg" id="photoimg"  />
-          </form>
-
-
-          <div style="width:100%; height: 100%;" id='preview'>
-          </div>
+            });
+          }); 
+        </script>
+        <form id="imageform" method="post" enctype="multipart/form-data" action="../../../../../../../../slickvn_api/include/modul_upload/avatar.php?url=<?php echo $url; ?>">
+        <input type="file" name="photoimg" id="photoimg"  />
+        </form>
+        <div style="width:100%; height: 100%;" id='preview'>
+        </div>
        
        
      </div>
      <div class="name_restaurant">
         <span>TÊN NHÀ HÀNG*</span><br>
-        <input class="input_text" type="text" placeholder="vd. Hương Sen" name="" >
+        <input class="input_text param_name_restauant" type="text" placeholder="vd. Hương Sen" name="" >
      </div>
      <div class="email_restaurant">
         <span>EMAIL</span><br>
-        <input class="input_text" type="text" placeholder="vd. huongsen@gmail.com" name="">
+        <input  class="input_text param_email" type="text" placeholder="vd. huongsen@gmail.com" name="">
      </div>
      <div class="address_restaurant">
         <span>ĐỊA CHỈ</span><br>
-        <input class="input_text" type="text" placeholder="vd. Bình Chánh district, HCMC" name="">
+        <input class="input_text param_address" type="text" placeholder="vd. Bình Chánh district, HCMC" name="">
      </div>
      <div class="phone_number_restaurant">
         <span>ĐIỆN THOẠI*</span><br>
-        <input class="input_text" type="text" placeholder="vd. 01665847138" name="">
+        <input class="input_text param_phonenumber" type="text" placeholder="vd. 01665847138" name="">
      </div>
      <div class="website_restaurant">
         <span>LINK WEB SITE NHÀ HÀNG</span><br>
-        <input class="input_text" type="text" placeholder="vd. http://slick.vn" name="">
+        <input class="input_text param_link_website" type="text" placeholder="vd. http://slick.vn" name="">
      </div>
 <!--     <div class="facebock_url_profile">
         <span>FACEBOOK URL</span><br>
@@ -79,7 +77,7 @@
      <div class="line_title"></div></br>
      <div class="introduce_short_restaurant">
         <span>MÔ TẢ NGẮN VỀ NHÀ HÀNG</span><br>
-        <textarea class="input_textarea" name=""></textarea>
+        <textarea class="input_textarea param_introduce_short_restaurant" name=""></textarea>
      </div>
      
      <!--phong cách ẩm thực-->
@@ -87,39 +85,14 @@
         <form id="FormAddListing_Culinary_Style">
           <span class="span_title">PHONG CÁCH ẨM THỰC</span>
           <ul class="list_index">
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc1"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc2"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc3"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc4"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc5"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc6"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc7"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc8"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc9"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc10"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                     phong cach am thuc<span class="checkbox" id="phongcachamthuc11"></span>
-                   </li>
+            
+            <?php    foreach ($culinary_style as $culinary_style) {
+                      echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
+                           '.$culinary_style['name'].' <span class="checkbox" id="'.$culinary_style['id'].'"></span>
+                         </li>';
+                 }
+           ?>
+                   
           </ul>
         </form>
      </div>
@@ -128,41 +101,17 @@
       <!--mục đích-->
      <div class="box_select_option">
         <form id="FormAddListing_Mode_Use_List">
-          <span class="span_title">MỤC ĐÍCH</span>
+          <span class="span_title">PHƯƠNG THỨC SỬ DỤNG</span>
           <ul class="list_index">
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich1"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich2"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich3"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich4"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich5"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich6"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                    muc dich<span class="checkbox" id="mucdich7"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich8"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich9"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich10"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                     muc dich<span class="checkbox" id="mucdich11"></span>
-                   </li>
+                  <?php 
+                    foreach ($mode_use_list as $mode_use_list) {
+                      echo'<li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
+                          '.$mode_use_list['name'].'<span class="checkbox" id="'.$mode_use_list['id'].'"></span>
+                            </li>';
+                           }
+                   ?>
+             
+                   
           </ul>
         </form>
      </div>
@@ -173,39 +122,13 @@
         <form id="FormAddListing_Favourite_List">
           <span class="span_title">NHU CẦU</span>
           <ul class="list_index">
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau1"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau2"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau3"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau4"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau5"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau6"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                    nhu cầu<span class="checkbox" id="nhucau7"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau8"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau9"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau10"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                     nhu cầu<span class="checkbox" id="nhucau11"></span>
-                   </li>
+                  <?php 
+                    foreach ($favourite_list as $favourite_list) {
+                      echo'<li onclick="return onclickLiCheckListing_Favourite_List(this);" >
+                          '.$favourite_list['name'].'<span class="checkbox" id="'.$favourite_list['id'].'"></span>
+                            </li>';
+                           }
+                   ?>
           </ul>
           
         </form>
@@ -217,39 +140,14 @@
         <form id="FormAddListing_Payment_Type_List">
           <span class="span_title">HÌNH THỨC THANH TOÁN</span>
           <ul class="list_index">
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan1"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan2"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan3"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan4"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan5"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan6"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                    hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan7"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan8"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan9"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan10"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                     hinh thuc thanh toan<span class="checkbox" id="hinhthucthanhtoan11"></span>
-                   </li>
+                <?php 
+                    foreach ($payment_type_list as $payment_type_list) {
+                      echo'<li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
+                          '.$payment_type_list['name'].'<span class="checkbox" id="'.$payment_type_list['id'].'"></span>
+                            </li>';
+                           }
+                ?>
+            
           </ul>
         </form>
      </div>
@@ -260,39 +158,16 @@
         <form id="FormAddListing_Landscape_List">
           <span class="span_title">NGOẠI CẢNH</span>
           <ul class="list_index">
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh1"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                    ngoai canh<span class="checkbox" id="ngoaicanh2"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh3"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh4"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh5"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh6"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                    ngoai canh<span class="checkbox" id="ngoaicanh7"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh8"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh9"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh10"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                     ngoai canh<span class="checkbox" id="ngoaicanh11"></span>
-                   </li>
+            
+               <?php 
+                    foreach ($landscape_list as $landscape_list) {
+                      echo'<li onclick="return onclickLiCheckListing_Landscape_List(this);" >
+                          '.$landscape_list['name'].'<span class="checkbox" id="'.$landscape_list['id'].'"></span>
+                            </li>';
+                           }
+                ?>
+                  
+                   
           </ul>
         </form>
      </div>
@@ -303,39 +178,15 @@
         <form id="FormAddListing_Price_Person_List">
           <span class="span_title">GIÁ TRUNG BÌNH NGƯỜI</span>
           <ul class="list_index">
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi1"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                    giá trng bình người<span class="checkbox" id="giatrungbinhnguoi2"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi3"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi4"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi5"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi6"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                    giá trng bình người<span class="checkbox" id="giatrungbinhnguoi7"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi8"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi9"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi10"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                     giá trng bình người<span class="checkbox" id="giatrungbinhnguoi11"></span>
-                   </li>
+            
+               <?php 
+                    foreach ($price_person_list as $price_person_list) {
+                      echo'<li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
+                          '.$price_person_list['name'].'<span class="checkbox" id="'.$price_person_list['id'].'"></span>
+                            </li>';
+                           }
+                ?>
+                   
           </ul>
         </form>
      </div>
@@ -346,39 +197,13 @@
         <form id="FormAddListing_Other_Criteria_List">
           <span class="span_title">CÁC TIÊU CHÍ KHÁC</span>
           <ul class="list_index">
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac1"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                    cac tieu chi khac<span class="checkbox" id="tieuchikhac2"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac3"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac4"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac5"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac6"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                    cac tieu chi khac<span class="checkbox" id="tieuchikhac7"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac8"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac9"></span>
-                   </li>
-                    <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac10"></span>
-                   </li>
-                   <li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                     cac tieu chi khac<span class="checkbox" id="tieuchikhac11"></span>
-                   </li>
+               <?php 
+                    foreach ($other_criteria_list as $other_criteria_list) {
+                      echo'<li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
+                          '.$other_criteria_list['name'].'<span class="checkbox" id="'.$other_criteria_list['id'].'"></span>
+                            </li>';
+                           }
+                ?>
           </ul>
         </form>
      </div>
@@ -393,7 +218,8 @@
                 <textarea  class="ckeditor" cols="80" id="editor1" name="editor1" rows="10">
                 </textarea>
               </p>
-       </form>
+        </form>
+        <div style="display: none;" id="trackingDiv" ></div>
      </div>
      <!--end giới thiệu nhà hàng-->
      
@@ -419,7 +245,7 @@
                           });
                   }); 
                 </script>
-                <form id="imageform_post" method="post" enctype="multipart/form-data" action="http://localhost/slickvn/slickvn_api/include/modul_upload/content.php?url=<?php echo $url; ?>">
+                <form id="imageform_post" method="post" enctype="multipart/form-data" action="../../../../../../../../slickvn_api/include/modul_upload/content.php?url=<?php echo $url; ?>">
                   <div class="input_post_image_content"><input type="file" name="photoimg_post" id="photoimg_post" /></div>
                 </form>
                 
@@ -433,8 +259,8 @@
      
      <!--carousel-->
       <div class="box_select_option">
-        <span class="span_title">CAROUSEL</span>
-        <script type="text/javascript" >
+        <span class="span_title">HÌNH ẢNH CAROUSEL</span>
+         <script type="text/javascript" >
            $(document).ready(function() { 
 
               $('#photoimg_carousel').live('change', function()			{ 
@@ -450,19 +276,20 @@
               });
             }); 
           </script>
-          <form id="imageform_carousel" method="post" enctype="multipart/form-data" action="http://localhost/slickvn/slickvn_api/include/modul_upload/avatar.php?url=<?php echo $url; ?>">
-          <input type="file" name="photoimg_carousel" id="photoimg_carousel" />
+          <form id="imageform_carousel" method="post" enctype="multipart/form-data" action="../../../../../../../../slickvn_api/include/modul_upload/carousel.php?url=<?php echo $url; ?>">
+            <div class="input_post_image_content"><input type="file" name="photoimg" id="photoimg_carousel"  /></div>
           </form>
 
 
-          <div style="width:100%; height: 100%;" id='preview_carousel'>
+          <div style="text-align: center; " id='preview_carousel'>
           </div>
-     </div>
+       </div>   
+          
      <!--end carousel-->
      
      
      <div class="btn_save_cancel">
-       <a href="<?php echo $url;?>index.php/admin/admin_controller/create_new_restaurant_success">
+       <a href="javascript:;" onclick="return onclickSubmit()">
         <div class="btn_save">
           <lable><div class="center_text">Lưu</div></lable>
         </div>
@@ -499,7 +326,7 @@
         }
 }
 
-//muc dich======================================================================>
+//phương thức sử dụng======================================================================>
   function onclickLiCheckListing_Mode_Use_List(obj){
     if($(obj).find('span').first().hasClass('checkbox')){
             $(obj).find('span').first().removeClass('checkbox').addClass('checkboxSelect');
@@ -611,6 +438,247 @@
            // $('ul.listSelectDanhBaDiaDiem .select' + id).remove();
         }
 }
+
+////submit======================================================================>
+
+ function onclickSubmit(){
+      //alert('hello');
+      var avatar=$('#image_avatar_post').val();
+      //------------------------------------------------------------
+      var param_name_restauant=$('.param_name_restauant').val();
+      function convertVietnamese(str) { 
+              str= str.toLowerCase();
+              str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+              str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+              str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+              str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+              str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+              str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+              str= str.replace(/đ/g,"d"); 
+              str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"_");
+              str= str.replace(/-+-/g,"-");
+              str= str.replace(/^\-+|\-+$/g,""); 
+
+              return str; 
+          }
+       var folder_name=convertVietnamese(param_name_restauant);
+      
+      
+      
+      
+      
+      
+      
+      var param_email=$('.param_email').val();
+      var param_address=$('.param_address').val();
+      var param_phonenumber=$('.param_phonenumber').val();
+      var param_link_website=$('.param_link_website').val();
+      var param_introduce_short_restaurant=$('.param_introduce_short_restaurant').val();
+      var param_link_website=$('.param_link_website').val();
+    
+    
+    //phong cach am thuc========================================================>
+      var elem_culinary_style = document.getElementsByClassName("input_culinary_style_class");
+      var culinary_style="";
+       for (var i = 0; i < elem_culinary_style.length; ++i) {
+        if (typeof elem_culinary_style[i].value !== "undefined") {
+            culinary_style +=elem_culinary_style[i].value+',';
+          }
+        }
+      culinary_style=culinary_style.slice(0,-1);
+     
+     //phương thức sử dụng========================================================>
+     var elem_mode_use_list = document.getElementsByClassName("input_mode_use_list_class");
+      var mode_use_list="";
+       for (var i = 0; i < elem_mode_use_list.length; ++i) {
+        if (typeof elem_mode_use_list[i].value !== "undefined") {
+            mode_use_list +=elem_mode_use_list[i].value+',';
+          }
+        }
+        mode_use_list=mode_use_list.slice(0,-1);
+        
+     
+      //nhu cầu========================================================>
+       var elem_favourite_list = document.getElementsByClassName("input_favourite_list_class");
+       var favourite_list="";
+       for (var i = 0; i < elem_favourite_list.length; ++i) {
+        if (typeof elem_favourite_list[i].value !== "undefined") {
+            favourite_list +=elem_favourite_list[i].value+',';
+          }
+        }
+        favourite_list=favourite_list.slice(0,-1);
+      //hinh thuc thanh toan=======================================================>
+      var elem_payment_type_list = document.getElementsByClassName("input_payment_type_list_class");
+      var payment_type_list="";
+       for (var i = 0; i < elem_payment_type_list.length; ++i) {
+        if (typeof elem_payment_type_list[i].value !== "undefined") {
+            payment_type_list +=elem_payment_type_list[i].value+',';
+          }
+        }
+        payment_type_list=payment_type_list.slice(0,-1);
+        
+      //ngoại cảnh=======================================================>
+      var elem_landscape_list = document.getElementsByClassName("input_landscape_list_class");
+      var landscape_list="";
+       for (var i = 0; i < elem_landscape_list.length; ++i) {
+        if (typeof elem_landscape_list[i].value !== "undefined") {
+            landscape_list +=elem_landscape_list[i].value+',';
+          }
+        }
+        landscape_list=landscape_list.slice(0,-1);
+      //giá trung bình người=======================================================>
+      var elem_price_person_list = document.getElementsByClassName("input_price_person_list_class");
+      var price_person_list="";
+       for (var i = 0; i < elem_price_person_list.length; ++i) {
+        if (typeof elem_price_person_list[i].value !== "undefined") {
+            price_person_list +=elem_price_person_list[i].value+',';
+          }
+        }
+        price_person_list=price_person_list.slice(0,-1);
+      //giá trung bình người=======================================================>
+      var elem_other_criteria_list = document.getElementsByClassName("input_price_person_list_class");
+      var other_criteria_list="";
+       for (var i = 0; i < elem_other_criteria_list.length; ++i) {
+        if (typeof elem_other_criteria_list[i].value !== "undefined") {
+            other_criteria_list +=elem_other_criteria_list[i].value+',';
+          }
+        }
+        other_criteria_list=other_criteria_list.slice(0,-1);
+      
+      //noi dung bai viet=======================================================>
+       var content_ckeditor=CKEDITOR.instances.editor1.getData();//nội dung chi tiết bài viết
+          $('#trackingDiv').html(content_ckeditor);
+          var content = $('#trackingDiv').html();
+
+          function escapeHtml(unsafe) {
+              return unsafe
+                   .replace(/&/g, "&amp;")
+                   .replace(/</g, "&lt;")
+                   .replace(/>/g, "&gt;")
+                   .replace(/"/g, "&quot;")
+                   .replace(/'/g, "&#039;");
+           }
+
+         content=escapeHtml(content);
+
+       //lấy chuổi tên image upload sử dụng cho bài viết
+        var elem_img_content_post = document.getElementsByClassName("img_content_post");
+        var img_content_post="";
+
+        for (var i = 0; i < elem_img_content_post.length; ++i) {
+            if (typeof elem_img_content_post[i].value !== "undefined") {
+                img_content_post +=elem_img_content_post[i].value+',';
+              }
+            }
+        img_content_post=img_content_post.slice(0,-1); //bỏ dấu phẩy cuối dòng
+        //đổ chuổi tên image upload sử dụng cho bài viết vào mảng array_images_content
+        var array_images_content = new Array();
+        for (var i = 0; i < elem_img_content_post.length; ++i) {
+            if (typeof elem_img_content_post[i].value !== "undefined") {
+                array_images_content[i]=elem_img_content_post[i].value;
+              }
+            }
+        //so sánh và lay ten nhung hinh anh có trong noi dung bài viết
+        var string_image_filter="";
+        for (var i = 0; i < array_images_content.length; ++i) {
+                if(content.indexOf(array_images_content[i])>-1)
+                  {
+                    string_image_filter+= array_images_content[i]+',';
+                  }
+
+            }
+        string_image_filter=string_image_filter.slice(0,-1);//bỏ ký tự phẩy cuối
+         
+       //chuổi tên hình ảnh gởi lên avatar/carousel/content
+       var carousel=$("#image_carousel_post").val();
+       var str_images=avatar+","+carousel+","+string_image_filter;
+       var action= "insert";
+         
+         
+         
+      
+   alert('foleder: '+folder_name);
+   /*
+      alert('image avatar: '+avatar);
+      alert('ten nha hang: '+param_name_restauant);
+      alert('email: '+param_email);
+      alert('adress: '+param_address);
+      alert('phone number: '+param_phonenumber);
+      alert('link website: '+param_link_website);
+      alert('mô tả ngắn: '+param_introduce_short_restaurant);
+      alert('phong cach am thuc: '+culinary_style);
+      alert('phuong thuc su dung: '+mode_use_list);
+      alert('nhu cầu: '+favourite_list);
+      alert('hinh thức thanh toán: '+payment_type_list);
+      alert('ngoai cảnh: '+landscape_list);
+      alert('giá trung bình người: '+price_person_list);
+      alert('các tiêu chí khác: '+other_criteria_list);
+      alert('nội dung bài viết: '+content);
+      alert('mảng hình: '+str_images);
+      alert('action: '+action);
+    
+    */
+     /*temp*/
+     var  id_menu_dish = "";
+     var  id_coupon="";
+     var  city="";
+     var  district="";
+     var  working_time="10h - 21h";  //tg mở cửa sáng chiều
+     var  status_active ="đang hoạt động"  //tạm ngưng
+     var  start_date="20-11-2013 0:0:0";
+     var  end_date = "20-11-2014 0:0:0";
+     
+     var url_api="http://localhost/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
+     var data={
+                 //avatar:avatar,
+                id_menu_dish : id_menu_dish,          
+                id_coupon :    id_coupon,          
+                name      :    param_name_restauant,
+                address   :    param_address,           
+                city      :    city,               
+                district  :    district,           
+                array_image:   str_images,
+                link_to    :   param_link_website,          
+                phone_number : param_phonenumber,       
+                working_time :  working_time,         
+                status_active : status_active,         
+                favourite_list: favourite_list,       
+                price_person_list:  price_person_list,     
+                culinary_style_list : culinary_style,    
+                mode_use_list :   mode_use_list,       
+                payment_type_list: payment_type_list,       
+                landscape_list :   landscape_list,      
+                other_criteria_list : other_criteria_list,    
+                introduce :   content,  
+                start_date :  start_date,         
+                end_date  :   end_date,
+                folder_name: folder_name,
+                action: action
+
+          }
+     
+     $.ajax({
+          url: url_api ,
+          type: 'POST',
+          data:data,
+          success: function(data){
+            
+            alert('them thanh cong');
+            location.reload();
+            
+          },
+
+         //timeout:5000,
+         error: function(a,textStatus,b){
+           alert('khong thanh cong');
+         }
+       });
+    
+    
+    
+    
+    
+ }
 
 
   
