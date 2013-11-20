@@ -73,7 +73,7 @@ class Home_controller extends CI_Controller {
             Version: 28/10/2013
      -------------------------------------------------------*/    
     $link_orther_res = Api_link_enum::$ORTHER_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_ORTHER_RESTAURANT."&page=1";
-     var_dump($link_orther_res);
+ 
     $json_string_orther_res = file_get_contents($link_orther_res);    
     $json_orther_res = json_decode($json_string_orther_res, true);
     $data['orther_restaurant']=$json_orther_res["Results"];   

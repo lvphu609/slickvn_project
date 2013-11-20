@@ -1,7 +1,7 @@
 <?php 
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require APPPATH.'/models/API_Link_Enum.php';
+require APPPATH.'/models/api_link_enum.php';
 
 class Search extends CI_Controller {
    public function __construct() {
@@ -21,12 +21,12 @@ class Search extends CI_Controller {
     $meal_name=$_GET['meal_name'];
     //var_dump($meal_name);
     
-    $this->load->model('RestaurantEnum');
+    $this->load->model('restaurantenum');
     $this->load->helper('url');
-    API_Link_Enum::initialize();
+    api_link_enum::initialize();
     
     $key=$meal_name;
-    $link_search_meal = API_Link_Enum::$SEARCH_MEAL_URL."?key=".$key."&limit=".RestaurantEnum::LIMIT_PAGE_SEARCH_MEAL."&page=1";
+    $link_search_meal = Api_link_enum::$SEARCH_MEAL_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_SEARCH_MEAL."&page=1";
     //var_dump($link_search_meal);
     $json_string_search_meal= file_get_contents($link_search_meal);    
     $json_search_meal = json_decode($json_string_search_meal, true);
@@ -39,11 +39,11 @@ class Search extends CI_Controller {
     
     $this->load->view('search/header/header');
      /*===============MENU==========================================================================*/
-    $link_meal_list = API_Link_Enum::$MEAL_TYPE_LIST_URL.API_Link_Enum::COLLECTION_NAME.API_Link_Enum::COLLECTION_MEAL_TYPE;
+    $link_meal_list = Api_link_enum::$MEAL_TYPE_LIST_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_MEAL_TYPE;
     $json_string_meal_list = file_get_contents($link_meal_list);    
     $json_meal_list = json_decode($json_string_meal_list, true);
     
-    $link_favourite_list = API_Link_Enum::$FAVOURITE_TYPE_URL.API_Link_Enum::COLLECTION_NAME.API_Link_Enum::COLLECTION_FAVOURITE;
+    $link_favourite_list = Api_link_enum::$FAVOURITE_TYPE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_FAVOURITE;
     $json_string_favourite_list = file_get_contents($link_favourite_list);    
     $json_favourite_list = json_decode($json_string_favourite_list, true);
     
@@ -58,7 +58,7 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
-    $data['link_restaurant_frofile']=  API_Link_Enum::$BASE_PROFILE_RESTAURANT_URL;
+    $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
     $this->load->view('search/content/result_search',$data); 
   
      
@@ -75,12 +75,12 @@ class Search extends CI_Controller {
     $favourite_id=$_GET['favourite_id'];
     //var_dump($meal_name);
     
-    $this->load->model('RestaurantEnum');
+    $this->load->model('restaurantenum');
     $this->load->helper('url');
-    API_Link_Enum::initialize();
+    Api_link_enum::initialize();
     
     $key=$favourite_id;
-    $link_search_favourite = API_Link_Enum::$SEARCH_FAVOURITE_URL."?key=".$key."&limit=".RestaurantEnum::LIMIT_PAGE_SEARCH_MEAL."&page=1"."&field=favourite_list";
+    $link_search_favourite = Api_link_enum::$SEARCH_FAVOURITE_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_SEARCH_MEAL."&page=1"."&field=favourite_list";
     //$var_dump($link_search_favourite);
     $json_string_search_favourite= file_get_contents($link_search_favourite);    
     $json_search_favourite = json_decode($json_string_search_favourite, true);
@@ -94,11 +94,11 @@ class Search extends CI_Controller {
     
     $this->load->view('search/header/header');
      /*===============MENU==========================================================================*/
-    $link_meal_list = API_Link_Enum::$MEAL_TYPE_LIST_URL.API_Link_Enum::COLLECTION_NAME.API_Link_Enum::COLLECTION_MEAL_TYPE;
+    $link_meal_list = Api_link_enum::$MEAL_TYPE_LIST_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_MEAL_TYPE;
     $json_string_meal_list = file_get_contents($link_meal_list);    
     $json_meal_list = json_decode($json_string_meal_list, true);
     
-    $link_favourite_list = API_Link_Enum::$FAVOURITE_TYPE_URL.API_Link_Enum::COLLECTION_NAME.API_Link_Enum::COLLECTION_FAVOURITE;
+    $link_favourite_list = Api_link_enum::$FAVOURITE_TYPE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_FAVOURITE;
     $json_string_favourite_list = file_get_contents($link_favourite_list);    
     $json_favourite_list = json_decode($json_string_favourite_list, true);
     
@@ -113,7 +113,7 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
-   $data['link_restaurant_frofile']=  API_Link_Enum::$BASE_PROFILE_RESTAURANT_URL;
+   $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
    $this->load->view('search/content/result_search',$data); 
   
     
@@ -128,12 +128,12 @@ class Search extends CI_Controller {
     $input_text_search=$_GET['input_text_search'];
     //var_dump($meal_name);
     
-    $this->load->model('RestaurantEnum');
+    $this->load->model('restaurantenum');
     $this->load->helper('url');
-    API_Link_Enum::initialize();
+    Api_link_enum::initialize();
     
     $key=$input_text_search;
-    $link_search_restaurant = API_Link_Enum::$SEARCH_RESTAURANT_URL."?key=".$key."&limit=".RestaurantEnum::LIMIT_PAGE_SEARCH_MEAL."&page=1";
+    $link_search_restaurant = Api_link_enum::$SEARCH_RESTAURANT_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_SEARCH_MEAL."&page=1";
     //var_dump($link_search_restaurant);
     $json_string_search_restaurant= file_get_contents($link_search_restaurant);    
     $json_search_restaurant = json_decode($json_string_search_restaurant, true);
@@ -147,11 +147,11 @@ class Search extends CI_Controller {
     
     $this->load->view('search/header/header');
      /*===============MENU==========================================================================*/
-    $link_meal_list = API_Link_Enum::$MEAL_TYPE_LIST_URL.API_Link_Enum::COLLECTION_NAME.API_Link_Enum::COLLECTION_MEAL_TYPE;
+    $link_meal_list = Api_link_enum::$MEAL_TYPE_LIST_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_MEAL_TYPE;
     $json_string_meal_list = file_get_contents($link_meal_list);    
     $json_meal_list = json_decode($json_string_meal_list, true);
     
-    $link_favourite_list = API_Link_Enum::$FAVOURITE_TYPE_URL.API_Link_Enum::COLLECTION_NAME.API_Link_Enum::COLLECTION_FAVOURITE;
+    $link_favourite_list = Api_link_enum::$FAVOURITE_TYPE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_FAVOURITE;
     $json_string_favourite_list = file_get_contents($link_favourite_list);    
     $json_favourite_list = json_decode($json_string_favourite_list, true);
     
@@ -166,7 +166,7 @@ class Search extends CI_Controller {
   /*================LOCATION============================================================================*/
    $this->load->view('search/content/location_page'); 
  /*================END LOCATION============================================================================*/
-   $data['link_restaurant_frofile']=  API_Link_Enum::$BASE_PROFILE_RESTAURANT_URL;
+   $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
    $this->load->view('search/content/result_search',$data); 
   
     
