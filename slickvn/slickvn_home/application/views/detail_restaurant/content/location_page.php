@@ -4,7 +4,7 @@
    
 
       $id=                    $info_detail_restaurant['id'];
-      $id_user=               $info_detail_restaurant['id_user'];
+     // $id_user=               $info_detail_restaurant['id_user'];
       $id_menu_dish=          $info_detail_restaurant['id_menu_dish'];
       $id_coupon=             $info_detail_restaurant['id_coupon'];
       $name=                  $info_detail_restaurant['name'];

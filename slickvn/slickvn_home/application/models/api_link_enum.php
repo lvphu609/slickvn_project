@@ -28,7 +28,7 @@ class Api_link_enum {
   const DETAIL_RESTAURANT_API="get_detail_restaurant";
   const PRICE_PERSION_API="get_base_collection";
   const CULINARY_STYLE_API="get_base_collection";
-  const LINK_RESTAURANT_PROFILE = "slickvn_api/restaurant_profile/";
+  const LINK_RESTAURANT_PROFILE = "slickvn_api/restaurant_profile/"; //link image in restaurant profile
   const LINK_IMAGE_POST = "slickvn_api/posts/";
   const MODE_USE_LIST_API = "get_base_collection";
   const PAYMENT_TYPE_LIST_API = "get_base_collection";
@@ -36,7 +36,11 @@ class Api_link_enum {
   const PRICE_PERSON_LIST_API = "get_base_collection";
   const OTHER_CRITERIA_LIST_API = "get_base_collection";
   
+ 
 
+
+
+    /*end link image----------*/
 
 
   /*search---------*/

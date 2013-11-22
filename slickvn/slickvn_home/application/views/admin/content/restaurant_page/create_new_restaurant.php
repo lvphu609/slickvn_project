@@ -462,7 +462,14 @@
               return str; 
           }
        var folder_name=convertVietnamese(param_name_restauant);
-      
+       function uniqid() {
+          var ts=String(new Date().getTime()), i = 0, out = '';
+          for(i=0;i<ts.length;i+=2) {        
+             out+=Number(ts.substr(i, 2)).toString(36);    
+          }
+          return ('d'+out);
+        }
+       folder_name=folder_name+uniqid();
       
       
       
@@ -535,8 +542,8 @@
           }
         }
         price_person_list=price_person_list.slice(0,-1);
-      //giá trung bình người=======================================================>
-      var elem_other_criteria_list = document.getElementsByClassName("input_price_person_list_class");
+      //các tiêu chí khác=======================================================>
+      var elem_other_criteria_list = document.getElementsByClassName("input_other_criteria_list_class");
       var other_criteria_list="";
        for (var i = 0; i < elem_other_criteria_list.length; ++i) {
         if (typeof elem_other_criteria_list[i].value !== "undefined") {
@@ -597,7 +604,7 @@
          
          
       
-   alert('foleder: '+folder_name);
+  // alert('các tiêu chí khác: '+other_criteria_list);
    /*
       alert('image avatar: '+avatar);
       alert('ten nha hang: '+param_name_restauant);
@@ -618,16 +625,17 @@
       alert('action: '+action);
     
     */
+    
      /*temp*/
      var  id_menu_dish = "";
      var  id_coupon="";
-     var  city="";
-     var  district="";
+     var  city="TP HCM";
+     var  district="Phạm Hùng";
      var  working_time="10h - 21h";  //tg mở cửa sáng chiều
      var  status_active ="đang hoạt động"  //tạm ngưng
      var  start_date="20-11-2013 0:0:0";
      var  end_date = "20-11-2014 0:0:0";
-     
+     var  approval_show_carousel =1;
      var url_api="http://localhost/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
      var data={
                  //avatar:avatar,
@@ -653,6 +661,10 @@
                 start_date :  start_date,         
                 end_date  :   end_date,
                 folder_name: folder_name,
+                email: param_email,
+                desc: param_introduce_short_restaurant,
+                approval_show_carousel: approval_show_carousel ,
+                
                 action: action
 
           }

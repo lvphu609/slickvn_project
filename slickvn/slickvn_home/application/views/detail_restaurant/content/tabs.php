@@ -1,10 +1,11 @@
 
 <?php $url=  base_url(); 
+
  foreach ($info_restaurant as $info_detail_restaurant) {
    
 
       $id=                    $info_detail_restaurant['id'];
-      $id_user=               $info_detail_restaurant['id_user'];
+      //$id_user=               $info_detail_restaurant['id_user'];
       $id_menu_dish=          $info_detail_restaurant['id_menu_dish'];
       $id_coupon=             $info_detail_restaurant['id_coupon'];
       $name=                  $info_detail_restaurant['name'];
@@ -47,6 +48,13 @@
       $other_criteria_list= explode(",",$other_criteria_list_string);
       
       $introduce=             $info_detail_restaurant['introduce'];
+      //noi dung gioi thieu, tim va thay the folder_image_introduce_detail_page bang duong dan host
+      $introduce = htmlspecialchars_decode ($introduce);
+      $introduce =  str_replace("folder_image_introduce_detail_page",$link_restaurant_frofile, $introduce);
+      
+      
+      
+      
       $start_date=            $info_detail_restaurant['start_date'];
       $end_date=              $info_detail_restaurant['end_date'];
       $created_date=          $info_detail_restaurant['created_date'];
@@ -371,75 +379,7 @@
              <!--end post introduce-->
              
              <!--text example-->
-              <div class="contentTab contentDetaiListing reports" id="contenTabGioiThieu" style="display:block">
-                  <a title="Gửi báo cáo lỗi tới ban quản trị." class="report" href="javascript:;" rel="nofollow" onclick="javascript:reportListing('Bài giới thiệu',this);" style="display: none;">[Báo lỗi]</a>
-                  <p style="text-align: center;">
-                    <span style="font-size:16px;"><strong>Bánh Canh Giang Ghẹ – Quán ăn hải sản giá rẻ Sài Gòn</strong></span></p>
-                  <p style="text-align: justify;">
-                    Bánh canh ghẹ hiện nay có thể được xem là một món đặc sản của Sài Gòn. Món ăn đã làm cho ẩm thực Sài Gòn thêm hương thêm hoa. Nếu có dịp dừng chân tại Sài Gòn bạn hãy thử thưởng thức bánh canh ghẹ một lần để cảm nhận hết hương vị tuyệt ngon, chắc thịt đặc trưng của ghẹ, vị dai sần sật của sợi bánh canh cùng nước dùng ngọt đậm đà từ ghẹ tươi.<br>
-                    Bánh Canh Giang Ghẹ tọa lạc tại số 688, quốc lộ 13, phường Bình Phước, quận Thủ Đức là một trong những quán tiên phong làm lên tên tuổi của món bánh canh ghẹ Sài Gòn.</p>
-                  <p style="text-align: center;">
-                    &nbsp;<img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (2).jpg" style="width: 600px; height: 331px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (3).jpg" style="width: 600px; height: 344px;"></p>
-                  <p style="text-align: justify;">
-                    Với khởi đầu là vựa hải sản, chuyên cung cấp hải sản số lượng lớn từ 2-3 tấn cho các quán ăn, nhà hàng tại Sài Gòn như Ngọc Sương, Biển Đông… Bánh Canh Giang Ghẹ luôn đem đến cho bạn những con ghẹ tươi ngon nhất.</p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (25).jpg" style="width: 600px; height: 300px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (12).jpg" style="width: 600px; height: 355px;"></p>
-                  <p style="text-align: justify;">
-                    Theo chia sẻ của chủ quán, với một 100kg ghẹ nhập về thì lựa được 10kg ghẹ chất lượng, tươi ngon, thịt săn chắc để chế biến món ăn. Đặc biệt, một ngày quán tiêu thụ trên 200kg ghẹ nên nước dùng cho bánh canh đặc biệt đậm đà, ngọt lịm.</p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (14).JPG" style="width: 600px; height: 400px;"></p>
-                  <p style="text-align: center;">
-                    <em>&nbsp;Nhân viên trong quán đang lựa ra&nbsp; những con ghẹ chất lượng.</em></p>
-                  <p style="text-align: justify;">
-                    Bánh Canh Giang Ghẹ luôn đảm bảo sự tươi ngon từ ghẹ sống được bắt và làm ngay khi khách gọi món, nhờ vậy nước dùng giữ được vị ngọt từ thịt ghẹ tươi săn chắc. Ngoài ra, bạn có thể tự tay chọn cho mình những con ghẹ còn sống theo đúng sở thích, sau đó nhân viên đem chế biến thành món bánh canh thơm ngon đúng ý của bạn.</p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (24).JPG" style="width: 600px; height: 400px;"></p>
-                  <p style="text-align: justify;">
-                    Bánh canh&nbsp; được làm thủ công từ bột gạo, tạo nên những sợi bánh có độ mềm, dai vừa phải không tạo cảm giác ngán khi ăn.</p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (17).JPG" style="width: 350px; height: 525px;"></p>
-                  <p style="text-align: justify;">
-                    Sự kết hợp hài hòa giữa hải sản tươi ngon với bánh canh gạo dai dai cùng đôi bàn tay tài hoa , đầy kinh nghiệm của đội ngũ đầu bếp của Bánh Canh Giang Ghẹ đã tạo nên&nbsp; những tuyệt tác ẩm thực, làm say lòng cả những thực khách khó tính nhất.</p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (21).JPG" style="width: 600px; height: 400px;"></p>
-                  <p style="text-align: justify;">
-                    Bánh Canh Giang Ghẹ có lợi thế là vựa hải sản nên giá tiền cho một tô bánh canh cũng rất mềm, chỉ từ 20.000đ – 55.000đ cho một tô bánh canh ghẹ thơm ngon.</p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (22).jpg" style="width: 400px; height: 498px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (18).JPG" style="width: 480px; height: 720px;"></p>
-                  <p style="text-align: justify;">
-                    Ngoài ra, Bánh Canh Giang Ghẹ còn cung cấp các món ghẹ với giá chỉ từ 160.000đ – 350.000đ/1kg. Bạn cũng có thể thưởng thức món lẩu Thái cua – ghẹ chua cay hấp dẫn với giá chỉ 49.000đ, hay nếm thử những món mới vô cùng hấp dẫn như lẩu đầu cá bóp, cá nhám nấu cà ri, cá mú chưng tương…</p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (9).JPG" style="width: 600px; height: 400px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (11).JPG" style="width: 600px; height: 400px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (6).jpg" style="width: 500px; height: 617px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (10).jpg" style="width: 500px; height: 620px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (5).jpg" style="width: 500px; height: 676px;"></p>
-                  <p style="text-align: center;">
-                    <img alt="" src="http://dendau.vn//custom/image_files/nha_hang/giangghe (4).jpg" style="width: 500px; height: 620px;"></p>
-                  <p style="text-align: justify;">
-                    &nbsp;&nbsp;<br>
-                    Với lợi thế là một vựa hải sản lớn trong khu vực Sài Gòn, cùng không gian rộng, thoáng mát, phục vụ chu đáo Bánh Canh Giang Ghẹ hứa hẹn mang đến cho bạn những giây phút thưởng thức hải sản thơm ngon nhất, giá hợp lý nhất.</p>
-                  <p style="text-align: justify;">
-                    facebook : https://www.facebook.com/banhcanhghesaigon?ref=tn_tnmn.<br>
-                    Youtube nhé :http://www.youtube.com/watch?v=sDoIqlGtxOA<br>
-                    Link bài viết trên tạp chí gia đình:&nbsp;<a href="http://tapchigiadinh.com.vn/94-nha-hang-quan-an/21247-banh-canh-giang-ghe-hai-san-gia-re-sai-gon-145.aspx">http://tapchigiadinh.com.vn/94-nha-hang-quan-an/21247-banh-canh-giang-ghe-hai-san-gia-re-sai-gon-145.aspx</a></p>
-                  <p style="text-align: right;">
-                    &nbsp;</p>
-                  <p style="text-align: right;">
-                    <strong>Phạm Trang</strong><br>
-                    &nbsp;</p>
-                              
-               </div>
+              <?php echo $introduce; ?>
              
              <!--end text example-->
              
@@ -631,10 +571,14 @@
           <?php 
                 //var_dump($payment_type_list);
                 $str_payment=array("Thẻ Debit","Tiền mặt","Thẻ ATM","Thẻ tín dụng");
-                
+               // var_dump( array_intersect($payment_type_list, $str_payment));
+               // var_dump($str_payment);
+               // var_dump($payment_type_list);
                 foreach ($payment_type_list as $value_payment_type_list) {
                   
-                  if($value_payment_type_list=="Thẻ Debit")
+                  $value_payment_type_list = trim($value_payment_type_list);
+                  
+                  if(strcmp($value_payment_type_list,"Thẻ Debit")==0)
                   {
                     echo'<li>
                           <span class="image_status icon_Dedit"></span>
@@ -642,7 +586,7 @@
                         </li>';
                     
                   }
-                  if($value_payment_type_list=="Tiền mặt")
+                  if(strcmp($value_payment_type_list,"Tiền mặt")==0)
                   {
                     echo'<li>
                             <span class="image_status icon_tienmat"></span>
@@ -674,9 +618,9 @@
                   
                   
                  }
-                 //var_dump($str_payment);
+                // var_dump($str_payment);
                  //những cách thanh toán chưa có
-                 foreach ($str_payment as $str_payment) {
+              foreach ($str_payment as $str_payment) {
                    if($str_payment=="Thẻ Debit")
                     {
                       echo'<li>
@@ -752,9 +696,8 @@
                                                "Phòng VIP",
                                                "Wifi"
                                                     );
-                
                 foreach ($other_criteria_list as $other_criteria_list) {
-                  
+                  $other_criteria_list = trim($other_criteria_list);
                   if($other_criteria_list=="Âm thanh, máy chiếu")
                   {
                     echo'<li>
@@ -976,7 +919,7 @@
                                                     );
                 
                 foreach ($mode_use_list as $mode_use_list) {
-                  
+                  $mode_use_list = trim($mode_use_list);
                   if($mode_use_list=="Đặt tiệc tận nhà")
                   {
                     echo' <li>
@@ -1094,7 +1037,7 @@
                                                     );
                 
                 foreach ($landscape_list as $landscape_list) {
-                  
+                   $landscape_list = trim($landscape_list);
                   if($landscape_list=="Canh ban công")
                   {
                     echo'<li>

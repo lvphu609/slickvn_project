@@ -1,11 +1,11 @@
 <?php $url=  base_url();
 
-       $url_res_frofile=$link_restaurant_frofile;
+ 
  foreach ($info_restaurant as $info_detail_restaurant) {
    
 
       $id=                    $info_detail_restaurant['id'];
-      $id_user=               $info_detail_restaurant['id_user'];
+      //$id_user=               $info_detail_restaurant['id_user'];
       $id_menu_dish=          $info_detail_restaurant['id_menu_dish'];
       $id_coupon=             $info_detail_restaurant['id_coupon'];
       $name=                  $info_detail_restaurant['name'];
@@ -94,7 +94,7 @@
         <ul id="myGallery">
           <?php 
             foreach ($image_introduce_link as $value) {
-              echo'<li><img src="'.$url_res_frofile.$value.'"  /></li>';
+              echo'<li><img src="'.$link_restaurant_frofile.$value.'"  /></li>';
             }
           ?>
         </ul>

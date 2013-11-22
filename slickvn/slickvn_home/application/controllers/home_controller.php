@@ -40,7 +40,7 @@ class Home_controller extends CI_Controller {
     
   /*=================CAROUSEL========================================================================================*/
     $link_carousel_list = Api_link_enum::$CAROUSEL_URL."?limit=5&page=1";
-    //var_dump($link_carousel_list);
+  //  var_dump($link_carousel_list);
     $json_string_carousel_list = file_get_contents($link_carousel_list);    
     $json_carousel_list = json_decode($json_string_carousel_list, true);
     
@@ -61,6 +61,7 @@ class Home_controller extends CI_Controller {
             Version: 28/10/2013
      -------------------------------------------------------*/
     $link_newest_res = Api_link_enum::$NEWEST_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_NEWEST_RESTAURANT."&page=1";
+    //var_dump($link_newest_res);
     $json_string_newest_res = file_get_contents($link_newest_res);    
     $json_newest_res = json_decode($json_string_newest_res, true);
     $data['newest_restaurant']=$json_newest_res["Results"];

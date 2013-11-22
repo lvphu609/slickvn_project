@@ -22,6 +22,8 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
     $data['newest_restaurant']=$json_newest_res["Results"];
     $this->load->helper('url');
     $url=  base_url();
+    $link_restaurant_frofile=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
+    
     //var_dump($link_newest_res);
     echo'
            <div id="append_Res_Newest_List">
@@ -38,7 +40,10 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
              $avatar=$value_res_newest['avatar'];             
              $id=$value_res_newest['id'];
              $name=$value_res_newest['name'];
+             
              $desc=$value_res_newest['desc'];
+             $desc=substr($desc,0,120) . '...';
+             
              $address=$value_res_newest['address'];
              $number_assessment=$value_res_newest['number_assessment'];
              $number_like=$value_res_newest['number_like'];
@@ -50,7 +55,7 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
                 <div class="detail_box">
                            <div class="img_item">
                              <a href="'.$url.'/index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'">
-                                 <img style="width=40px; height=40px;" class="big" src="'.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
+                                 <img style="width=40px; height=40px;" class="big" src="'.$link_restaurant_frofile.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
                              </a>
                              <div id="remove_comment_like_animate" class="">
                                 <a href="#">
@@ -107,7 +112,7 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
                                //iamges avatar restaurant
                               echo '<div class="avartar_restaurant">
                                       <a href="#">
-                                          <img src="'.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
+                                          <img src="'.$link_restaurant_frofile.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
                                       </a>                            
                                     </div>';
                                 //name

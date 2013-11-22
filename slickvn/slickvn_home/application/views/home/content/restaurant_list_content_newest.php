@@ -21,7 +21,13 @@
              $avatar=$value_res_newest['avatar'];             
              $id=$value_res_newest['id'];
              $name=$value_res_newest['name'];
+             
              $desc=$value_res_newest['desc'];
+             $desc=substr($desc,0,120) . '...';
+             //$desc="ádad ád ád ád ád ád ád ád ";
+             //$desc=word_limiter($desc, 4);
+
+             
              $address=$value_res_newest['address'];
              $number_assessment=$value_res_newest['number_assessment'];
              $number_like=$value_res_newest['number_like'];

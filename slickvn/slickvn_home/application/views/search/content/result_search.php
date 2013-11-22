@@ -22,7 +22,7 @@
                 foreach ($result_search_meal as $info_detail_restaurant) {
                     $id=                    $info_detail_restaurant['id'];
                     $link_to_detail_restaurant=$url."index.php/detail_restaurant/detail_restaurant?id_restaurant=".$id;
-                    $id_user=               $info_detail_restaurant['id_user'];
+                   // $id_user=               $info_detail_restaurant['id_user'];
                     $id_menu_dish=          $info_detail_restaurant['id_menu_dish'];
                     $id_coupon=             $info_detail_restaurant['id_coupon'];
                     $name=                  $info_detail_restaurant['name'];
@@ -116,7 +116,7 @@
                               foreach ($result_search_favourite as $info_detail_restaurant) {
                                   $id=                    $info_detail_restaurant['id'];
                                   $link_to_detail_restaurant=$url."index.php/detail_restaurant/detail_restaurant?id_restaurant=".$id;
-                                  $id_user=               $info_detail_restaurant['id_user'];
+                                  //$id_user=               $info_detail_restaurant['id_user'];
                                   $id_menu_dish=          $info_detail_restaurant['id_menu_dish'];
                                   $id_coupon=             $info_detail_restaurant['id_coupon'];
                                   $name=                  $info_detail_restaurant['name'];
@@ -211,7 +211,7 @@
                               foreach ($result_search_restaurant as $info_detail_restaurant) {
                                   $id=                    $info_detail_restaurant['id'];
                                   $link_to_detail_restaurant=$url."index.php/detail_restaurant/detail_restaurant?id_restaurant=".$id;
-                                  $id_user=               $info_detail_restaurant['id_user'];
+                               //   $id_user=               $info_detail_restaurant['id_user'];
                                   $id_menu_dish=          $info_detail_restaurant['id_menu_dish'];
                                   $id_coupon=             $info_detail_restaurant['id_coupon'];
                                   $name=                  $info_detail_restaurant['name'];
