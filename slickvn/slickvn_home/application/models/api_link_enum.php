@@ -8,12 +8,12 @@
 /**
  * Description of API_Link_Enum
  *
- * @author phucnguyen
+ * @author phu
  *///http://192.168.1.147:8181/slickvn/index.php/slick_apis/format/json
 class Api_link_enum { 
   const DOMAIN_NAME = "http://localhost";
   const PORT = "/"; //":8181/";
-  const SUB_DOMAIN = "slickvn_api/index.php/";
+  const SUB_DOMAIN = "slickvn_api_project_xinh/slickvn_api/index.php/";
   const SUB_DOMAIN_COMMON ="common/common_apis/";
   const SUB_DOMAIN_USER ="user/user_apis/";
   const SUB_DOMAIN_RESTAURANT ="restaurant/restaurant_apis/";
@@ -28,8 +28,12 @@ class Api_link_enum {
   const DETAIL_RESTAURANT_API="get_detail_restaurant";
   const PRICE_PERSION_API="get_base_collection";
   const CULINARY_STYLE_API="get_base_collection";
-  const LINK_RESTAURANT_PROFILE = "slickvn_api/restaurant_profile/"; //link image in restaurant profile
-  const LINK_IMAGE_POST = "slickvn_api/posts/";
+  const LINK_RESTAURANT_PROFILE = "slickvn_api_project_xinh/slickvn_api/restaurant_profile/"; //link image in restaurant profile
+  const LINK_IMAGE_POST = "slickvn_api_project_xinh/slickvn_api/posts/";  //link image post
+  const LINK_IMAGE_UPLOAD_TEMP="slickvn_api_project_xinh/slickvn_api/";   //link image upload temp
+  const LINK_CALL_UPLOAD_IMAGE_TEMP="../../../../../../../../slickvn_api_project_xinh/slickvn_api/"; //link call php upload temp
+
+
   const MODE_USE_LIST_API = "get_base_collection";
   const PAYMENT_TYPE_LIST_API = "get_base_collection";
   const LANDSCAPE_LIST_API = "get_base_collection";
@@ -100,6 +104,9 @@ class Api_link_enum {
     public static $LANDSCAPE_LIST_URL;
     public static $PRICE_PERSON_LIST_URL;
     public static $OTHER_CRITERIA_LIST_URL;
+    public static $BASE_IMAGE_UPLOAD_TEMP_URL;
+    public static $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
+    
     
     public static function initialize()
     {  
@@ -109,6 +116,10 @@ class Api_link_enum {
       self::$BASE_API_RESTAURANT_URL = self::DOMAIN_NAME.self::PORT.self::SUB_DOMAIN.self::SUB_DOMAIN_RESTAURANT;
       self::$BASE_PROFILE_RESTAURANT_URL = self::DOMAIN_NAME.self::PORT.self::LINK_RESTAURANT_PROFILE;
       self::$BASE_IMAGE_POST_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_POST;
+      self::$BASE_IMAGE_UPLOAD_TEMP_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_UPLOAD_TEMP;
+      self::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL=self::DOMAIN_NAME.self::PORT.self::LINK_CALL_UPLOAD_IMAGE_TEMP;
+      
+      
       /*
        * end url*/
       

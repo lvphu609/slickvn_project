@@ -1,4 +1,6 @@
-<?php $url=  base_url();?>
+<?php $url=  base_url();
+
+?>
 
 
 <div id="create_new_restaurant">
@@ -34,7 +36,7 @@
             });
           }); 
         </script>
-        <form id="imageform" method="post" enctype="multipart/form-data" action="../../../../../../../../slickvn_api/include/modul_upload/avatar.php?url=<?php echo $url; ?>">
+        <form id="imageform" method="post" enctype="multipart/form-data" action="<?php echo $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;?>include/modul_upload/avatar.php?url=<?php echo $BASE_IMAGE_UPLOAD_TEMP_URL; ?>">
         <input type="file" name="photoimg" id="photoimg"  />
         </form>
         <div style="width:100%; height: 100%;" id='preview'>
@@ -79,6 +81,32 @@
         <span>MÔ TẢ NGẮN VỀ NHÀ HÀNG</span><br>
         <textarea class="input_textarea param_introduce_short_restaurant" name=""></textarea>
      </div>
+      <!--menu nha hàng dùng cho tìm kiếm-->
+     <div class="box_select_option">
+        <form id="FormAddListing_Culinary_Style">
+          <span class="span_title">MENU NHÀ HÀNG</span>
+           <div id="formdata-keyvaleditor-container" class="row" style="margin-left: 0px; display: block;">
+              <div id="formdata-keyvaleditor" class="append_keyvalueeditor-row">
+                
+                
+                <div class="keyvalueeditor-row ">
+                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Tên món ăn" disabled name="keyvalueeditor-action" value="">
+                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Mô tả" disabled name="keyvalueeditor-action" value="">
+                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Giá" disabled name="keyvalueeditor-action" value="">
+                  <select class="select_menu_option" disabled>
+                    <option value="N">Tùy chọn</option>
+                    <option value="Y">add row</option>
+                  </select>
+                  
+                </div>
+              
+                
+                
+               </div>
+           </div>
+        </form>
+     </div>
+     <!--end menu nha hàng dùng cho tìm kiếm-->
      
      <!--phong cách ẩm thực-->
      <div class="box_select_option">
@@ -245,7 +273,7 @@
                           });
                   }); 
                 </script>
-                <form id="imageform_post" method="post" enctype="multipart/form-data" action="../../../../../../../../slickvn_api/include/modul_upload/content.php?url=<?php echo $url; ?>">
+                <form id="imageform_post" method="post" enctype="multipart/form-data" action="<?php echo $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;?>include/modul_upload/content.php?url=<?php echo $BASE_IMAGE_UPLOAD_TEMP_URL; ?>">
                   <div class="input_post_image_content"><input type="file" name="photoimg_post" id="photoimg_post" /></div>
                 </form>
                 
@@ -276,7 +304,7 @@
               });
             }); 
           </script>
-          <form id="imageform_carousel" method="post" enctype="multipart/form-data" action="../../../../../../../../slickvn_api/include/modul_upload/carousel.php?url=<?php echo $url; ?>">
+          <form id="imageform_carousel" method="post" enctype="multipart/form-data" action="<?php echo $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;?>include/modul_upload/carousel.php?url=<?php echo $BASE_IMAGE_UPLOAD_TEMP_URL; ?>">
             <div class="input_post_image_content"><input type="file" name="photoimg" id="photoimg_carousel"  /></div>
           </form>
 
@@ -600,9 +628,113 @@
        var carousel=$("#image_carousel_post").val();
        var str_images=avatar+","+carousel+","+string_image_filter;
        var action= "insert";
+      
+      //========danh sách menu
+      var elem_meal_menu = document.getElementsByClassName("meal_menu");
+      var elem_description_menu = document.getElementsByClassName("description_menu");
+      var elem_price_menu = document.getElementsByClassName("price_menu");
+      var elem_select_menu_option = document.getElementsByClassName("select_custom_menu");
+      //---meal
+      var str_elem_meal_menu="";
+       for (var i = 0; i < elem_meal_menu.length; ++i) {
+          str_elem_meal_menu +=elem_meal_menu[i].value+'###'
+      
+        }
+        str_elem_meal_menu=str_elem_meal_menu.slice(0,-3);
+      //--- description
+       var str_elem_description_menu="";
+       for (var i = 0; i < elem_description_menu.length; ++i) {
+          str_elem_description_menu +=elem_description_menu[i].value+'###'
+   
+        }
+        str_elem_description_menu=str_elem_description_menu.slice(0,-3);
+      //--  price
+        var str_elem_price_menu="";
+       for (var i = 0; i < elem_price_menu.length; ++i) {
+          str_elem_price_menu +=elem_price_menu[i].value+'###'
          
+        }
+        str_elem_price_menu=str_elem_price_menu.slice(0,-3);
+     //--  option
+       var str_elem_select_menu_option="";
+       for (var i = 0; i < elem_select_menu_option.length; ++i) {
+          str_elem_select_menu_option +=elem_select_menu_option[i].value+'###'
          
+        }
+        str_elem_select_menu_option=str_elem_select_menu_option.slice(0,-3);
+     
+     //===array
+       
+     var array_elem_meal_menu = str_elem_meal_menu.split('###');
+     var array_elem_description_menu=str_elem_description_menu.split('###');
+     var array_elem_price_menu=str_elem_price_menu.split('###');
+     var array_elem_select_menu_option=str_elem_select_menu_option.split('###');
+    //data sent 
+      var dish_list="";
+       for (var i = 0; i < array_elem_meal_menu.length; ++i) {
+         if(array_elem_meal_menu[i]!=""){
+           dish_list+=array_elem_meal_menu[i]+'*100#'
+                          +array_elem_description_menu[i]+'*100#'
+                          +array_elem_price_menu[i]+'*100#'
+                          +array_elem_select_menu_option[i]
+                          +' *101# ';
+           
+         }
          
+        }
+        //alert(dish_list);
+        //str_elem_select_menu_option=str_elem_select_menu_option.slice(0,-3);
+     
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+         
+      /*
+       
+          //array====
+      //---meal
+      var arr_elem_meal_menu = [];//<===
+       for (var i = 0; i < elem_meal_menu.length; ++i) {
+         arr_elem_meal_menu.push(elem_meal_menu[i].value);
+        }
+      //--- description
+       var arr_elem_description_menu=[];//<===
+       for (var i = 0; i < elem_description_menu.length; ++i) {
+         arr_elem_description_menu.push(elem_meal_menu[i].value);
+        }
+      //-- price 
+        var arr_elem_price_menu=[];//<===
+       for (var i = 0; i < elem_price_menu.length; ++i) {
+         arr_elem_price_menu.push(elem_meal_menu[i].value);
+        }
+     //--option  
+        var arr_elem_select_menu_option=[];//<===
+       for (var i = 0; i < elem_select_menu_option.length; ++i) {
+         arr_elem_select_menu_option.push(elem_meal_menu[i].value);
+        }
+     //===>string send
+     var meal_list_menu="";
+      for (var i = 0; i < elem_meal_menu.length; ++i) {
+        if(typeof elem_meal_menu[i]!== "undefined"){
+             meal_list_menu +=arr_elem_meal_menu[i].value+'*100#'
+                             +arr_elem_description_menu[i].value+'*100#'
+                             +arr_elem_price_menu[i].value+'*100#'
+                             +arr_elem_select_menu_option[i].value+'*100#'
+                             +' *101# ';
+       
+          }
+       }
+       alert(meal_list_menu);
+       */   
       
   // alert('các tiêu chí khác: '+other_criteria_list);
    /*
@@ -636,10 +768,11 @@
      var  start_date="20-11-2013 0:0:0";
      var  end_date = "20-11-2014 0:0:0";
      var  approval_show_carousel =1;
-     var url_api="http://localhost/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
+     var url_api="http://localhost/slickvn_api_project_xinh/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
      var data={
                  //avatar:avatar,
-                id_menu_dish : id_menu_dish,          
+               // dish_list : dish_list,
+                id_menu_dish:id_menu_dish,
                 id_coupon :    id_coupon,          
                 name      :    param_name_restauant,
                 address   :    param_address,           
@@ -664,6 +797,7 @@
                 email: param_email,
                 desc: param_introduce_short_restaurant,
                 approval_show_carousel: approval_show_carousel ,
+             
                 
                 action: action
 
@@ -695,3 +829,71 @@
 
   
 </script>
+
+<input type="hidden" id="hdData_status" value="1">
+<div class="append_add_menu_restaurant">
+  <div class="remove_add_menu_restaurant_1">
+    <script>
+    //thêm menu nhà hàng 
+//     $(function(){
+//        var data_status=parseInt($('#hdData_status').val());
+//        $('.keyvalueeditor_check_status').click(function (){
+//            var get_data_status=parseInt($(this).attr('data-status'));
+//         //   alert(data_status);
+//            
+//
+//            if(get_data_status==data_status){
+//              
+//              data_status=data_status+1;
+//              $('#hdData_status').val(data_status);
+//              var keyvalueeditor_string="<div class=\"keyvalueeditor-row \">\n\
+//                      <input type=\"text\" data-status=\""+data_status+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status\" placeholder=\"Tên món ăn\" name=\"keyvalueeditor-action\" value=\"\">\n\
+//                      <input type=\"text\" data-status=\""+data_status+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status\" placeholder=\"Mô tả\" name=\"keyvalueeditor-action\" value=\"\">\n\
+//                      <input type=\"text\" data-status=\""+data_status+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status\" placeholder=\"Giá\" name=\"keyvalueeditor-action\" value=\"\">\n\
+//                      <select class=\"select_menu_option\"><option value=\"N\">Món bình thường</option>\n\
+//                      <option value=\"Y\">Món đặt biệt</option>\n\
+//                      </select>\n\
+//                     </div>";
+//              $('.append_keyvalueeditor-row').append(keyvalueeditor_string);
+//            //  $('.append_add_menu_restaurant').append(append_add_menu_restaurant);
+//             // $('.remove_add_menu_restaurant').remove();
+//
+//          }
+//            else{
+//              alert('not append');
+//            }
+//
+//
+//
+//        });
+
+     $(function(){
+        //var data_status=parseInt($('#hdData_status').val());
+        var data_status=1;
+        $('.keyvalueeditor-row').find('input').parent().last().click(function(index) {
+           if(parseInt($(this).find('input').attr('data-status'))==1){
+             
+            var data_status_next=data_status+1;
+            data_status=data_status+1;
+            var keyvalueeditor_string="<div class=\"keyvalueeditor-row \">\n\
+                      <input type=\"text\" data-status=\""+data_status_next+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status meal_menu \" placeholder=\"Tên món ăn\" name=\"keyvalueeditor-action\" value=\"\">\n\
+                      <input type=\"text\" data-status=\""+data_status_next+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status description_menu \" placeholder=\"Mô tả\" name=\"keyvalueeditor-action\" value=\"\">\n\
+                      <input type=\"text\" data-status=\""+data_status_next+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status price_menu \" placeholder=\"Giá\" name=\"keyvalueeditor-action\" value=\"\">\n\
+                      <select class=\"select_menu_option select_custom_menu \"><option value=\"N\">Món bình thường</option>\n\
+                      <option value=\"Y\">Món đặt biệt</option>\n\
+                      </select>\n\
+                     </div>";
+//            var prv_data_status = data_status-1;
+//            prv_data_status=".remove_add_menu_restaurant_"+prv_data_status;
+//            var remove_script= $(prv_data_status).html();
+//            
+//            alert(prv_data_status);
+            $('.append_keyvalueeditor-row').append(keyvalueeditor_string);
+            $('#hdData_status').val(data_status_next);
+            
+           }
+        });
+     });
+     </script>
+   </div>
+ </div>

@@ -57,7 +57,7 @@
                     });
                   }); 
                 </script>
-                <form id="imageform" method="post" enctype="multipart/form-data" action="http://localhost/slickvn/include/modul_upload/avatar.php?url=<?php echo $url; ?>">
+                <form id="imageform" method="post" enctype="multipart/form-data" action="<?php echo $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;?>include/modul_upload/avatar.php?url=<?php echo $BASE_IMAGE_UPLOAD_TEMP_URL; ?>">
                 <input type="file" name="photoimg" id="photoimg" />
                 </form>
                 
@@ -199,7 +199,7 @@
                           });
                   }); 
                 </script>
-                <form id="imageform_post" method="post" enctype="multipart/form-data" action="http://localhost/slickvn/include/modul_upload/content.php?url=<?php echo $url; ?>">
+                <form id="imageform_post" method="post" enctype="multipart/form-data" action="<?php echo $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;?>include/modul_upload/content.php?url=<?php echo $BASE_IMAGE_UPLOAD_TEMP_URL; ?>">
                 <input type="file" name="photoimg_post" id="photoimg_post" />
                 </form>
                 

@@ -22,6 +22,7 @@ class Home_controller extends CI_Controller {
     
   /*===============MENU==========================================================================*/
     $link_meal_list = Api_link_enum::$MEAL_TYPE_LIST_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_MEAL_TYPE;
+    //var_dump($link_meal_list);
     $json_string_meal_list = file_get_contents($link_meal_list);    
     $json_meal_list = json_decode($json_string_meal_list, true);
     
@@ -46,7 +47,6 @@ class Home_controller extends CI_Controller {
     
     $data['carousel_list']=$json_carousel_list["Results"];
     $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
-    
     $this->load->view('home/content/carousel',$data);
     
   /*=================END_CAROUSEL=======================================================================================*/    
@@ -548,7 +548,12 @@ class Home_controller extends CI_Controller {
     $this->load->helper('url');
     $this->load->view('home/header/header_add_post');
     
-    
+     //link image upload temp
+     $data['BASE_IMAGE_UPLOAD_TEMP_URL']=  Api_link_enum::$BASE_IMAGE_UPLOAD_TEMP_URL;
+     //call php upload image temp
+     $data['BASE_CALL_UPLOAD_IMAGE_TEMP_URL']=  Api_link_enum::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
+     
+     
     /*===============MENU==========================================================================*/
             /*gọi API lấy danh sách các món ăn*/
     $link_meal_list = Api_link_enum::$MEAL_TYPE_LIST_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_MEAL_TYPE;
