@@ -28,6 +28,11 @@ class Api_link_enum {
   const DETAIL_RESTAURANT_API="get_detail_restaurant";
   const PRICE_PERSION_API="get_base_collection";
   const CULINARY_STYLE_API="get_base_collection";
+  const ALL_RESTAURANT_API="get_all_restaurant";
+
+
+
+
   const LINK_RESTAURANT_PROFILE = "slickvn_api_project_xinh/slickvn_api/restaurant_profile/"; //link image in restaurant profile
   const LINK_IMAGE_POST = "slickvn_api_project_xinh/slickvn_api/posts/";  //link image post
   const LINK_IMAGE_UPLOAD_TEMP="slickvn_api_project_xinh/slickvn_api/";   //link image upload temp
@@ -88,6 +93,7 @@ class Api_link_enum {
     public static $PROMOTION_URL;
     public static $POST_URL;
     public static $RESTAURANT_URL;
+    public static $ALL_RESTAURANT_URL;
     public static $BASE_API_COMMON_URL;
     public static $BASE_API_USER_URL;
     public static $BASE_API_RESTAURANT_URL;
@@ -106,6 +112,7 @@ class Api_link_enum {
     public static $OTHER_CRITERIA_LIST_URL;
     public static $BASE_IMAGE_UPLOAD_TEMP_URL;
     public static $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
+    
     
     
     public static function initialize()
@@ -131,6 +138,7 @@ class Api_link_enum {
       self::$PROMOTION_URL = self::$BASE_API_RESTAURANT_URL.self::PROMOTION_API.self::FORMAT_JSON ;
       self::$POST_URL = self::$BASE_API_RESTAURANT_URL.self::POST_API.self::FORMAT_JSON ;
       self::$RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::RESTAURANT_API.self::FORMAT_JSON ;
+      self::$ALL_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::ALL_RESTAURANT_API.self::FORMAT_JSON ;
       self::$DETAIL_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::DETAIL_RESTAURANT_API.self::FORMAT_JSON ;
       self::$PRICE_PERSION_URL = self::$BASE_API_COMMON_URL.self::PRICE_PERSION_API.self::FORMAT_JSON ;
       self::$CULINARY_STYLE_URL = self::$BASE_API_COMMON_URL.self::CULINARY_STYLE_API.self::FORMAT_JSON ;

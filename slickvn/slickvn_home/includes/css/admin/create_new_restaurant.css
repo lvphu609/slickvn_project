@@ -114,6 +114,14 @@
   /*temp
   background:#ff0;*/
 }
+#create_new_restaurant #content_create_new_restaurant .box_input .status_active{
+  width: 24.66%;
+  height: 100px;
+  float: left;
+  margin-left: 2%;
+  /*temp
+  background:#474747;*/
+}
 /*
 #create_new_restaurant #content_create_new_restaurant .box_input .facebock_url_profile{
   width: 24.66%;
@@ -241,8 +249,8 @@
   margin-top: 5px;
 
 }
-#create_new_restaurant #content_create_new_restaurant .box_input span{
-  color: #7e7e7e;
+#create_new_restaurant #content_create_new_restaurant .box_input span.title_input{
+  color: #0066FF;
   font-size: 15px;
   font-family: sans-serif;
   font-style: italic;
@@ -288,11 +296,19 @@
   height: 200px;
 /*  background: #d4d4d4;*/
 }
+#create_new_restaurant #content_create_new_restaurant .box_input .box_select_option_noboder{
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-top: 5px;
+}
 #create_new_restaurant #content_create_new_restaurant .box_input .box_select_option .span_title{
   background: #FFF;
   position: absolute;
   margin-top: -10px;
   margin-left: 20px;
+  color:#0066FF;
+  
 }
 
 ul.list_index {
@@ -373,7 +389,8 @@ height: 18px;
 
 select, input[type="text"] .uneditable-input {
   display: inline-block;
-  height: 18px;
+  height: 50px;
+  width: 100%;
   padding: 4px 6px;
   font-size: 13px;
   line-height: 18px;

@@ -6,7 +6,7 @@
 <div id="create_new_restaurant">
   <div id="content_create_new_restaurant">
     <div class="create_new_restaurant_title">
-     <span><div class=create_new_restaurant_text">Tạo mới nhà hàng</div></span>
+     <span><div class=create_new_restaurant_text">Sửa nhà hàng</div></span>
    </div>
    <div class="line_title"></div></br>
    
@@ -40,6 +40,7 @@
         <input type="file" name="photoimg" id="photoimg"  />
         </form>
         <div style="width:100%; height: 100%;" id='preview'>
+          
         </div>
        
        

@@ -33,7 +33,7 @@
          <span>Nghề nghiệp</span>
        </li>-->
        <li class="email_restaurant">
-         <span>Email quản trị</span>
+         <span>Email</span>
        </li>
        <li class="phonenumber_restaurant">
          <span>Điện thoại</span>
@@ -46,39 +46,40 @@
      </ul>
      
      <!--List member-->
-     
-     <ul class="box_info">
-       <li class="stt_restaurant">
-         <span>11</span>
-       </li>
-<!--       <li class="code_restaurant">
-         <span>#21</span>
-       </li>-->
-       <li class="name_restaurant">
-         <span>Hương Sen</span>
-       </li>
-<!--       <li class="job_restaurant">
-         <span>IT lap trinh vien php</span>
-       </li>-->
-       <li class="email_restaurant">
-         <span>phule@innoria.com</span>
-       </li>
-       <li class="phonenumber_restaurant">
-         <span>01665847138</span>
-       </li>
-<!--       <li class="company">
-         <span>innoria</span>
-       </li>-->
-       <li class="update_delete">
-         <a href="#"><div class="edit"></div></a>
-         <a href="#"><div class="delete"></div></a>  
-       </li>
-     </ul>
-     
-     
-     
-     
-     
+     <?php
+            $stt=1;
+            foreach($all_restaurant as $value_res){
+                         
+             $id=$value_res['id'];
+             $name=$value_res['name'];
+             $phone_number= $value_res['phone_number'];
+             $email= $value_res['email'];
+             
+             echo'
+                    <ul class="box_info">
+                      <li class="stt_restaurant">
+                        <span>'.$stt.'</span>
+                      </li>
+                      <li class="name_restaurant">
+                        <span>'.$name.'</span>
+                      </li>
+                      <li class="email_restaurant">
+                        <span>'.$email.'</span>
+                      </li>
+                      <li class="phonenumber_restaurant">
+                        <span>'.$phone_number.'</span>
+                      </li>
+                      <li class="update_delete">
+                        <a href="'.$url.'index.php/admin/admin_controller/edit_restaurant_page?id_restaurant='.$id.'"><div class="edit"></div></a>
+                        <a href="#"><div class="delete"></div></a>  
+                      </li>
+                    </ul>
+
+              ';
+             
+             $stt=$stt+1;
+            }
+     ?>
      
      
    </div>

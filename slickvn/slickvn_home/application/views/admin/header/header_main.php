@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="<?php echo $url;?>includes/css/admin/taskbar_top.css">
     <link rel="stylesheet" href="<?php echo $url;?>includes/css/admin/menu_main.css">
     
+    
+    
     <?php 
     //<!--css main page-->
      if($chosed=="main_page"){       
@@ -36,6 +38,13 @@
      if($chosed=="restaurant_page"){
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/restaurant_page.css">';
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/create_new_restaurant.css">';
+       
+      // <!--time picker-->
+       echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
+       echo '<link rel="stylesheet" href="'.$url.'includes/plugins/date_time_picker/jquery-ui-timepicker-addon.css">';
+       echo '<link rel="stylesheet" href="'.$url.'includes/plugins/date_time_picker/jquery-ui.css">';
+     //  <!--end timepicker-->
+        
      }    
     ?>
     
@@ -61,7 +70,7 @@
     ?>
     
     
-    <script src="<?php echo $url; ?>includes/js/admin/jquery-1.7.min.js" type="text/javascript" charset="utf-8"></script>
+    
   </head>
 
 <body>
