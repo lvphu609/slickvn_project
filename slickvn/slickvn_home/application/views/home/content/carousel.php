@@ -64,7 +64,13 @@
            });
          </script>  
        <!--carousel--> 
-         
+       <!--custom center li-->
+       <script>
+         $(function(){
+           
+         });
+       </script>
+       <!--end custom center-->
     </div>
   </div>
  </div>

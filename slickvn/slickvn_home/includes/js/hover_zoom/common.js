@@ -2,9 +2,7 @@ function niceThumb_Grid() {
   $("#restaurant_list_content .box_restaurant_content ul.thumb_grid li").hover(
         function() {
         var thumbinal = $(this);
-        thumbinal.css({
-          'z-index' : '10'
-         });
+       
         thumbinal.find('img.big').addClass("hover").animate({
                     /*'-webkit-transition': 'opacity .1s ease-in',
                     '-moz-transition': 'opactiy .1s ease-in',
@@ -24,7 +22,7 @@ function niceThumb_Grid() {
        
         } , function() {
         var thumbinal = $(this);
-        thumbinal.css({'z-index' : '0'});
+        
         
         thumbinal.find('img.big').removeClass("hover").animate({
                     /*'-webkit-transition': '',
@@ -57,9 +55,7 @@ function niceThumb_List() {
    $("#append_Res_Newest_List #Res_Newest_List .articles_list .box_list").hover(
         function() {
         var thumbinal = $(this);
-        thumbinal.css({
-          'z-index' : '10'
-         });
+       
         thumbinal.find('img.big').addClass("hover").animate({
                     'opacity': '0.9'
                    },0);
@@ -68,7 +64,7 @@ function niceThumb_List() {
        
         } , function() {
         var thumbinal = $(this);
-        thumbinal.css({'z-index' : '0'});
+      
         
         thumbinal.find('img.big').removeClass("hover").animate({
                     'opacity': ''
@@ -81,9 +77,7 @@ function niceThumb_List() {
 $("#append_Res_Orther_List #Res_Orther_List .articles_list .box_list").hover(
         function() {
         var thumbinal = $(this);
-        thumbinal.css({
-          'z-index' : '10'
-         });
+        
         thumbinal.find('img.big').addClass("hover").animate({
                     'opacity': '0.9'
                    },0);
@@ -92,7 +86,7 @@ $("#append_Res_Orther_List #Res_Orther_List .articles_list .box_list").hover(
        
         } , function() {
         var thumbinal = $(this);
-        thumbinal.css({'z-index' : '0'});
+       
         
         thumbinal.find('img.big').removeClass("hover").animate({
                     'opacity': ''

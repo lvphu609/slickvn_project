@@ -51,7 +51,7 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
              
             
               echo'
-               <li style="z-index: 0;">            
+               <li>            
                 <div class="detail_box">
                            <div class="img_item">
                              <a href="'.$url.'/index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'">

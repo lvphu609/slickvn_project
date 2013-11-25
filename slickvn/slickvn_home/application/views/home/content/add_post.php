@@ -256,7 +256,7 @@ CKEDITOR.replace( '#editor1', {
 </script>
 
 <?php $url=  base_url(); ?>
-<input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
+<input type="hidden" value="<?php echo  $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;?>" id="hid_apiUrl"> 
 
 <script>
 //function check purpose
@@ -322,7 +322,8 @@ function onclickLiCheckListing_Culinary_Style(obj){
    //    $('#remove_disable_screen').addClass('disabled_screen');
    //   $('#remove_image_load').addClass('image_load');
       //var url = $('#hidUrl').val();
-      var url_api="http://localhost/slickvn/index.php/restaurant/restaurant_apis/update_post";
+      var url=$("#hid_apiUrl").val();
+      var url_api=url+"index.php/restaurant/restaurant_apis/update_post";
       var authors ="Vinh Phu";//full name user
       var id_user = "527b4f473fce119ed62d8597"; //id user
       var avatar=$('#image_represent_post').val();//hình đại diện bài viết

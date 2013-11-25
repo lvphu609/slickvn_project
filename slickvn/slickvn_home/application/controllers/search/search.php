@@ -18,7 +18,13 @@ class Search extends CI_Controller {
   }
   public function search_meal()
   {
-    $meal_name=$_GET['meal_name'];
+    if(isset($_GET['meal_name'])){
+      $meal_name=$_GET['meal_name'];
+    }
+    else {
+        $meal_name="";
+       }
+    
     //var_dump($meal_name);
     
     $this->load->model('restaurantenum');

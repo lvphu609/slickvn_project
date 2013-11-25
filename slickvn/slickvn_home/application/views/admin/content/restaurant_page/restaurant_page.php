@@ -71,7 +71,7 @@
                       </li>
                       <li class="update_delete">
                         <a href="'.$url.'index.php/admin/admin_controller/edit_restaurant_page?id_restaurant='.$id.'"><div class="edit"></div></a>
-                        <a href="#"><div class="delete"></div></a>  
+                        <a href="javascript:;" onclick="return a"><div class="delete"></div></a>  
                       </li>
                     </ul>
 

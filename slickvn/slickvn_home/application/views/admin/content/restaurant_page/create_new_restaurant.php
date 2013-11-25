@@ -876,9 +876,9 @@
      var  working_time= $('#timepicker_start_working_time').val()+' - '+$('#timepicker_end_working_time').val();
      var  status_active =$('.select_status_active').val();//tạm ngưng
      var approval_show_carousel=parseInt($('#value_carousel').val());
-     //alert(start_date);
+     alert(dish_list);
       
-     var url_api="http://localhost/slickvn_api_project_xinh/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
+     var url_api="http://192.168.1.194/slickvn_api_project_xinh/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
      var data={
                  //avatar:avatar,
                 dish_list : dish_list,
@@ -912,7 +912,7 @@
                 action: action
 
           }
-     
+   /*  
     $.ajax({
           url: url_api ,
           type: 'POST',
@@ -929,7 +929,7 @@
            alert('khong thanh cong');
          }
        });
-    
+    */
  }
 
 

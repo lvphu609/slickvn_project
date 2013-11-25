@@ -8,13 +8,52 @@
           <div class="form_search">
              <div class="form_search_input">
                <input id="input_text_search" class="input_search" type="text"  placeholder="Bạn đang muốn tìm gì?" >
-               <lable class="lable_search">
-                   <select class="select_custom" id="slect_search">
+             <lable class="lable_search">
+<!--                   <select class="select_custom" id="slect_search">
                     <option value="restaurant">Nhà hàng</option>
-<!--                    <option value="coupon">Khuyến mãi</option>-->
+                    <option value="coupon">Khuyến mãi</option>
                     <option value="post">Bài viết</option>
-                  </select>
-               </lable>
+                  </select>-->
+               
+                   <div class="selectBox">
+                    <span class="selected" id="search_selected"></span>
+                    <div class="selectOptions" >
+                      <span class="selectOption" value="Option 1">Nhà hàng</span>
+                      <span class="selectOption" value="Option 2">Khuyến mãi</span>
+                      <span class="selectOption" value="Option 3">Bài viết</span>
+                    </div>
+                  </div>
+
+                    <script type='text/javascript'>
+                        $(document).ready(function() {
+                          enableSelectBoxes();
+                        });
+
+                        function enableSelectBoxes(){
+                          $('div.selectBox').each(function(){
+                            $(this).children('span.selected').html($(this).children('div.selectOptions').children('span.selectOption:first').html());
+                            $(this).attr('value',$(this).children('div.selectOptions').children('span.selectOption:first').attr('value'));
+
+                            $(this).children('span.selected,span.selectArrow').click(function(){
+                              if($(this).parent().children('div.selectOptions').css('display') == 'none'){
+                                $(this).parent().children('div.selectOptions').css('display','block');
+                              }
+                              else
+                              {
+                                $(this).parent().children('div.selectOptions').css('display','none');
+                              }
+                            });
+
+                            $(this).find('span.selectOption').click(function(){
+                              $(this).parent().css('display','none');
+                              $(this).closest('div.selectBox').attr('value',$(this).attr('value'));
+                              $(this).parent().siblings('span.selected').html($(this).html());
+                            });
+                          });				
+                        }
+                      </script>
+
+            </lable>
              </div>
 
 
@@ -143,22 +182,29 @@
 <script>
   $("#button_submit_search").click(function (){
     var input_text_search=$("#input_text_search").val();
-    var slect_search = $("#slect_search").val();
+    var slect_search =document.getElementById("search_selected").innerHTML;  //document.getElementsByClassName('selected').innerHTML;
+    //alert(slect_search);
     
     var url= $("#hidUrl").val();
     url=url+'index.php/search/search/search_restaurant';
     //search theo nhà hàng
-    if(slect_search=="restaurant"){
+    if(slect_search=="Nhà hàng"){
         
         window.location=url+"?input_text_search="+input_text_search;
     }
     else //search theo bài viết
-      if(slect_search=="post"){
+      if(slect_search=="Bài viết"){
       
           alert('chức năng search theo bài viết đang xây dựng');
       
         }
-    
+      else //search theo khuyến mãi
+      if(slect_search=="Khuyến mãi"){
+      
+          alert('chức năng search theo khuyến mãi đang xây dựng');
+      
+        }
+   
     
     
     

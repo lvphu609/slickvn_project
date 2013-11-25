@@ -70,11 +70,13 @@
 .tracker-individual-container {
   position:absolute;
   color:white;
-  right:400px;
-  top:480px;
-  padding:0;
-  margin:0;
-  z-index: 100;
+  top:500px;
+  z-index: 100; 
+  width: 50%;
+  margin: 0px;
+  margin-left: 46%;
+  padding: 0px;
+  text-align: center;
   
 }
 .tracker-individual-container ul {

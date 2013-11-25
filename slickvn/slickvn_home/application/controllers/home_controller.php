@@ -114,7 +114,7 @@ class Home_controller extends CI_Controller {
    // $this->load->view('templates/content/upload');
 /*===============end upload post======================================================================*/
     $this->load->view('home/content/dang_ky_nhan_uu_dai');
-    $this->load->view('home/content/footer_content');
+    $this->load->view('home/content/footer_content',$data);
     $this->load->view('home/footer/footer_home_page');
     
     

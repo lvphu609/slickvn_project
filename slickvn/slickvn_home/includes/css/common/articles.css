@@ -119,6 +119,12 @@
   height:  10px;
   margin-left: 10px;
 }
+#articles .articles_list .box_list .comment .box_comment .vote .star_on{
+ margin-left: 3px;
+}
+#articles .articles_list .box_list .comment .box_comment .vote .star_off{
+ margin-left: 3px;
+}
 #articles .articles_list .box_list .comment .box_comment .detail{
   width: 100%;
   float: left;

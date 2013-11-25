@@ -29,7 +29,7 @@
              
             
               echo'
-               <li style="z-index: 0;">            
+               <li >            
                 <div class="detail_box">
                            <div class="img_item">
                              <a href="'.$url.'/index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'">

@@ -11,7 +11,7 @@
  * @author phu
  *///http://192.168.1.147:8181/slickvn/index.php/slick_apis/format/json
 class Api_link_enum { 
-  const DOMAIN_NAME = "http://localhost";
+  const DOMAIN_NAME = "http://192.168.1.194";
   const PORT = "/"; //":8181/";
   const SUB_DOMAIN = "slickvn_api_project_xinh/slickvn_api/index.php/";
   const SUB_DOMAIN_COMMON ="common/common_apis/";
@@ -124,7 +124,7 @@ class Api_link_enum {
       self::$BASE_PROFILE_RESTAURANT_URL = self::DOMAIN_NAME.self::PORT.self::LINK_RESTAURANT_PROFILE;
       self::$BASE_IMAGE_POST_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_POST;
       self::$BASE_IMAGE_UPLOAD_TEMP_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_UPLOAD_TEMP;
-      self::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL=self::DOMAIN_NAME.self::PORT.self::LINK_CALL_UPLOAD_IMAGE_TEMP;
+      self::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL=self::LINK_CALL_UPLOAD_IMAGE_TEMP;
       
       
       /*

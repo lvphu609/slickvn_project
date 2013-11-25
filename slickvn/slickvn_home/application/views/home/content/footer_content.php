@@ -1,5 +1,8 @@
 <?php $url=  base_url();?>
 
+
+
+
 <div id="footer_content">
   <div class="footer_content_custom_center">
     <div class="footer_left">
@@ -7,27 +10,31 @@
           <li>
             <span class="title_link">MÓN ĂN</span><br><br>
             <ul>
-              <li><a href="#">Dimsum</a></li>
-              <li><a href="#">Bún</a></li>
-              <li><a href="#">Sushi & Sashimi</a></li>
-              <li><a href="#">Phở</a></li>
-              <li><a href="#">Cháo</a></li>
-              <li><a href="#">Cơm</a></li>
-              <li><a href="#">Hải Sản</a></li>
-              <li><a href="#">BBQMM</a></li>
+              <?php 
+                foreach ($meal_list as $meal_list){                  
+                  echo '<li>
+                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$meal_list['name'].'">
+                                 <span>'.$meal_list['name'].'
+                           </a>
+                        </li>';
+                }
+              
+              ?>  
             </ul>
           </li>
           <li>
             <span class="title_link">NHU CẦU</span><br><br>
             <ul>
-              <li><a href="#">Ăn Ngoài Trời</a></li>
-              <li><a href="#">Tiệc Cưới</a></li>
-              <li><a href="#">Nhạc Sống</a></li>
-              <li><a href="#">Tiếp Khách</a></li>
-              <li><a href="#">Ăn Gia Đình</a></li>
-              <li><a href="#">Hẹn Hò</a></li>
-              <li><a href="#"> Hội Nghị</a></li>
-              <li><a href="#">Họp Nhóm</a></li>
+               <?php 
+                foreach ($favourite_list as $favourite_list){                  
+                  echo '<li>
+                          <a href="'.$url.'index.php/search/search/search_favourite?favourite_id='.$favourite_list['id'].'">
+                                  '.$favourite_list['name'].'                           
+                           </a>
+                         </li>';
+                }
+              
+              ?> 
             </ul>
           </li>
           <li>
