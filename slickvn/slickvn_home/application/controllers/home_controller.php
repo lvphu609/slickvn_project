@@ -34,8 +34,9 @@ class Home_controller extends CI_Controller {
     $data['meal_list']=$json_meal_list["Results"];
     //var_dump($json_meal_list["Results"]);
     $data['favourite_list']=$json_favourite_list["Results"];    
-    
-    $this->load->view('home/menu/menu',$data);
+    if($data['meal_list']!=NULL&& $data['favourite_list']!=NULL){
+     $this->load->view('home/menu/menu',$data);
+    }
   /*================END_MENU============================================================================*/
     
     
@@ -47,12 +48,14 @@ class Home_controller extends CI_Controller {
     
     $data['carousel_list']=$json_carousel_list["Results"];
     $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
-    $this->load->view('home/content/carousel',$data);
-    
+    if($data['carousel_list']!=NULL){
+      $this->load->view('home/content/carousel',$data);
+      $this->load->view('home/content/sub_banner');
+      $this->load->view('home/content/sub_banner_more');  
+    }
   /*=================END_CAROUSEL=======================================================================================*/    
     
-    $this->load->view('home/content/sub_banner');
-    $this->load->view('home/content/sub_banner_more');   
+     
     
   /*==================================RESTAURANT_LIST===========================================================  */ 
      /*-----------------------------------------------------
@@ -79,6 +82,7 @@ class Home_controller extends CI_Controller {
     $json_orther_res = json_decode($json_string_orther_res, true);
     $data['orther_restaurant']=$json_orther_res["Results"];   
     /*end get orther restaurant json */
+    if( $data['newest_restaurant']!=NULL&&$data['orther_restaurant']!=NULL){
     $this->load->view('home/content/restaurant_list',$data);
     ///$this->load->view('templates/content/restaurant_list');
     $this->load->view('home/content/restaurant_list_title_newest');
@@ -86,6 +90,7 @@ class Home_controller extends CI_Controller {
    // $this->load->view('templates/content/append_restaurant_newest_List',$data);
     $this->load->view('home/content/restaurant_list_title_orther');
     $this->load->view('home/content/restaurant_list_content_orther');
+    }
   /*========================================END_RESTAURANT_LIST====================================================*/
     
   /*========================================PROMOTION==================================================================*/    
@@ -107,15 +112,17 @@ class Home_controller extends CI_Controller {
     
     $data['link_image_post_url']=  Api_link_enum::$BASE_IMAGE_POST_URL;
    // var_dump($data['articles_list']);
-    
-    $this->load->view('home/content/articles',$data);
+    if($data['articles_list']!=NULL){
+      $this->load->view('home/content/articles',$data);
+      $this->load->view('home/content/dang_ky_nhan_uu_dai');
+      $this->load->view('home/content/footer_content',$data);
+      $this->load->view('home/footer/footer_home_page');
+    }
 /*=================end Danh Sách bài viết hay POST ===============================================================================================================*/
 /*===============add post======================================================================*/
    // $this->load->view('templates/content/upload');
 /*===============end upload post======================================================================*/
-    $this->load->view('home/content/dang_ky_nhan_uu_dai');
-    $this->load->view('home/content/footer_content',$data);
-    $this->load->view('home/footer/footer_home_page');
+    
     
     
 	}
