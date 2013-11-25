@@ -691,7 +691,6 @@
        var content_ckeditor=CKEDITOR.instances.editor1.getData();//nội dung chi tiết bài viết
           $('#trackingDiv').html(content_ckeditor);
           var content = $('#trackingDiv').html();
-
           function escapeHtml(unsafe) {
               return unsafe
                    .replace(/&/g, "&amp;")
@@ -876,7 +875,7 @@
      var  working_time= $('#timepicker_start_working_time').val()+' - '+$('#timepicker_end_working_time').val();
      var  status_active =$('.select_status_active').val();//tạm ngưng
      var approval_show_carousel=parseInt($('#value_carousel').val());
-     //alert(dish_list);
+    // alert(str_images);
       
      var url_api="http://192.168.1.194/slickvn_api_project_xinh/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
      var data={
