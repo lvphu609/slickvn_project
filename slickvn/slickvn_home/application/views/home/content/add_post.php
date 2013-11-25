@@ -326,7 +326,7 @@ function onclickLiCheckListing_Culinary_Style(obj){
       var url_api=url+"index.php/restaurant/restaurant_apis/update_post";
       var authors ="Vinh Phu";//full name user
       var id_user = "527b4f473fce119ed62d8597"; //id user
-      var avatar=$('#image_represent_post').val();//hình đại diện bài viết
+      var avatar=$('#image_avatar_post').val();//hình đại diện bài viết
       var title=$('#param_title_post').val();//tiêu đề
       var address=$('#param_address_post').val();//địa chỉ
       
@@ -415,7 +415,7 @@ function onclickLiCheckListing_Culinary_Style(obj){
     //mang hinh success
     var array_image=avatar+","+string_image_filter;
     
-    
+   // alert(array_image);
      
       var action= "insert";
        // alert(avatar);
