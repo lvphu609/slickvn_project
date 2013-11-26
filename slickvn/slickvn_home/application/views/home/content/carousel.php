@@ -13,12 +13,12 @@
                 
                 <!--carousel----------->
                 <?php
-                 foreach ($carousel_list as $carousel_list){ 
-                   $name=$carousel_list['name'];
-                   $address=$carousel_list['address'];
-                   $image_link=$carousel_list['image_carousel_link'];
-                   $link_to=$carousel_list['link_to'];
-                   $id_restaurant=$carousel_list['id'];
+                 foreach ($carousel_list as $value_carousel_list){ 
+                   $name=$value_carousel_list['name'];
+                   $address=$value_carousel_list['address'];
+                   $image_link=$value_carousel_list['image_carousel_link'];
+                   $link_to=$value_carousel_list['link_to'];
+                   $id_restaurant=$value_carousel_list['id'];
                    $link_to_detail_restaurant=$url."index.php/detail_restaurant/detail_restaurant?id_restaurant=".$id_restaurant;
                    
                    echo'<div class="carousel-feature">

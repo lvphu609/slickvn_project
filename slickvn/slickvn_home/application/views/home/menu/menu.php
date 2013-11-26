@@ -129,11 +129,11 @@
             <ul>
               
               <?php 
-                foreach ($meal_list as $meal_list){                  
+                foreach ($meal_list as $value_meal_list){                  
                   echo '<li>
-                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$meal_list['name'].'">
+                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$value_meal_list['name'].'">
                              <div class="btn_menu_mid">
-                                 <span>'.$meal_list['name'].'
+                                 <span>'.$value_meal_list['name'].'
                              </span>
                              </div>
                            </a>
@@ -152,12 +152,12 @@
           <div class="menu_bottom_title"></div>
           <ul>
             <?php 
-                foreach ($favourite_list as $favourite_list){                  
+                foreach ($favourite_list as $value_favourite_list){                  
                   echo '<li>
-                          <a href="'.$url.'index.php/search/search/search_favourite?favourite_id='.$favourite_list['id'].'">
+                          <a href="'.$url.'index.php/search/search/search_favourite?favourite_id='.$value_favourite_list['id'].'">
                             <div class="background">
                               <div class="text_align_center">
-                                  '.$favourite_list['name'].'
+                                  '.$value_favourite_list['name'].'
                                </div>
                              </div>
                            </a>
@@ -191,6 +191,7 @@
     if(slect_search=="Nhà hàng"){
         
         window.location=url+"?input_text_search="+input_text_search;
+      
     }
     else //search theo bài viết
       if(slect_search=="Bài viết"){

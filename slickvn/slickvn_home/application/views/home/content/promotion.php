@@ -18,14 +18,14 @@
           <div class="box_restaurant_content_custom_center">
           <ul class="append_Promotion">
             <?php 
-              foreach ($promotion_list as $promotion_list){
-                $id= $promotion_list['id'];
-                $coupon_value=$promotion_list['coupon_value'];
-                $deal_to_date=$promotion_list['deal_to_date'];
-                $restaurant_name=$promotion_list['restaurant_name'];
-                $content=$promotion_list['content'];
-                $image_link=$promotion_list['image_link'];
-                $link_to=$promotion_list['link_to'];
+              foreach ($promotion_list as $value_promotion_list){
+                $id= $value_promotion_list['id'];
+                $coupon_value=$value_promotion_list['coupon_value'];
+                $deal_to_date=$value_promotion_list['deal_to_date'];
+                $restaurant_name=$value_promotion_list['restaurant_name'];
+                $content=$value_promotion_list['content'];
+                $image_link=$value_promotion_list['image_link'];
+                $link_to=$value_promotion_list['link_to'];
                 
                 
                 echo '

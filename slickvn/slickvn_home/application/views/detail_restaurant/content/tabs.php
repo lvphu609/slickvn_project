@@ -1263,7 +1263,8 @@
       
       
       <!--danh sach comment-->
-      
+     <div id="box_assessment_restaurant">
+       
       <div class="box_show_list_comment">
         
           <div class="avatar">
@@ -1346,95 +1347,16 @@
                 <a href="javascript:;"><span>trả lời</span></a>
               </li>
             </ul>
+          </div>
+          <div class="comment_for_assessment">
+            
+            
           </div>
           <div class="line_box_list_comment"></div>
+         
       </div>
       
-      <div class="box_show_list_comment">
-        
-          <div class="avatar">
-            <a href="javascript:;">
-                  <img src="http://dendau.vn/style/avatar/10.gif" >
-            </a><br>
-          <span>286 bình luận</span>
-          </div>
-          <div class="full_name_user">
-            <span>Lê Vĩnh Phú</span>
-          </div>
-          <ul class="list_vote_rating">
-            <li>
-              <div class="left">Dịch vụ:</div>
-              <div class="right">
-                 <div class="rating">
-                    <span class="star_active"></span>
-                    <span class="star_no_active"></span>
-                    <span class="star_no_active"></span>
-                    <span class="star_no_active"></span>
-                    <span class="star_no_active"></span>
-                 </div>
-              </div>
-            </li>
-            <li>
-              <div class="left">Quang cảnh:</div>
-              <div class="right">
-                  <div class="rating">
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_no_active"></span>
-                  </div>
-              </div>                    
-            </li>
-            <li>
-              <div class="left">Giá cả:</div>
-              <div class="right">
-                 <div class="rating">
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_no_active"></span>
-                  </div>
-              </div>
-            </li>
-            <li>
-              <div class="left">Hương vị:</div>
-              <div class="right">
-                 <div class="rating">
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_active"></span>
-                    <span class="star_no_active"></span>
-                    <span class="star_no_active"></span>
-                  </div>
-              </div>
-            </li>
-          </ul>
-          
-          <div class="content_comment">
-            <p>
-              Mùa này mưa nhiều, vào mấy kiểu quán Hàn - Nhật này là phù hợp rồi,
-              ví tiền rủng rỉnh thì vào đây nhậu nhẹt là quá chuẩn,
-              uống rượu Hàn vừa ấm bụng lại không sợ say như rượu VN,
-              giá cũng rẻ hơn rượu Tây nhiều nên mấy ông bạn mình là toàn chuộng kiểu nhà hàng này.
-            </p>
-          </div>
-          <div class="like_share_reply">
-            <ul class="box_btn_submit">
-              <li>
-                <a href="javascript:;"><span>like</span>(0)</a>
-              </li>
-              <li>
-                <a href="javascript:;"><span>share</span>(0)</a>
-              </li>
-              <li>
-                <a href="javascript:;"><span>trả lời</span></a>
-              </li>
-            </ul>
-          </div>
-        <div class="line_box_list_comment"></div>
-      </div>
+     </div>
       
       <!--end box_comment-->
       
@@ -1624,6 +1546,12 @@
                  id_user: '+ id_user ;
         
         alert(a);
+        
+        
+        
+        
+        
+        
         
       });
    

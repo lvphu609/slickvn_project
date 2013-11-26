@@ -11,10 +11,10 @@
             <span class="title_link">MÓN ĂN</span><br><br>
             <ul>
               <?php 
-                foreach ($meal_list as $meal_list){                  
+                foreach ($meal_list as $value_meal_list){                  
                   echo '<li>
-                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$meal_list['name'].'">
-                                 <span>'.$meal_list['name'].'
+                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$value_meal_list['name'].'">
+                                 <span>'.$value_meal_list['name'].'
                            </a>
                         </li>';
                 }
@@ -26,10 +26,10 @@
             <span class="title_link">NHU CẦU</span><br><br>
             <ul>
                <?php 
-                foreach ($favourite_list as $favourite_list){                  
+                foreach ($favourite_list as $value_favourite_list){                  
                   echo '<li>
-                          <a href="'.$url.'index.php/search/search/search_favourite?favourite_id='.$favourite_list['id'].'">
-                                  '.$favourite_list['name'].'                           
+                          <a href="'.$url.'index.php/search/search/search_favourite?favourite_id='.$value_favourite_list['id'].'">
+                                  '.$value_favourite_list['name'].'                           
                            </a>
                          </li>';
                 }

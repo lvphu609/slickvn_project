@@ -34,7 +34,7 @@ class Search extends CI_Controller {
     $key=$meal_name;
     $link_search_meal = Api_link_enum::$SEARCH_MEAL_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_SEARCH_MEAL."&page=1";
     //var_dump($link_search_meal);
-    $json_string_search_meal= file_get_contents($link_search_meal);    
+    $json_string_search_meal= file_get_contents($link_search_meal); 
     $json_search_meal = json_decode($json_string_search_meal, true);
     $data['result_search_meal']=$json_search_meal["Results"];
     $data['action_search']="meal";
@@ -132,23 +132,25 @@ class Search extends CI_Controller {
   public function search_restaurant()
   {
     $input_text_search=$_GET['input_text_search'];
-    //var_dump($meal_name);
+    //var_dump($input_text_search);
     
     $this->load->model('restaurantenum');
+    //var_dump($input_text_search);
     $this->load->helper('url');
     Api_link_enum::initialize();
     
     $key=$input_text_search;
     $link_search_restaurant = Api_link_enum::$SEARCH_RESTAURANT_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_SEARCH_MEAL."&page=1";
-    //var_dump($link_search_restaurant);
-    $json_string_search_restaurant= file_get_contents($link_search_restaurant);    
+    var_dump($link_search_restaurant);
+    $json_string_search_restaurant= file_get_contents($link_search_restaurant);
+  //  var_dump($json_string_search_restaurant);
     $json_search_restaurant = json_decode($json_string_search_restaurant, true);
     $data['result_search_restaurant']=$json_search_restaurant["Results"];
     $data['action_search']="restaurant";
     $data['result_search_meal']=NULL;
     $data['result_search_favourite']=NULL;
     //$data['result_search_meal']="error";
-    //var_dump($data['result_search_favourite']);
+    //var_dump($link_search_restaurant);
     
     
     $this->load->view('search/header/header');

@@ -199,9 +199,9 @@
         <form id="FormAddListing_Culinary_Style">
           <ul class="list_index">
             
-            <?php    foreach ($culinary_style as $culinary_style) {
+            <?php    foreach ($culinary_style as $value_culinary_style) {
                       echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                           '.$culinary_style['name'].' <span class="checkbox" id="'.$culinary_style['id'].'"></span>
+                           '.$value_culinary_style['name'].' <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
                          </li>';
                  }
            ?>
@@ -217,9 +217,9 @@
         <form id="FormAddListing_Mode_Use_List">
           <ul class="list_index">
                   <?php 
-                    foreach ($mode_use_list as $mode_use_list) {
+                    foreach ($mode_use_list as $value_mode_use_list) {
                       echo'<li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                          '.$mode_use_list['name'].'<span class="checkbox" id="'.$mode_use_list['id'].'"></span>
+                          '.$value_mode_use_list['name'].'<span class="checkbox" id="'.$value_mode_use_list['id'].'"></span>
                             </li>';
                            }
                    ?>
@@ -236,9 +236,9 @@
         <form id="FormAddListing_Favourite_List">
           <ul class="list_index">
                   <?php 
-                    foreach ($favourite_list as $favourite_list) {
+                    foreach ($favourite_list as $value_favourite_list) {
                       echo'<li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                          '.$favourite_list['name'].'<span class="checkbox" id="'.$favourite_list['id'].'"></span>
+                          '.$value_favourite_list['name'].'<span class="checkbox" id="'.$value_favourite_list['id'].'"></span>
                             </li>';
                            }
                    ?>
@@ -254,9 +254,9 @@
         <form id="FormAddListing_Payment_Type_List">
           <ul class="list_index">
                 <?php 
-                    foreach ($payment_type_list as $payment_type_list) {
+                    foreach ($payment_type_list as $value_payment_type_list) {
                       echo'<li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                          '.$payment_type_list['name'].'<span class="checkbox" id="'.$payment_type_list['id'].'"></span>
+                          '.$value_payment_type_list['name'].'<span class="checkbox" id="'.$value_payment_type_list['id'].'"></span>
                             </li>';
                            }
                 ?>
@@ -273,9 +273,9 @@
           <ul class="list_index">
             
                <?php 
-                    foreach ($landscape_list as $landscape_list) {
+                    foreach ($landscape_list as $value_landscape_list) {
                       echo'<li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                          '.$landscape_list['name'].'<span class="checkbox" id="'.$landscape_list['id'].'"></span>
+                          '.$value_landscape_list['name'].'<span class="checkbox" id="'.$value_landscape_list['id'].'"></span>
                             </li>';
                            }
                 ?>
@@ -293,9 +293,9 @@
           <ul class="list_index">
             
                <?php 
-                    foreach ($price_person_list as $price_person_list) {
+                    foreach ($price_person_list as $value_price_person_list) {
                       echo'<li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                          '.$price_person_list['name'].'<span class="checkbox" id="'.$price_person_list['id'].'"></span>
+                          '.$value_price_person_list['name'].'<span class="checkbox" id="'.$value_price_person_list['id'].'"></span>
                             </li>';
                            }
                 ?>
@@ -311,9 +311,9 @@
         <form id="FormAddListing_Other_Criteria_List">
           <ul class="list_index">
                <?php 
-                    foreach ($other_criteria_list as $other_criteria_list) {
+                    foreach ($other_criteria_list as $value_other_criteria_list) {
                       echo'<li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                          '.$other_criteria_list['name'].'<span class="checkbox" id="'.$other_criteria_list['id'].'"></span>
+                          '.$value_other_criteria_list['name'].'<span class="checkbox" id="'.$value_other_criteria_list['id'].'"></span>
                             </li>';
                            }
                 ?>

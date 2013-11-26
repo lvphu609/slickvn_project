@@ -757,6 +757,19 @@ background-image: linear-gradient(to bottom, #FA2D2D 0%, #910707 100%);
   
   
 }
+#tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant #box_assessment_restaurant{
+  width: 734px;
+  height: auto;
+  float: left;
+  background: #FFF;
+  margin-bottom: 10px;
+  
+  /*temp
+  background: #666666;
+  height: 100px;*/
+  
+}
+
 #tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant .box_show_list_comment{
   width: 734px;
   height: auto;
@@ -954,6 +967,18 @@ ul li .right .rating .star_no_active{
   margin-top: 10px;
  
   
+}
+
+
+#tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant 
+.box_show_list_comment #comment_for_assessment{
+  width: 670px;
+  margin-left: 60px;
+  float: left;
+  margin-top:10px;
+  height: 20px;
+   /*temp*/
+  background: #999999;
 }
 
 

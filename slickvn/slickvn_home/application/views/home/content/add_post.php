@@ -87,10 +87,10 @@
                         
                     <?php  
                     
-                     foreach ($favourite_list as $favourite_list) {
+                     foreach ($favourite_list as $value_favourite_list) {
                        
                      echo'<li onclick="return onclickLiCheckListing_Purpose(this);" >
-                            '.$favourite_list['name'].'<span class="checkbox" id="'.$favourite_list['id'].'"></span>
+                            '.$value_favourite_list['name'].'<span class="checkbox" id="'.$value_favourite_list['id'].'"></span>
                           </li>';
 
                      }
@@ -125,10 +125,10 @@
                 <ul class="list_index">
                   <?php  
                     
-                     foreach ($culinary_style as $culinary_style) {
+                     foreach ($culinary_style as $value_culinary_style) {
                        
                      echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                           '.$culinary_style['name'].' <span class="checkbox" id="'.$culinary_style['id'].'"></span>
+                           '.$value_culinary_style['name'].' <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
                          </li>';
 
                      }

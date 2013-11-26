@@ -39,7 +39,7 @@
                 <div class="detail_box">
                            <div class="img_item">
                              <a href="'.$url.'/index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'">
-                                 <img style="width=40px; height=40px;" class="big" src="'.$url_res_frofile.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
+                                 <img style="width=40px; height=40px;" class="big" src="'.$url_res_frofile.$avatar.'" >
                              </a>
                              <div id="remove_comment_like_animate" class="">
                                 <a href="#">
