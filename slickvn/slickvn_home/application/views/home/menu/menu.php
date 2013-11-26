@@ -129,9 +129,10 @@
             <ul>
               
               <?php 
-                foreach ($meal_list as $value_meal_list){                  
+                foreach ($meal_list as $value_meal_list){  
+                  $meal_name=  urlencode($value_meal_list['name']);
                   echo '<li>
-                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$value_meal_list['name'].'">
+                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$meal_name.'">
                              <div class="btn_menu_mid">
                                  <span>'.$value_meal_list['name'].'
                              </span>
@@ -182,6 +183,7 @@
 <script>
   $("#button_submit_search").click(function (){
     var input_text_search=$("#input_text_search").val();
+   // input_text_search=String(input_text_search);
     var slect_search =document.getElementById("search_selected").innerHTML;  //document.getElementsByClassName('selected').innerHTML;
     //alert(slect_search);
     

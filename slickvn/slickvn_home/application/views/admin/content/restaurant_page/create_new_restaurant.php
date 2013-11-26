@@ -420,7 +420,7 @@
    </div>
   </div>
 </div>
-
+<input type="hidden" value="<?php echo $INSERT_RESTAURANT_URL;?>" id="url_post_data" >
 <script type="text/javascript" src="<?php echo $url;?>includes/plugins/post/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $url;?>includes/plugins/post/scripts/jquery.form.js"></script>
 <script>
@@ -788,7 +788,8 @@
          }
          
         }
-        //alert(dish_list);
+        dish_list=dish_list.slice(0,-6);
+       // alert(dish_list);
         //str_elem_select_menu_option=str_elem_select_menu_option.slice(0,-3);
      
     
@@ -876,8 +877,9 @@
      var  status_active =$('.select_status_active').val();//tạm ngưng
      var approval_show_carousel=parseInt($('#value_carousel').val());
     // alert(str_images);
-      
-     var url_api="http://192.168.1.194/slickvn_api_project_xinh/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
+     
+     var url_api=$("#url_post_data").val();
+     //alert(dish_list);
      var data={
                  //avatar:avatar,
                 dish_list : dish_list,

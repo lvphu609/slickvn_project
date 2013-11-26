@@ -29,6 +29,8 @@ class Api_link_enum {
   const PRICE_PERSION_API="get_base_collection";
   const CULINARY_STYLE_API="get_base_collection";
   const ALL_RESTAURANT_API="get_all_restaurant";
+  const INSERT_RESTAURANT_API="update_restaurant";
+  const INSERT_POST_API="update_post";
 
 
 
@@ -37,7 +39,7 @@ class Api_link_enum {
   const LINK_IMAGE_POST = "slickvn_api_project_xinh/slickvn_api/posts/";  //link image post
   const LINK_IMAGE_UPLOAD_TEMP="slickvn_api_project_xinh/slickvn_api/";   //link image upload temp
   const LINK_CALL_UPLOAD_IMAGE_TEMP="../../../../../../../../slickvn_api_project_xinh/slickvn_api/"; //link call php upload temp
-
+  
 
   const MODE_USE_LIST_API = "get_base_collection";
   const PAYMENT_TYPE_LIST_API = "get_base_collection";
@@ -112,6 +114,8 @@ class Api_link_enum {
     public static $OTHER_CRITERIA_LIST_URL;
     public static $BASE_IMAGE_UPLOAD_TEMP_URL;
     public static $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
+    public static $INSERT_RESTAURANT_URL;
+    public static $INSERT_POST_URL;
     
     
     
@@ -125,6 +129,12 @@ class Api_link_enum {
       self::$BASE_IMAGE_POST_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_POST;
       self::$BASE_IMAGE_UPLOAD_TEMP_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_UPLOAD_TEMP;
       self::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL=self::LINK_CALL_UPLOAD_IMAGE_TEMP;
+      
+      /*link insert*/
+      self::$INSERT_RESTAURANT_URL = self::DOMAIN_NAME.self::PORT.self::SUB_DOMAIN.self::SUB_DOMAIN_RESTAURANT.self::INSERT_RESTAURANT_API;
+      self::$INSERT_POST_URL = self::DOMAIN_NAME.self::PORT.self::SUB_DOMAIN.self::SUB_DOMAIN_RESTAURANT.self::INSERT_POST_API;
+
+      /*end link insert*/
       
       
       /*

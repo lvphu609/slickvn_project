@@ -114,7 +114,8 @@ class Admin_controller extends CI_Controller {
      $data['BASE_IMAGE_UPLOAD_TEMP_URL']=  Api_link_enum::$BASE_IMAGE_UPLOAD_TEMP_URL;
    //call php upload image temp
      $data['BASE_CALL_UPLOAD_IMAGE_TEMP_URL']=  Api_link_enum::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
-   
+     $data['INSERT_RESTAURANT_URL']=  Api_link_enum::$INSERT_RESTAURANT_URL;
+     
    //danh sách phong cách ẩm thực
      $link_culinary_style = Api_link_enum::$CULINARY_STYLE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_CULINARY_STYLE;
      $json_string_culinary_style = file_get_contents($link_culinary_style);    

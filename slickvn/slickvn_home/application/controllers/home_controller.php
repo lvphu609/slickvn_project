@@ -64,7 +64,7 @@ class Home_controller extends CI_Controller {
             Version: 28/10/2013
      -------------------------------------------------------*/
     $link_newest_res = Api_link_enum::$NEWEST_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_NEWEST_RESTAURANT."&page=1";
-    //var_dump($link_newest_res);
+   // var_dump($link_newest_res);
     $json_string_newest_res = file_get_contents($link_newest_res);    
     $json_newest_res = json_decode($json_string_newest_res, true);
     $data['newest_restaurant']=$json_newest_res["Results"];
@@ -77,10 +77,11 @@ class Home_controller extends CI_Controller {
             Version: 28/10/2013
      -------------------------------------------------------*/    
     $link_orther_res = Api_link_enum::$ORTHER_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_ORTHER_RESTAURANT."&page=1";
- 
-    $json_string_orther_res = file_get_contents($link_orther_res);    
+    $json_string_orther_res = file_get_contents($link_orther_res); 
+    
     $json_orther_res = json_decode($json_string_orther_res, true);
-    $data['orther_restaurant']=$json_orther_res["Results"];   
+    $data['orther_restaurant']=$json_orther_res["Results"];
+    //var_dump( $data['orther_restaurant']);
     /*end get orther restaurant json */
   
     $this->load->view('home/content/restaurant_list',$data);
@@ -559,7 +560,7 @@ class Home_controller extends CI_Controller {
      $data['BASE_IMAGE_UPLOAD_TEMP_URL']=  Api_link_enum::$BASE_IMAGE_UPLOAD_TEMP_URL;
      //call php upload image temp
      $data['BASE_CALL_UPLOAD_IMAGE_TEMP_URL']=  Api_link_enum::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
-     
+     $data['INSERT_POST_URL']=  Api_link_enum::$INSERT_POST_URL;
      
     /*===============MENU==========================================================================*/
             /*gọi API lấy danh sách các món ăn*/

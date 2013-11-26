@@ -256,8 +256,7 @@ CKEDITOR.replace( '#editor1', {
 </script>
 
 <?php $url=  base_url(); ?>
-<input type="hidden" value="<?php echo  $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;?>" id="hid_apiUrl"> 
-
+<input type="hidden" value="<?php echo $INSERT_POST_URL;?>" id="url_post_data" >
 <script>
 //function check purpose
 function onclickLiCheckListing_Purpose(obj){
@@ -323,7 +322,7 @@ function onclickLiCheckListing_Culinary_Style(obj){
    //   $('#remove_image_load').addClass('image_load');
       //var url = $('#hidUrl').val();
       var url=$("#hid_apiUrl").val();
-      var url_api=url+"index.php/restaurant/restaurant_apis/update_post";
+      var url_api=$("#url_post_data").val();
       var authors ="Vinh Phu";//full name user
       var id_user = "527b4f473fce119ed62d8597"; //id user
       var avatar=$('#image_avatar_post').val();//hình đại diện bài viết
@@ -414,10 +413,7 @@ function onclickLiCheckListing_Culinary_Style(obj){
     
     //mang hinh success
     var array_image=avatar+","+string_image_filter;
-    
-   // alert(array_image);
-     
-      var action= "insert";
+    var action= "insert";
        // alert(avatar);
       //  alert(title);
       //  alert(address);
@@ -433,14 +429,11 @@ function onclickLiCheckListing_Culinary_Style(obj){
         
      //   alert(array_image);  //image in content
         
+        //alert(url_api);
         
-        
-        
-        $.ajax({
-          url: url_api ,
-          type: 'POST',
-          data:{
-                  //avatar:avatar,
+     var url_api=$("#url_post_data").val();
+     //alert(url_api);
+     var data={
                   title:title,
                   address:address,
                   favourite_type_list:favourite_type_list,
@@ -452,7 +445,12 @@ function onclickLiCheckListing_Culinary_Style(obj){
                   array_image: array_image,
                   action:action
 
-          },
+          }
+  
+    $.ajax({
+          url: url_api ,
+          type: 'POST',
+          data:data,
           success: function(data){
             
             alert('them thanh cong');
@@ -464,100 +462,11 @@ function onclickLiCheckListing_Culinary_Style(obj){
          error: function(a,textStatus,b){
            alert('khong thanh cong');
          }
-
-
-        });
-//        $.post(url_api, 
-//               {  avatar:avatar,
-//                  title:title,
-//                  address:address,
-//                  favourite_type_list:favourite_type_list,
-//                  price_person_list:price_person,
-//                  culinary_style:culinary_style,
-//                  authors:authors,
-//                  id_user:id_user,
-//                  content:content,
-//                  images_content: string_image_filter,
-//                  action:action
-//               
-//                  },function(data,status){
-//                      alert("Data: " + data + "\nStatus: " + status);
-//                    });
-        
+       });
+       
       
         });
  
   
-   
-//  $.ajax({
-//    url: 'http://192.168.1.151/slickvn/index.php/restaurant/restaurant_apis/update_post/format/json' ,
-//    type: 'POST',
-//    data:{
-//      avatar:avatar,
-//      title:title,
-//      address:address,
-//      favourite_type_list:favourite_type_list,
-//      price_person:price_person,
-//      culinary_style:culinary_style,
-//      authors:authors,
-//      id_user:id_user,
-//      content:content,
-//      action:action
-//      
-//    },
-//    success: function(data){
-//      
-//      console.log(data);
-//      
-//    },
-//    
-//   //timeout:5000,
-//   error: function(a,textStatus,b){
-//     alert(textStatus);
-//   }
-//     
-//    
-//  });
   
-  
-  
-  
-  
-</script>
-
-
-
-<script type="text/javascript" src="<?php echo $url;?>includes/plugins/coppy_clipboard/jquery.zclip.js"></script>
-
-
-<script>
-  //coppy image to clipbored 
- function onclick_coppy_link_image(obj){
-    console.log(window.clipboardData);
-    //alert('hello');
-    var link=$(obj).attr('id');
-    //alert(link);
-    
-    if (window.clipboardData) // Internet Explorer
-    {   
-        window.clipboardData.setData('Text',link);
-    }
-    else{
-//        var url = $('#hidUrl').val();       
-//        var url_ZeroClipboard_swf= url+"includes/plugins/coppy_clipboard/ZeroClipboard.swf";
-//        console.log(obj);
-//        $('.coppy').zclip({
-//          path:url_ZeroClipboard_swf,
-//          copy: function() {
-//            return link;
-//          }
-//        });
-      
-       //alert('not IE');
-       window.prompt("Ctrl+C để coppy link ảnh", link);
-    
-    }
-}
-
-
 </script>

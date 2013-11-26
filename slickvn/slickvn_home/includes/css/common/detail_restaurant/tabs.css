@@ -942,6 +942,21 @@ ul li .right .rating .star_no_active{
   height: 20px;
   float: left;
   margin-left: 5px;
+  cursor: pointer;
+ 
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant 
+.box_show_list_comment .like_share_reply .box_btn_submit li span{
+  font-size: 12px;
+  color: #666666;
+  
+ 
+}
+#tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant 
+.box_show_list_comment .like_share_reply .box_btn_submit li a{
+  text-decoration: none;
+  color: #666666;
+  font-size: 12px;
  
 }
 #tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant .box_show_list_comment
@@ -957,15 +972,27 @@ ul li .right .rating .star_no_active{
 }
 #tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant .box_show_list_comment
 .comment_for_assessment{
-  width: 734px;
-  height: 30px;
+  width: 670px;
+/*  height: 200px;*/
   float: left;
+  margin-left: 64px;
   background: #DDD;
 /*  margin-bottom: 10px;*/
   margin-top: 10px;
- 
-  
 }
+#tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant .box_show_list_comment
+.comment_for_assessment .box_detail_comment_for_assessment{
+  width: 670px;
+/*  height: 30px;*/
+  float: left;
+  background: #eee;
+/*  margin-bottom: 10px;*/
+  margin-top: 10px;
+}
+
+
+
+
 
 
 /*====================================================TABS RIGHT===============*/

@@ -1337,20 +1337,25 @@
           </div>
           <div class="like_share_reply">
             <ul class="box_btn_submit">
-              <li>
-                <a href="javascript:;"><span>like</span>(0)</a>
+              <li class="btn_like_assessment">
+                <span>like</span><span>(0)</span>
               </li>
-              <li>
-                <a href="javascript:;"><span>share</span>(0)</a>
+              <li class="btn_share_assessment">
+                <span>share</span><span>(0)</span>
               </li>
-              <li>
-                <a href="javascript:;"><span>trả lời</span></a>
+              <li class="btn_reply">
+                <span>trả lời</span>
               </li>
             </ul>
+            
+            
           </div>
           <div class="comment_for_assessment">
-            
-            
+            <ul class="box_detail_comment_for_assessment">
+              <li>
+             
+              <li>
+            </ul>
           </div>
           <div class="line_box_list_comment"></div>
          
@@ -1526,7 +1531,7 @@
 			});
       
 		});
-    //sent comment
+    //sent assessment
       $('#btn_sent_comment').click(function() {
         var rate1=$('#res_vote_1').val();
         var rate2=$('#res_vote_2').val();
@@ -1546,12 +1551,6 @@
                  id_user: '+ id_user ;
         
         alert(a);
-        
-        
-        
-        
-        
-        
         
       });
    

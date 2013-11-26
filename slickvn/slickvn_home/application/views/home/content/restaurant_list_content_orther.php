@@ -20,6 +20,7 @@
              $id=$value_res_orther['id'];
              $name=$value_res_orther['name'];
              $desc=$value_res_orther['desc'];
+             $desc=substr($desc,0,120) . '...';
              $address=$value_res_orther['address'];
              $number_assessment=$value_res_orther['number_assessment'];
              $number_like=$value_res_orther['number_like'];
