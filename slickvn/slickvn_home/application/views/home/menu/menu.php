@@ -188,17 +188,18 @@
     //alert(slect_search);
     
     var url= $("#hidUrl").val();
-    url=url+'index.php/search/search/search_restaurant';
+    var url_restaurant=url+'index.php/search/search/search_restaurant';
+    var url_post=url+'index.php/search/search/search_post';
     //search theo nhà hàng
     if(slect_search=="Nhà hàng"){
         
-        window.location=url+"?input_text_search="+input_text_search;
+        window.location=url_restaurant+"?input_text_search="+input_text_search;
       
     }
     else //search theo bài viết
       if(slect_search=="Bài viết"){
       
-          alert('chức năng search theo bài viết đang xây dựng');
+         window.location=url_post+"?input_text_search="+input_text_search;
       
         }
       else //search theo khuyến mãi

@@ -13,8 +13,7 @@
     <div class="box_detail_right">
       <div class="box_results_search">
         
-      
-       <?php
+<?php
        
 //search meal=================================================================================>       
       if($action_search="meal" && sizeof($result_search_meal)>0 ){

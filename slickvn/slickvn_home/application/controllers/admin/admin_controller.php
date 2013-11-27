@@ -38,7 +38,10 @@ class Admin_controller extends CI_Controller {
     $this->load->view('admin/header/header_main',$data);
     $this->load->view('admin/taskbar_top/taskbar_top');
     $this->load->view('admin/menu/menu_main',$data);
-    $this->load->view('admin/content/member_page/member_page');
+    
+    
+    
+    $this->load->view('admin/content/member_page/member_page',$data);
     $this->load->view('admin/footer/footer_main');
     
   }

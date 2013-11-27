@@ -72,7 +72,7 @@
         </div>
         <div class="banner_like_comment">
           
-            <a href="javascript:;">
+            <a href="javascript:;" id="btn_assessment">
               <div class="fomat_like_comment" >
                 <div class ="image_bg_comment">
                 </div>
@@ -248,3 +248,47 @@
     </div>
   </div>
 </div>
+
+<script>
+  //btn_assessment
+        /*--------------------------------------*/
+    $('#btn_assessment').click(function() {
+        $("#status_clicked_1").removeClass('active');
+        $("#status_clicked_2").removeClass('active');
+        $("#status_clicked_3").removeClass('active');
+        $("#status_clicked_4").addClass('active'); 
+        
+        //gioi thieu nha hang
+        $("#introduce_restaurant").css({
+            display: "none"
+          
+        });
+        
+         //thong tin nha hang
+         $("#info_restaurant").css({
+            display: "none"
+          
+        });
+        //tiện ích
+         $("#utilities_restaurant").css({
+            display: "none"
+          
+        });
+        //binh luận
+         $("#comment_restaurant").css({
+            display: "block",
+            width: "734px",
+            marginLeft: "10px",
+            marginRight: "10px",
+            height: "auto",
+            float: "left",
+            background: "#FFF",
+            marginBottom: "20px",
+            marginTop: "20px",
+            visibility: ""
+          
+        });
+        
+                                  
+    });
+</script>

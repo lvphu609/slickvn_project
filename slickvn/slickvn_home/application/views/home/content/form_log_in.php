@@ -155,15 +155,27 @@
     //  alert(email);
      // alert(password);
       var url = $('#hidUrl').val();
-      $.post( url + "index.php/check_login", 
-               { email: email,
-                 password: password
-               
-                }, function(data){
-                  alert(data);         
-              
-          });
       
+      if(email=="" || password==""){
+        
+        alert('bạn chưa nhập đầy đủ thông tin đăng nhập');
+      }
+      else{
+            $.post( url + "index.php/check_login", 
+                     { email: email,
+                       password: password
+
+                      }, function(data){
+                         if(data=="Error"){
+                           alert('Bạn nhập sai tên hoặc mật khẩu');
+                         }
+                         else{
+                           alert('đăng nhập thành công');
+                           //alert(data);
+                         }
+
+                });
+      }
         
 
     });

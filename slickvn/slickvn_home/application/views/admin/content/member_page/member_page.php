@@ -23,9 +23,9 @@
        <li class="stt_member">
          <span>STT</span>
        </li>
-       <li class="code_member">
+<!--       <li class="code_member">
          <span>Mã thành viên</span>
-       </li>
+       </li>-->
        <li class="name_member">
          <span>Họ và tên</span>
        </li>
@@ -38,22 +38,32 @@
        <li class="phonenumber_member">
          <span>Điện thoại</span>
        </li>
-       <li class="company">
+<!--       <li class="company">
          <span>Công ty</span>
-       </li>
+       </li>-->
        <li class="update_delete">
        </li>
      </ul>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
      <!--List member-->
      
      <ul class="box_info">
        <li class="stt_member">
-         <span>11</span>
+         <span>1</span>
        </li>
-       <li class="code_member">
+<!--       <li class="code_member">
          <span>#21</span>
-       </li>
+       </li>-->
        <li class="name_member">
          <span>Lê Vĩnh Phú</span>
        </li>
@@ -66,9 +76,37 @@
        <li class="phonenumber_member">
          <span>01665847138</span>
        </li>
-       <li class="company">
+<!--       <li class="company">
          <span>innoria</span>
+       </li>-->
+       <li class="update_delete">
+         <a href="#"><div class="edit"></div></a>
+         <a href="#"><div class="delete"></div></a>  
        </li>
+     </ul>
+     
+     <ul class="box_info">
+       <li class="stt_member">
+         <span>2</span>
+       </li>
+<!--       <li class="code_member">
+         <span>#21</span>
+       </li>-->
+       <li class="name_member">
+         <span>Lê Vĩnh Phú</span>
+       </li>
+       <li class="job_member">
+         <span>IT lap trinh vien php</span>
+       </li>
+       <li class="email_member">
+         <span>phule@innoria.com</span>
+       </li>
+       <li class="phonenumber_member">
+         <span>01665847138</span>
+       </li>
+<!--       <li class="company">
+         <span>innoria</span>
+       </li>-->
        <li class="update_delete">
          <a href="#"><div class="edit"></div></a>
          <a href="#"><div class="delete"></div></a>  
@@ -83,9 +121,6 @@
      
    </div>
    
-    
-    
-    
     
   </div>
 </div>

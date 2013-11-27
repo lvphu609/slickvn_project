@@ -21,7 +21,8 @@ class Search extends CI_Controller {
     if(isset($_GET['meal_name'])){
       $meal_name=$_GET['meal_name'];
       $meal_name=  trim($meal_name);
-      var_dump($meal_name);
+      $meal_name= urlencode($meal_name);
+      //var_dump($meal_name);
     }
     else {
         $meal_name="";
@@ -198,6 +199,58 @@ class Search extends CI_Controller {
     
   }
   
+  public function search_post(){
+    
+    $input_text_search=$_GET['input_text_search'];
+    $input_text_search=  trim($input_text_search);
+    $input_text_search=  urlencode($input_text_search);
+    $this->load->model('restaurantenum');
+    //var_dump($input_text_search);
+    $this->load->helper('url');
+    Api_link_enum::initialize();
+    
+    $key=$input_text_search;
+    $data['BASE_IMAGE_POST_URL']=  Api_link_enum::$BASE_IMAGE_POST_URL;
+    $link_search_post = Api_link_enum::$SEARCH_POST_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_SEARCH_POST."&page=1";
+   // var_dump($link_search_post);
+   
+    
+    $json_string_search_post= file_get_contents($link_search_post);
+    $json_search_post = json_decode($json_string_search_post, true);
+    $data['result_search_post']=$json_search_post["Results"];
+   // var_dump($data['result_search_post']);
+    
+    
+    
+    $this->load->view('search/header/header');
+     /*===============MENU==========================================================================*/
+    $link_meal_list = Api_link_enum::$MEAL_TYPE_LIST_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_MEAL_TYPE;
+    $json_string_meal_list = file_get_contents($link_meal_list);    
+    $json_meal_list = json_decode($json_string_meal_list, true);
+    
+    $link_favourite_list = Api_link_enum::$FAVOURITE_TYPE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_FAVOURITE;
+    $json_string_favourite_list = file_get_contents($link_favourite_list);    
+    $json_favourite_list = json_decode($json_string_favourite_list, true);
+    
+    
+    $data['meal_list']=$json_meal_list["Results"];
+    //var_dump($json_meal_list["Results"]);
+    $data['favourite_list']=$json_favourite_list["Results"];    
+    
+    $this->load->view('home/menu/menu',$data);
+  /*================END_MENU============================================================================*/
+    
+  /*================LOCATION============================================================================*/
+   $this->load->view('search/content/location_page'); 
+ /*================END LOCATION============================================================================*/
+  // $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
+   $this->load->view('search/content/result_search_post',$data); 
+  
+    
+   $this->load->view('home/content/footer_content'); 
+   $this->load->view('search/footer/footer');
+    
+  }
   
   
   

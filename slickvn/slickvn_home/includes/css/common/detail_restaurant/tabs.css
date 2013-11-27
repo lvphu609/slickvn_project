@@ -973,7 +973,7 @@ ul li .right .rating .star_no_active{
 #tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant .box_show_list_comment
 .comment_for_assessment{
   width: 670px;
-/*  height: 200px;*/
+  height: 200px;
   float: left;
   margin-left: 64px;
   background: #DDD;
@@ -983,7 +983,7 @@ ul li .right .rating .star_no_active{
 #tabs_detail_restaurant .tabs_align_center .tabs_left #comment_restaurant .box_show_list_comment
 .comment_for_assessment .box_detail_comment_for_assessment{
   width: 670px;
-/*  height: 30px;*/
+  height: 30px;
   float: left;
   background: #eee;
 /*  margin-bottom: 10px;*/

@@ -21,8 +21,8 @@
             $content=$value_articles_list['content'];
             //$number_view=$articles_list['number_view'];
             $number_view=0;
-            $note=$value_articles_list['note'];
-            $authors=$value_articles_list['authors'];
+           // $note=$value_articles_list['note'];
+          //  $authors=$value_articles_list['authors'];
             $created_date=$value_articles_list['created_date'];
             
             $favourite_type_list=$value_articles_list['favourite_type_list'];
@@ -35,6 +35,7 @@
             $culinary_style=substr($culinary_style, 1); 
 //            $culinary_style=substr($culinary_style, 1); 
             $rate_point=5;
+            $number_assessment=0;
             //var_dump($culinary_style);
             
             echo'
@@ -80,7 +81,7 @@
                         
 
                       echo'<div class="detail">
-                         <b> 0 </b>&nbsp; Bình luận <br>
+                         <b>'.$number_assessment.'</b>&nbsp; Bình luận <br>
                          <b>'.$number_view.'</b>&nbsp; Lượt xem
                         </div>
                       </div>

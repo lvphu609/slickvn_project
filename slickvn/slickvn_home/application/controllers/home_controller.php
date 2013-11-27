@@ -480,8 +480,8 @@ class Home_controller extends CI_Controller {
             $content=$articles_list['content'];
             //$number_view=$articles_list['number_view'];
             $number_view=0;
-            $note=$articles_list['note'];
-            $authors=$articles_list['authors'];
+           // $note=$articles_list['note'];
+          //  $authors=$articles_list['authors'];
             $created_date=$articles_list['created_date'];
             
             $favourite_type_list=$articles_list['favourite_type_list'];

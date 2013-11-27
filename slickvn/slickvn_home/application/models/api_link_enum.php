@@ -58,6 +58,8 @@ class Api_link_enum {
   const SEARCH_MEAL_API="search_restaurant_by_meal";
   const SEARCH_FAVOURITE_API="search_restaurant_by_id_base_collection";
   const SEARCH_RESTAURANT_API="search_restaurant_by_name";
+  const SEARCH_POST_API="search_post";
+  
   /*end search----------*/
 
 
@@ -116,6 +118,7 @@ class Api_link_enum {
     public static $BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
     public static $INSERT_RESTAURANT_URL;
     public static $INSERT_POST_URL;
+    public static $SEARCH_POST_URL;
     
     
     
@@ -164,6 +167,8 @@ class Api_link_enum {
       self::$SEARCH_MEAL_URL = self::$BASE_API_RESTAURANT_URL.self::SEARCH_MEAL_API.self::FORMAT_JSON ;
       self::$SEARCH_FAVOURITE_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_FAVOURITE_API.self::FORMAT_JSON ;
       self::$SEARCH_RESTAURANT_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_RESTAURANT_API.self::FORMAT_JSON ;
+      self::$SEARCH_POST_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_POST_API.self::FORMAT_JSON ;
+
       
       /*end search*/
        
