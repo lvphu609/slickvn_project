@@ -22,6 +22,7 @@
      if($chosed=="member_page"){
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/member_page.css">';
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/create_new_member.css">';
+       echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
      }
      
     ?>

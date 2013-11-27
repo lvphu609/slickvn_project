@@ -124,7 +124,7 @@
 }
 
 #member_page #content_member_page .member_list .box_info li.stt_member{
- width: 5%;
+ width: 10%;
  /*temp
  background: #00AAE7;*/
 }
@@ -137,7 +137,7 @@
 }
 
 #member_page #content_member_page .member_list .box_info li.name_member{
- width: 9%;
+ width: 20%;
  margin-left: 1%;
  /*temp
  background: #47a447;*/
@@ -150,13 +150,13 @@
  background: #5bc0de;*/
 }
 #member_page #content_member_page .member_list .box_info li.email_member{
- width: 19%;
+ width: 25%;
  margin-left: 1%;
  /*temp
  background: #78A000;*/
 }
 #member_page #content_member_page .member_list .box_info li.phonenumber_member{
- width: 14%;
+ width: 25%;
  margin-left: 1%;
  /*temp
  background: #d5d59d;*/

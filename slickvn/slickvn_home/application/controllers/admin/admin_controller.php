@@ -39,7 +39,12 @@ class Admin_controller extends CI_Controller {
     $this->load->view('admin/taskbar_top/taskbar_top');
     $this->load->view('admin/menu/menu_main',$data);
     
-    
+     //danh sách tất cả các thành viên
+     $link_all_user = Api_link_enum::$ALL_USER_URL."?limit=".Restaurantenum::LIMIT_PAGE_USER_ALL."&page=1";
+     $json_string_all_user= file_get_contents($link_all_user);    
+     $json_all_user = json_decode($json_string_all_user, true);
+     $data['all_user']=$json_all_user["Results"];
+     //var_dump( $data['all_user']);
     
     $this->load->view('admin/content/member_page/member_page',$data);
     $this->load->view('admin/footer/footer_main');
@@ -73,12 +78,63 @@ class Admin_controller extends CI_Controller {
     
   } 
   
+   public function view_edit_user()
+  {
+   
+    $data['chosed']="member_page";
+    $this->load->helper('url');
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $id=$_GET['param_id'];
+    //chi tiết 1 thành viên
+     $link_detail_user = Api_link_enum::$DETAIL_USER_URL."?id=".$id;
+     $json_string_detail_user= file_get_contents($link_detail_user);    
+     $json_detail_user = json_decode($json_string_detail_user, true);
+     $data['detail_user']=$json_detail_user["Results"];
+    // var_dump( $data['detail_user']);
+    
+    $this->load->view('admin/content/member_page/view_user',$data);
+    
+    $this->load->view('admin/footer/footer_main');
+    
+  } 
+   public function delete_user()
+  {
+   
+    $data['chosed']="member_page";
+    $this->load->helper('url');
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    $id=$_GET['param_id'];
+    
+    //xoa
+     $link_delete_user = Api_link_enum::$DELETE_USER_URL."?id=".$id;
+     $json_string_delete_user= file_get_contents($link_delete_user);    
+     $json_delete_user = json_decode($json_string_delete_user, true);
+     $data['delete_user']=$json_delete_user["Results"];
+    
+    
+      //danh sách tất cả các thành viên
+     $link_all_user = Api_link_enum::$ALL_USER_URL."?limit=".Restaurantenum::LIMIT_PAGE_USER_ALL."&page=1";
+     $json_string_all_user= file_get_contents($link_all_user);    
+     $json_all_user = json_decode($json_string_all_user, true);
+     $data['all_user']=$json_all_user["Results"];
+     //var_dump( $data['all_user']);
+     
+      $this->load->view('admin/content/member_page/member_page',$data);
+
+      $this->load->view('admin/footer/footer_main');
+    
+  } 
+  
   
   
 /*========================TRANG NGƯỜI DÙNG=================================================================*/  
   public function user_page()
   {
-
+    
     $data['chosed']="user_page";
     $this->load->helper('url');
     $this->load->view('admin/header/header_main',$data);

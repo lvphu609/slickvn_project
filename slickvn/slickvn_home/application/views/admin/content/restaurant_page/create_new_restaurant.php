@@ -102,7 +102,7 @@
                   <div>
                     <input type="text"  id="timepicker_start_working_time" value="" />
                   </div>					
-                  <script>
+                 <script defer="true">
                   $('#timepicker_start_working_time').timepicker({
                     
                     	timeFormat: "h:mm tt"
@@ -116,7 +116,7 @@
                   <div>
                     <input type="text"  id="timepicker_end_working_time" value="" />
                   </div>					
-                  <script>
+                  <script defer="true">
                   $('#timepicker_end_working_time').timepicker({
                     
                     	timeFormat: "h:mm tt"
@@ -139,7 +139,7 @@
                   <div>
                     <input type="text" name="start_date" id="start_date" value="" />
                   </div>					
-                    <script>
+                    <script defer="true">
                     $('#start_date').datetimepicker({
                       timeFormat: "hh:mm:00",
                       dateFormat: "dd-mm-yy"
@@ -153,7 +153,7 @@
                   <div>
                     <input type="text" name="end_date" id="end_date" value="" />
                   </div>					
-                    <script>
+                    <script defer="true">
                     $('#end_date').datetimepicker({
                       timeFormat: "hh:mm:00",
                       dateFormat: "dd-mm-yy"
@@ -173,11 +173,11 @@
               <div id="formdata-keyvaleditor" class="append_keyvalueeditor-row">
                 
                 
-                <div class="keyvalueeditor-row ">
+                <div class="keyvalueeditor-row" data-orther="1">
                   <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Tên món ăn" readonly name="keyvalueeditor-action" value="">
                   <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Mô tả" readonly name="keyvalueeditor-action" value="">
                   <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Giá" readonly name="keyvalueeditor-action" value="">
-                  <select class="select_menu_option" disabled>
+                  <select class="select_menu_option" disabled >
                     <option value="N">Tùy chọn</option>
                     <option value="Y">add row</option>
                   </select>
@@ -975,7 +975,6 @@
 //        });
 
      $(function(){
-        //var data_status=parseInt($('#hdData_status').val());
         var data_status=1;
         $('#formdata-keyvaleditor').find('input').parent().click(function(index) {
            if(parseInt($(this).find('input').attr('data-status'))==1){
@@ -990,11 +989,6 @@
                       <option value=\"Y\">Món đặt biệt</option>\n\
                       </select>\n\
                      </div>";
-//            var prv_data_status = data_status-1;
-//            prv_data_status=".remove_add_menu_restaurant_"+prv_data_status;
-//            var remove_script= $(prv_data_status).html();
-//            
-//            alert(prv_data_status);
             $('.append_keyvalueeditor-row').append(keyvalueeditor_string);
             $('#hdData_status').val(data_status_next);
             
@@ -1002,6 +996,11 @@
         });
        
      });
+ 
+
+            
+            
+                        
      </script>
    </div>
  </div>

@@ -28,7 +28,7 @@ class Restaurantenum {
   const LIMIT_PAGE_POST = 3;
   const LIMIT_PAGE_RESTAURANT_ALL = 15;
   const LIMIT_SEARCH_POST=10;
-
+  const LIMIT_PAGE_USER_ALL=10;
 
   /*search -----------------*/
    //meal

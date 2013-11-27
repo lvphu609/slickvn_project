@@ -31,7 +31,8 @@ class Api_link_enum {
   const ALL_RESTAURANT_API="get_all_restaurant";
   const INSERT_RESTAURANT_API="update_restaurant";
   const INSERT_POST_API="update_post";
-
+  const ALL_USER_API="get_all_user";
+  const DETAIL_USER_API="get_user_by_id";
 
 
 
@@ -119,6 +120,8 @@ class Api_link_enum {
     public static $INSERT_RESTAURANT_URL;
     public static $INSERT_POST_URL;
     public static $SEARCH_POST_URL;
+    public static $ALL_USER_URL;
+    public static $DETAIL_USER_URL;
     
     
     
@@ -156,6 +159,11 @@ class Api_link_enum {
       self::$PRICE_PERSION_URL = self::$BASE_API_COMMON_URL.self::PRICE_PERSION_API.self::FORMAT_JSON ;
       self::$CULINARY_STYLE_URL = self::$BASE_API_COMMON_URL.self::CULINARY_STYLE_API.self::FORMAT_JSON ;
       self::$MODE_USE_LIST_URL = self::$BASE_API_COMMON_URL.self::MODE_USE_LIST_API.self::FORMAT_JSON ;
+      self::$ALL_USER_URL = self::$BASE_API_USER_URL.self::ALL_USER_API.self::FORMAT_JSON ;
+      self::$DETAIL_USER_URL = self::$BASE_API_USER_URL.self::DETAIL_USER_API.self::FORMAT_JSON ;
+      
+      
+      
       
       self::$PAYMENT_TYPE_LIST_URL= self::$BASE_API_COMMON_URL.self::PAYMENT_TYPE_LIST_API.self::FORMAT_JSON ;
       self::$LANDSCAPE_LIST_URL= self::$BASE_API_COMMON_URL.self::LANDSCAPE_LIST_API.self::FORMAT_JSON ;
