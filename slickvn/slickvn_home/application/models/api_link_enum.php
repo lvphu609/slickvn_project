@@ -34,6 +34,13 @@ class Api_link_enum {
   const ALL_USER_API="get_all_user";
   const DETAIL_USER_API="get_user_by_id";
   const DELETE_USER_API="update_user";
+  const ADD_USER_API="update_user";
+  const ALL_ROLE_API="get_all_role";
+  const EDIT_USER_API="update_user";
+
+
+
+
 
 
 
@@ -41,7 +48,7 @@ class Api_link_enum {
   const LINK_IMAGE_POST = "slickvn_api_project_xinh/slickvn_api/posts/";  //link image post
   const LINK_IMAGE_UPLOAD_TEMP="slickvn_api_project_xinh/slickvn_api/";   //link image upload temp
   const LINK_CALL_UPLOAD_IMAGE_TEMP="../../../../../../../../slickvn_api_project_xinh/slickvn_api/"; //link call php upload temp
-  const LINK_IMAGE_USER_PROFILE="slickvn_api_project_xinh/slickvn_api/users_profile/";
+  const LINK_IMAGE_USER_PROFILE="slickvn_api_project_xinh/slickvn_api/user_profile/";
 
   const MODE_USE_LIST_API = "get_base_collection";
   const PAYMENT_TYPE_LIST_API = "get_base_collection";
@@ -124,7 +131,10 @@ class Api_link_enum {
     public static $ALL_USER_URL;
     public static $DETAIL_USER_URL;
     public static $DELETE_USER_URL;
+    public static $ADD_USER_URL;
     public static $BASE_IMAGE_USER_PROFILE_URL;
+    public static $ALL_ROLE_URL;
+    public static $EDIT_USER_URL;
     
     
     
@@ -139,6 +149,10 @@ class Api_link_enum {
       self::$BASE_IMAGE_UPLOAD_TEMP_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_UPLOAD_TEMP;
       self::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL=self::LINK_CALL_UPLOAD_IMAGE_TEMP;
       self::$BASE_IMAGE_USER_PROFILE_URL=self::DOMAIN_NAME.self::PORT.self::LINK_IMAGE_USER_PROFILE;
+      
+      
+      
+      
       /*link insert*/
       self::$INSERT_RESTAURANT_URL = self::DOMAIN_NAME.self::PORT.self::SUB_DOMAIN.self::SUB_DOMAIN_RESTAURANT.self::INSERT_RESTAURANT_API;
       self::$INSERT_POST_URL = self::DOMAIN_NAME.self::PORT.self::SUB_DOMAIN.self::SUB_DOMAIN_RESTAURANT.self::INSERT_POST_API;
@@ -165,7 +179,10 @@ class Api_link_enum {
       self::$ALL_USER_URL = self::$BASE_API_USER_URL.self::ALL_USER_API.self::FORMAT_JSON ;
       self::$DETAIL_USER_URL = self::$BASE_API_USER_URL.self::DETAIL_USER_API.self::FORMAT_JSON ;
       self::$DELETE_USER_URL = self::$BASE_API_USER_URL.self::DELETE_USER_API.self::FORMAT_JSON ;
-      
+      self::$ADD_USER_URL = self::$BASE_API_USER_URL.self::ADD_USER_API.self::FORMAT_JSON ;
+      self::$ALL_ROLE_URL = self::$BASE_API_USER_URL.self::ALL_ROLE_API.self::FORMAT_JSON ;
+      self::$EDIT_USER_URL = self::$BASE_API_USER_URL.self::EDIT_USER_API.self::FORMAT_JSON ;
+
       
       
       self::$PAYMENT_TYPE_LIST_URL= self::$BASE_API_COMMON_URL.self::PAYMENT_TYPE_LIST_API.self::FORMAT_JSON ;

@@ -198,7 +198,8 @@
         <form id="FormAddListing_Culinary_Style">
           <ul class="list_index">
             
-            <?php    foreach ($culinary_style as $value_culinary_style) {
+          <?php    
+                foreach ($culinary_style as $value_culinary_style) {
                       echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
                            '.$value_culinary_style['name'].' <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
                          </li>';

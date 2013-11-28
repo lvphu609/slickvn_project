@@ -41,6 +41,7 @@ class Admin_controller extends CI_Controller {
     
      //danh sách tất cả các thành viên
      $link_all_user = Api_link_enum::$ALL_USER_URL."?limit=".Restaurantenum::LIMIT_PAGE_USER_ALL."&page=1";
+    // var_dump($link_all_user);
      $json_string_all_user= file_get_contents($link_all_user);    
      $json_all_user = json_decode($json_string_all_user, true);
      $data['all_user']=$json_all_user["Results"];
@@ -59,25 +60,115 @@ class Admin_controller extends CI_Controller {
     $this->load->view('admin/header/header_main',$data);
     $this->load->view('admin/taskbar_top/taskbar_top');
     $this->load->view('admin/menu/menu_main',$data);
-    $this->load->view('admin/content/member_page/create_new_member');
-    $this->load->view('admin/footer/footer_main');
+    
+    
+    //link image upload temp
+     $data['BASE_IMAGE_UPLOAD_TEMP_URL']=  Api_link_enum::$BASE_IMAGE_UPLOAD_TEMP_URL;
+   //call php upload image temp
+     $data['BASE_CALL_UPLOAD_IMAGE_TEMP_URL']=  Api_link_enum::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
+    
+     
+     
+     //danh sách tất cả các role
+     $link_all_role = Api_link_enum::$ALL_ROLE_URL;
+     $json_string_all_role= file_get_contents($link_all_role);    
+     $json_all_role = json_decode($json_string_all_role, true);
+     $data['all_role']=$json_all_role["Results"];
+     //var_dump( $data['all_role']);
+     
+     $this->load->view('admin/content/member_page/create_new_member',$data);
+     $this->load->view('admin/footer/footer_main');
     
   }  
   
-   //thêm thành viên thành công
-  public function create_new_member_success()
+   //thêm thành viên
+  public function create_new_member_post()
   {
    
-    $data['chosed']="member_page";
-    $this->load->helper('url');
-    $this->load->view('admin/header/header_main',$data);
-    $this->load->view('admin/taskbar_top/taskbar_top');
-    $this->load->view('admin/menu/menu_main',$data);
-    $this->load->view('admin/content/member_page/create_new_member_success');
-    $this->load->view('admin/footer/footer_main');
+    //echo "hello add";
+    $avatar        =$_POST['avatar'];
+    $full_name     =$_POST['full_name'];
+    $address       =$_POST['address'];
+    $email         =$_POST['email'];
+    $phone_number  =$_POST['phone_number'];
+    $introduce     =$_POST['introduce'];
+    $password      =$_POST['password'];
+    $password=  md5($password);
+    $role_list=$_POST['role'];
+    $role_list=  trim($role_list);
+    
+   // echo $password;
+    
+    //add new member
+    $action="insert";
+    $url=Api_link_enum::$ADD_USER_URL;
+    echo $url;
+    $myvars = 'avatar=' . $avatar . 
+              '&full_name=' . $full_name.
+              '&address=' . $address.
+              '&email=' . $email.
+              '&phone_number=' . $phone_number.
+              '&desc=' . $introduce.
+              '&password=' . $password.
+              '&role_list=' . $role_list.
+              '&action=' . $action;
+    
+    $ch = curl_init( $url );
+    curl_setopt( $ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt( $ch, CURLOPT_HEADER, 0);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec( $ch );
+    
+    
+    
+    
     
   } 
-  
+  //edit member
+  public function edit_member_post()
+  {
+   
+    //echo "hello add";
+    $avatar        =$_POST['avatar'];
+    $full_name     =$_POST['full_name'];
+    $address       =$_POST['address'];
+    $email         =$_POST['email'];
+    $phone_number  =$_POST['phone_number'];
+    $introduce     =$_POST['introduce'];
+    $password      =$_POST['password'];
+    $password=  md5($password);
+    $role_list=$_POST['role'];
+    $role_list=  trim($role_list);
+    $id= $_POST['id'];
+   // echo $password;
+    
+    //add new member
+    $action="edit";
+    $url=Api_link_enum::$EDIT_USER_URL;
+    echo $url;
+    $myvars = 'avatar=' . $avatar . 
+              '&full_name=' . $full_name.
+              '&address=' . $address.
+              '&email=' . $email.
+              '&phone_number=' . $phone_number.
+              '&desc=' . $introduce.
+              '&password=' . $password.
+              '&role_list=' . $role_list.
+              '&id='.$id.
+              '&action=' . $action;
+    
+    $ch = curl_init( $url );
+    curl_setopt( $ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt( $ch, CURLOPT_HEADER, 0);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec( $ch );
+    
+    
+  } 
    public function view_edit_user()
   {
    
@@ -95,7 +186,21 @@ class Admin_controller extends CI_Controller {
      $data['detail_user']=$json_detail_user["Results"];
      //var_dump( $data['detail_user']);
     
+    //link image upload temp
+     $data['BASE_IMAGE_UPLOAD_TEMP_URL']=  Api_link_enum::$BASE_IMAGE_UPLOAD_TEMP_URL;
+   //call php upload image temp
+     $data['BASE_CALL_UPLOAD_IMAGE_TEMP_URL']=  Api_link_enum::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL; 
+     
     $data['BASE_IMAGE_USER_PROFILE_URL']=Api_link_enum::$BASE_IMAGE_USER_PROFILE_URL;
+    
+    
+     //danh sách tất cả các role
+     $link_all_role = Api_link_enum::$ALL_ROLE_URL;
+     $json_string_all_role= file_get_contents($link_all_role);    
+     $json_all_role = json_decode($json_string_all_role, true);
+     $data['all_role']=$json_all_role["Results"];
+     //var_dump( $data['all_role']);
+    
     $this->load->view('admin/content/member_page/view_user',$data);
     
     $this->load->view('admin/footer/footer_main');
@@ -114,8 +219,8 @@ class Admin_controller extends CI_Controller {
     //xoa
     $action="delete";
     $url=Api_link_enum::$DELETE_USER_URL;
+    
     $myvars = 'id=' . $id . '&action=' . $action;
-
     $ch = curl_init( $url );
     curl_setopt( $ch, CURLOPT_POST, 1);
     curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);

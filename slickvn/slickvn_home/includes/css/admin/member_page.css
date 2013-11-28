@@ -118,6 +118,12 @@
  /*height:100px; 
  background:#FFA54E;*/
 }
+#member_page #content_member_page .member_list .select_delete{
+ background: #c9e2b3;
+ 
+ /*height:100px; 
+ background:#FFA54E;*/
+}
 #member_page #content_member_page .member_list .box_info li{
  height: auto;
  float: left;

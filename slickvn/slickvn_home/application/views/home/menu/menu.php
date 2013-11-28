@@ -192,15 +192,14 @@
     var url_post=url+'index.php/search/search/search_post';
     //search theo nhà hàng
     if(slect_search=="Nhà hàng"){
-        
-        window.location=url_restaurant+"?input_text_search="+input_text_search;
+          window.location=url_restaurant+"?input_text_search="+input_text_search;
+    
       
     }
     else //search theo bài viết
       if(slect_search=="Bài viết"){
-      
          window.location=url_post+"?input_text_search="+input_text_search;
-      
+        
         }
       else //search theo khuyến mãi
       if(slect_search=="Khuyến mãi"){

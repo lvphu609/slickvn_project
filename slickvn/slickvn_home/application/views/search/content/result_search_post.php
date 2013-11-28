@@ -100,14 +100,17 @@
      
    }
 
-
+   //kết quả tìm kiếm thông tìm thấy
+   if(count($result_search_post)==0){
+     
+       echo '<div style="width: 100%; height: 100px; text-align: center; color: #FFF; margin-top: 20px;">
+            <span style="font-size: 20px; font-weight: bold;">Bài viết không có kết nào cho từ khóa bạn muốn tìm!</span>
+           </div>';
+     
+   }
         
 
 ?>
-
-
-
-
 
 
     

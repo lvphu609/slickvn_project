@@ -146,6 +146,15 @@
   
   /*background: #d4d4d4;*/
 }
+#create_new_member #content_create_new_member .box_input .list_role_member{
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-top: 15px;
+  
+  /*background: #d4d4d4;*/
+}
+
 
 #create_new_member #content_create_new_member .box_input .btn_save_cancel{
   width: 100%;
@@ -273,3 +282,44 @@
   -webkit-appearance: none;
 }
 
+ul.list_index {
+width: 100%;
+height: auto;
+float: left;
+clear: both;
+margin: 0px;
+padding: 0px;
+list-style: none;
+margin-top: 10px;
+}
+ul.list_index li {
+width: 19%;
+height: auto;
+float: left;
+clear: none;
+margin-left: 5px;
+cursor: pointer;
+color:#000000;
+font-size: 15px;
+font-family: sans-serif;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+ul.list_index li .checkbox {
+width: 16px;
+height: 18px;
+background: url(../../../includes/images/icon/check.png) no-repeat;
+cursor: pointer;
+display: inline-block;
+float: left;
+/*margin-right: 5px;*/
+}
+ul.list_index li .checkboxSelect {
+background: url(../../../includes/images/icon/checked.png) no-repeat;
+/*margin-right: 5px;*/
+display: inline-block;
+float: left;
+width: 16px;
+height: 18px;
+}

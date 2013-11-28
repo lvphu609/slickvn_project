@@ -105,6 +105,7 @@
 
                echo "</ul>";
         }
+       
         
         
  //search favourite=================================================================================>        
@@ -201,6 +202,7 @@
 
                              echo "</ul>";
                       }
+                      
             
       //search restaurant=================================================================================>        
 
@@ -295,9 +297,22 @@
                               } 
 
                              echo "</ul>";
-                      }                 
+                      } 
+               
+                
+               
                       
+
+    //kết quả tìm kiếm thông tìm thấy
+       /* if(count($result_search_restaurant)==0 &&(count($result_search_favourite)!=0||count($result_search_favourite)!=0)){
+
+          echo '<div style="width: 100%; height: 100px; text-align: center; color: #FFF; margin-top: 20px;">
+                 <span style="font-size: 20px; font-weight: bold;">Không có kết nào cho từ khóa bạn muốn tìm!</span>
+                </div>';
+
+        }*/
                       
+                  
                       
                       
                       

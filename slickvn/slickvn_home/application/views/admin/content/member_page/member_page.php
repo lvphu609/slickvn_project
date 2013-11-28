@@ -102,9 +102,20 @@ foreach ($all_user as $value_all_user){
     window.location=url+"?param_id="+data_value_edit;
   });
   $(".delete_user").click(function (){
-    var url=$("#hdUrl_delete_user").val();
-    var data_value_delete=$(this).attr('data-value_delete');
-    window.location=url+"?param_id="+data_value_delete;
+      $(this).parent().parent().addClass('select_delete');
+      
+      
+      var answer = confirm ("Bạn có chắc muốn xóa dữ liệu đang chọn không?")
+      if (answer){
+       var url=$("#hdUrl_delete_user").val();
+       var data_value_delete=$(this).attr('data-value_delete');
+       window.location=url+"?param_id="+data_value_delete;
+       
+      }
+      else{
+        $(this).parent().parent().removeClass('select_delete');
+      }
+       
   });
   
   
