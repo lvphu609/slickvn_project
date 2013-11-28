@@ -33,7 +33,7 @@
      <div class="image_profile"> 
        <span>ẢNH</span><br>
        <span>(Tải ảnh lên)</span><br>
-       <img width="100%;" height="80%;" src="<?php echo $avatar; ?>">
+       <img width="100%;" height="80%;" src="<?php echo $BASE_IMAGE_USER_PROFILE_URL.$avatar; ?>">
      </div>
      <div class="name_profile">
         <span>HỌ VÀ TÊN*</span><br>

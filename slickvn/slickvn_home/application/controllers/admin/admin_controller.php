@@ -89,11 +89,13 @@ class Admin_controller extends CI_Controller {
     $id=$_GET['param_id'];
     //chi tiết 1 thành viên
      $link_detail_user = Api_link_enum::$DETAIL_USER_URL."?id=".$id;
+    // var_dump($link_detail_user);
      $json_string_detail_user= file_get_contents($link_detail_user);    
      $json_detail_user = json_decode($json_string_detail_user, true);
      $data['detail_user']=$json_detail_user["Results"];
-    // var_dump( $data['detail_user']);
+     //var_dump( $data['detail_user']);
     
+    $data['BASE_IMAGE_USER_PROFILE_URL']=Api_link_enum::$BASE_IMAGE_USER_PROFILE_URL;
     $this->load->view('admin/content/member_page/view_user',$data);
     
     $this->load->view('admin/footer/footer_main');
@@ -110,10 +112,19 @@ class Admin_controller extends CI_Controller {
     $id=$_GET['param_id'];
     
     //xoa
-     $link_delete_user = Api_link_enum::$DELETE_USER_URL."?id=".$id;
-     $json_string_delete_user= file_get_contents($link_delete_user);    
-     $json_delete_user = json_decode($json_string_delete_user, true);
-     $data['delete_user']=$json_delete_user["Results"];
+    $action="delete";
+    $url=Api_link_enum::$DELETE_USER_URL;
+    $myvars = 'id=' . $id . '&action=' . $action;
+
+    $ch = curl_init( $url );
+    curl_setopt( $ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt( $ch, CURLOPT_HEADER, 0);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec( $ch );
+    
+     
     
     
       //danh sách tất cả các thành viên
