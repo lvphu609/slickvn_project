@@ -1,5 +1,82 @@
 <?php $url=  base_url();
 
+ foreach ($info_restaurant as $info_detail_restaurant) {
+   
+
+      $res_id=                    $info_detail_restaurant['id'];
+      //$id_user=               $info_detail_restaurant['id_user'];
+     // $res_id_menu_dish=          $info_detail_restaurant['id_menu_dish'];
+      $res_id_coupon=             $info_detail_restaurant['id_coupon'];
+      $res_name=                  $info_detail_restaurant['name'];
+      $res_avatar=                $info_detail_restaurant['avatar'];
+      //$res_number_view=           $info_detail_restaurant['number_view'];
+      //$res_number_assessment=     $info_detail_restaurant['number_assessment'];
+      //$res_rate_point=            $info_detail_restaurant['rate_point'];
+      //$res_number_like=           $info_detail_restaurant['number_like'];
+      //$res_number_share=          $info_detail_restaurant['number_share'];
+      //$res_rate_service=          $info_detail_restaurant['rate_service'];
+      //$res_rate_landscape=        $info_detail_restaurant['rate_landscape'];
+      //$res_rate_taste=            $info_detail_restaurant['rate_taste'];
+      //$res_rate_price=            $info_detail_restaurant['rate_price'];
+      $res_menu_dist=            $info_detail_restaurant['id_menu_dish'];
+      $id_menu_dish= $res_menu_dist['id'];
+      
+      
+      $res_approval_show_carousel=           $info_detail_restaurant['approval_show_carousel'];
+      $res_address=               $info_detail_restaurant['address'];
+      $res_image_introduce_link=  $info_detail_restaurant['image_introduce_link'];
+      $res_image_carousel_link=   $info_detail_restaurant['image_carousel_link'];
+      $res_link_to=               $info_detail_restaurant['link_to'];
+      $res_phone_number=          $info_detail_restaurant['phone_number'];
+      
+      $res_working_time=          $info_detail_restaurant['working_time'];
+      $res_working_time_explode= explode(" - ",$res_working_time);
+      $res_start_working_time= $res_working_time_explode[0];
+      $res_end_working_time= $res_working_time_explode[1];
+      
+      $res_status_active=         $info_detail_restaurant['status_active'];
+     // $favourite_list=        $info_detail_restaurant['favourite_list'];
+    //  $price_person_list=     $info_detail_restaurant['price_person_list'];
+    //  $culinary_style_list=   $info_detail_restaurant['culinary_style_list'];
+      $res_mode_use_list=         $info_detail_restaurant['mode_use_list'];
+      
+      $res_payment_type_list=     $info_detail_restaurant['payment_type_list'];
+      
+      $res_landscape_list=        $info_detail_restaurant['landscape_list'];
+      
+      
+      $res_other_criteria_list=   $info_detail_restaurant['other_criteria_list'];
+      
+      $res_introduce=             $info_detail_restaurant['introduce'];
+      //noi dung gioi thieu, tim va thay the folder_image_introduce_detail_page bang duong dan host
+      $res_introduce = htmlspecialchars_decode ($res_introduce);
+      $res_introduce =  str_replace("folder_image_introduce_detail_page",$link_restaurant_frofile, $res_introduce);
+      
+      
+      
+      
+      $res_start_date=            $info_detail_restaurant['start_date'];
+      $res_end_date=              $info_detail_restaurant['end_date'];
+      $res_created_date=          $info_detail_restaurant['created_date'];
+      $res_desc=                  $info_detail_restaurant['desc'];
+      $res_email=                 $info_detail_restaurant['email'];
+       
+       
+      $res_favourite_list=$info_detail_restaurant['favourite_list'];
+       
+      $res_price_person_list=$info_detail_restaurant['price_person_list'];
+      
+      
+      $res_culinary_style_list=$info_detail_restaurant['culinary_style_list'];
+
+ }
+
+
+
+
+
+
+
 ?>
 
 
@@ -40,36 +117,49 @@
         <input type="file" name="photoimg" id="photoimg"  />
         </form>
         <div style="width:100%; height: 100%;" id='preview'>
-          
+          <img src="<?php echo $link_restaurant_frofile.$res_avatar;?>" class="preview" style="width:205px; height:200px;">
+          <input type="hidden" value="<?php echo $res_avatar ;?>" id="image_avatar_post">
         </div>
+      
        
        
      </div>
      <div class="name_restaurant">
         <span class="title_input">TÊN NHÀ HÀNG*</span><br>
-        <input class="input_text param_name_restauant" type="text" placeholder="vd. Hương Sen" name="" >
+        <input class="input_text param_name_restauant" type="text" placeholder="vd. Hương Sen" name="" value="<?php echo $res_name;?>" >
      </div>
      <div class="email_restaurant">
         <span class="title_input">EMAIL</span><br>
-        <input  class="input_text param_email" type="text" placeholder="vd. huongsen@gmail.com" name="">
+        <input  class="input_text param_email" type="text" placeholder="vd. huongsen@gmail.com" name="" value="<?php echo $res_email; ?>">
      </div>
      <div class="address_restaurant">
         <span class="title_input">ĐỊA CHỈ</span><br>
-        <input class="input_text param_address" type="text" placeholder="vd. Bình Chánh district, HCMC" name="">
+        <input class="input_text param_address" type="text" placeholder="vd. Bình Chánh district, HCMC" name="" value="<?php echo $res_address; ?>">
      </div>
      <div class="phone_number_restaurant">
         <span class="title_input">ĐIỆN THOẠI*</span><br>
-        <input class="input_text param_phonenumber" type="text" placeholder="vd. 01665847138" name="">
+        <input class="input_text param_phonenumber" type="text" placeholder="vd. 01665847138" name="" value="<?php echo $res_phone_number; ?>">
      </div>
      <div class="website_restaurant">
         <span class="title_input">LINK WEB SITE NHÀ HÀNG</span><br>
-        <input class="input_text param_link_website" type="text" placeholder="vd. http://slick.vn" name="">
+        <input class="input_text param_link_website" type="text" placeholder="vd. http://slick.vn" name="" value="<?php echo $res_link_to; ?>">
      </div>
      <div class="status_active">
         <span class="title_input">TÌNH TRẠNG HOẠT ĐỘNG</span><br>
         <select class="select_status_active" >
-          <option value="Đang hoạt động">Đang hoạt động</option>
-          <option value="Tạm ngưng">Tạm ngưng</option>
+          <?php 
+              if(strcmp(strtolower($res_status_active),"đang hoạt động")==0){
+                echo'
+                <option value="đang hoạt động" selected>Đang hoạt động</option>
+                <option value="tạm ngưng">Tạm ngưng</option>';
+              }
+              if(strcmp(strtolower($res_status_active), "tạm ngưng")==0){
+                echo'
+                <option value="đang hoạt động" >Đang hoạt động</option>
+                <option value="tạm ngưng" selected>Tạm ngưng</option>';
+              }
+          ?>
+          
         </select>
      </div>
 <!--     <div class="facebock_url_profile">
@@ -87,7 +177,7 @@
      <div class="line_title"></div></br>
      <div class="introduce_short_restaurant">
         <span class="title_input">MÔ TẢ NGẮN VỀ NHÀ HÀNG</span><br>
-        <textarea class="input_textarea param_introduce_short_restaurant" name=""></textarea>
+        <textarea class="input_textarea param_introduce_short_restaurant" name=""><?php echo $res_desc;?></textarea>
      </div>
      <!--thời gian làm việc-->
      <div class="box_select_option">
@@ -101,7 +191,7 @@
               <script type="text/javascript" src="<?php echo $url;?>includes/plugins/date_time_picker/jquery-ui-timepicker-addon.js"></script>
                <div class="date_time_picker">
                   <div>
-                    <input type="text"  id="timepicker_start_working_time" value="" />
+                    <input type="text"  id="timepicker_start_working_time" value="<?php  echo $res_start_working_time; ?>" />
                   </div>					
                   <script>
                   $('#timepicker_start_working_time').timepicker({
@@ -115,7 +205,7 @@
                Giờ kết thúc 
                  <div class="date_time_picker">
                   <div>
-                    <input type="text"  id="timepicker_end_working_time" value="" />
+                    <input type="text"  id="timepicker_end_working_time" value="<?php  echo $res_end_working_time; ?>" />
                   </div>					
                   <script>
                   $('#timepicker_end_working_time').timepicker({
@@ -138,7 +228,7 @@
                Thời gian bắt đầu
                <div class="date_time_picker">
                   <div>
-                    <input type="text" name="start_date" id="start_date" value="" />
+                    <input type="text" name="start_date" id="start_date" value="<?php echo $res_start_date; ?>" />
                   </div>					
                     <script>
                     $('#start_date').datetimepicker({
@@ -152,7 +242,7 @@
                Thời gian kết thúc
                 <div class="date_time_picker">
                   <div>
-                    <input type="text" name="end_date" id="end_date" value="" />
+                    <input type="text" name="end_date" id="end_date" value="<?php echo $res_end_date; ?>" />
                   </div>					
                     <script>
                     $('#end_date').datetimepicker({
@@ -175,16 +265,54 @@
                 
                 
                 <div class="keyvalueeditor-row ">
-                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Tên món ăn" readonly name="keyvalueeditor-action" value="">
-                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Mô tả" readonly name="keyvalueeditor-action" value="">
-                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Giá" readonly name="keyvalueeditor-action" value="">
+                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status keyvalueeditor_check_status_top" placeholder="Tên món ăn" readonly name="keyvalueeditor-action" value="">
+                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status keyvalueeditor_check_status_top" placeholder="Mô tả" readonly name="keyvalueeditor-action" value="">
+                  <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status keyvalueeditor_check_status_top" placeholder="Giá" readonly name="keyvalueeditor-action" value="">
                   <select class="select_menu_option" disabled>
                     <option value="N">Tùy chọn</option>
                     <option value="Y">add row</option>
                   </select>
                   
                 </div>
-              
+                <input type="hidden" value="<?php echo $id_menu_dish;?>" id="param_id_menu_dish">
+                <?php 
+                
+                      
+                      //var_dump($res_menu_dist['dish_list']);
+                       $stt_value_res_menu_dist=2;
+                       foreach ($res_menu_dist['dish_list'] as $value_res_menu_dist){
+                         
+                        echo'
+                               <div class="keyvalueeditor-row ">
+                                  <input type="text" data-status="'.$stt_value_res_menu_dist.'" class="keyvalueeditor-key keyvalueeditor_check_status meal_menu " placeholder="Tên món ăn" name="keyvalueeditor-action" value="'.$value_res_menu_dist['name'].'">
+                                  <input type="text" data-status="'.$stt_value_res_menu_dist.'" class="keyvalueeditor-key keyvalueeditor_check_status description_menu " placeholder="Mô tả" name="keyvalueeditor-action" value="'.$value_res_menu_dist['desc'].'">
+                                  <input type="text" data-status="'.$stt_value_res_menu_dist.'" class="keyvalueeditor-key keyvalueeditor_check_status price_menu " placeholder="Giá" name="keyvalueeditor-action" value="'.$value_res_menu_dist['price'].'">
+                                  <select class="select_menu_option select_custom_menu ">';
+                                  
+                                  if(strcmp(strtolower($value_res_menu_dist['signature_dish']),"n")==0){
+                                    echo'
+                                        <option value="N" selected>Món bình thường</option>
+                                        <option value="Y">Món đặt biệt</option>
+                                      ';
+                                  }
+                                 if(strcmp(strtolower($value_res_menu_dist['signature_dish']),"y")==0){
+                                    echo'
+                                        <option value="N">Món bình thường</option>
+                                        <option value="Y" selected>Món đặt biệt</option>
+                                      ';
+                                    
+                                  }
+                                  
+                                  
+
+                                 echo' </select>
+                               </div>';
+                           
+                           $stt_value_res_menu_dist=$stt_value_res_menu_dist+1;
+                         
+                       }
+                
+                ?>
                 
                 
                </div>
@@ -199,14 +327,63 @@
         <form id="FormAddListing_Culinary_Style">
           <ul class="list_index">
             
-            <?php    foreach ($culinary_style as $value_culinary_style) {
-                      echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                           '.$value_culinary_style['name'].' <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
-                         </li>';
+            <?php    
+            
+              // var_dump($res_culinary_style_list);
+               
+            
+            
+               foreach ($culinary_style as $value_culinary_style) {
+                    foreach ($res_culinary_style_list as $j => $value_res_culinary_style_list) {
+
+                      $id_culinary_style = $value_culinary_style['id'];
+
+                      if( strcmp($value_res_culinary_style_list, $id_culinary_style) == 0){
+                          echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
+                             '.$value_culinary_style['name'].' <span class="checkboxSelect" id="'.$value_culinary_style['id'].'"></span>
+                           </li>';
+                        break;
+                      }else{
+                         if($j >= (sizeof($res_culinary_style_list)-1) ){
+                            echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
+                               '.$value_culinary_style['name'].' <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
+                             </li>';
+                         }
+
+                      }
+
+                    } 
                  }
            ?>
                    
           </ul>
+           
+          
+         <?php 
+           
+         
+                $array_id_culinary_style = array();
+                foreach ($culinary_style as $value) {
+                  $array_id_culinary_style[] = $value['id'];
+                };
+
+                //the seam
+                $array_match = array_intersect ( $array_id_culinary_style, $res_culinary_style_list ); 
+                foreach ($array_match as $value_array_match){
+                echo'<input type="hidden" name="arr_culinary_style[]" class="input_culinary_style_class" id="input_culinary_style'.$array_match.'" value="'.$array_match.'"/>';
+
+
+                }
+      //echo'<input type="hidden" name="arr_culinary_style[]" class="input_culinary_style_class" id="input_culinary_style'.$value_array_id_culinary_style.'" value="'.$value_array_id_culinary_style.'"/>';
+  
+        
+
+             
+           ?> 
+          
+          
+          
+          
         </form>
      </div>
      <!--end phong cách ẩm thực-->
@@ -216,16 +393,44 @@
        <span class="span_title">PHƯƠNG THỨC SỬ DỤNG</span>
         <form id="FormAddListing_Mode_Use_List">
           <ul class="list_index">
-                  <?php 
-                    foreach ($mode_use_list as $value_mode_use_list) {
-                      echo'<li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
-                          '.$value_mode_use_list['name'].'<span class="checkbox" id="'.$value_mode_use_list['id'].'"></span>
+             <?php 
+                  foreach ($mode_use_list as $value_mode_use_list) {
+                    foreach ($res_mode_use_list as $j => $value_res_mode_use_list_string) {
+
+                      $id_mode_use_list= $value_mode_use_list['id'];
+
+                      if( strcmp($value_res_mode_use_list_string, $id_mode_use_list) == 0){
+                          echo'<li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
+                          '.$value_mode_use_list['name'].'<span class="checkboxSelect" id="'.$value_mode_use_list['id'].'"></span>
                             </li>';
-                           }
+                        break;
+                      }else{
+                         if($j >= (sizeof($res_mode_use_list)-1) ){
+                            echo'<li onclick="return onclickLiCheckListing_Mode_Use_List(this);" >
+                               '.$value_mode_use_list['name'].'<span class="checkbox" id="'.$value_mode_use_list['id'].'"></span>
+                            </li>';
+                         }
+
+                      }
+
+                    } 
+                 }
                    ?>
-             
-                   
           </ul>
+          <?php
+                $array_id_mode_use_list = array();
+                foreach ($mode_use_list as $value_mode_use_list) {
+                  $array_id_mode_use_list[] = $value_mode_use_list['id'];
+                };
+
+                //the seam
+                $array_match_mode_use_list = array_intersect ( $array_id_mode_use_list, $res_mode_use_list ); 
+                foreach ($array_match_mode_use_list as $value){
+                  echo'<input type="hidden" name="arr_mode_use_list[]" class="input_mode_use_list_class" id="input_mode_use_list'.$value.'" value="'.$value.'">';
+
+                }
+          ?>
+          
         </form>
      </div>
      <!--end mục đích-->
@@ -236,13 +441,47 @@
         <form id="FormAddListing_Favourite_List">
           <ul class="list_index">
                   <?php 
-                    foreach ($favourite_list as $value_favourite_list) {
-                      echo'<li onclick="return onclickLiCheckListing_Favourite_List(this);" >
-                          '.$value_favourite_list['name'].'<span class="checkbox" id="'.$value_favourite_list['id'].'"></span>
-                            </li>';
-                           }
+                       foreach ($favourite_list as $value_favourite_list) {
+                        foreach ($res_favourite_list as $j => $value_res_favourite_list) {
+
+                          $id_favourite_list= $value_favourite_list['id'];
+
+                          if( strcmp($value_res_favourite_list, $id_favourite_list) == 0){
+                              echo'<li onclick="return onclickLiCheckListing_Favourite_List(this);" >
+                                '.$value_favourite_list['name'].'<span class="checkboxSelect" id="'.$value_favourite_list['id'].'"></span>
+                                  </li>';
+                            break;
+                          }else{
+                             if($j >= (sizeof($res_favourite_list)-1) ){
+                                echo'<li onclick="return onclickLiCheckListing_Favourite_List(this);" >
+                                '.$value_favourite_list['name'].'<span class="checkbox" id="'.$value_favourite_list['id'].'"></span>
+                                  </li>';
+                             }
+
+                          }
+
+                        } 
+                     }
+
+                    
                    ?>
           </ul>
+          
+          <?php
+                $array_id_favourite_list = array();
+                foreach ($mode_use_list as $value_mode_use_list) {
+                  $array_id_mode_use_list[] = $value_mode_use_list['id'];
+                };
+
+                //the seam
+                $array_match_mode_use_list = array_intersect ( $array_id_mode_use_list, $res_mode_use_list ); 
+                foreach ($array_match_mode_use_list as $value){
+                  echo'<input type="hidden" name="arr_mode_use_list[]" class="input_mode_use_list_class" id="input_mode_use_list'.$value.'" value="'.$value.'">';
+
+                }
+          ?>
+          
+          
           
         </form>
      </div>
@@ -329,6 +568,7 @@
         <form action="#" method="post">
               <p>
                 <textarea  class="ckeditor" cols="80" id="editor1" name="editor1" rows="10">
+                  <?php echo $res_introduce;?>
                 </textarea>
               </p>
         </form>
@@ -363,8 +603,21 @@
                 </form>
                 
                 <div id="append_img_content">
-                  <div class="preview_post" id='preview_post_1'>
-                  </div>
+                  
+                  <?php 
+                    if(count($res_image_introduce_link)!=0){
+                      $stt_res_image_introduce_link=1;
+                      foreach ($res_image_introduce_link as $value_res_image_introduce_link){
+                       
+                        echo' <div class="preview_post" id="preview_post_">
+                                <img style="width:100px; height: 100px;" src="'.$link_restaurant_frofile.$value_res_image_introduce_link.'" class="preview">
+                              </div>';
+                      }
+                    }
+                  ?>
+                  <div class="preview_post" id="preview_post_1">
+                  </div>;
+                    
                   
                 </div> 
      </div>
@@ -394,13 +647,32 @@
           </form>
 
 
-          <div style="text-align: center; " id='preview_carousel'>
-          </div>
+          
+            
+            <div style="text-align: center; " id="preview_carousel">
+              <img src="<?php echo $link_restaurant_frofile.$res_image_carousel_link;?>" class="preview" style="width:661px; height:604px;">
+              <input type="hidden" value="<?php echo $res_image_carousel_link;?>" id="image_carousel_post">
+            </div>
+          
        </div>   
       <div class=" box_select_option_noboder">
         <form>
-          <input type="checkbox" id="check_carousel">Hiện carousel trên trang home?
-          <input type="hidden" id="value_carousel" value="0"/>
+          <?php 
+            
+            if($res_approval_show_carousel=='1'){
+              echo '
+                <input type="checkbox" id="check_carousel" checked>Hiện carousel trên trang home?
+                <input type="hidden" id="value_carousel" value="1"/>
+                ';
+            }
+            else{
+              echo '<input type="checkbox" id="check_carousel">Hiện carousel trên trang home?
+          <input type="hidden" id="value_carousel" value="0"/>';
+              
+            }
+          
+          ?>
+          
         </form>
       </div>
      <!--end carousel-->
@@ -976,9 +1248,9 @@
 
      $(function(){
         //var data_status=parseInt($('#hdData_status').val());
-        var data_status=1;
-        $('#formdata-keyvaleditor').find('input').parent().click(function(index) {
-           if(parseInt($(this).find('input').attr('data-status'))==1){
+        var data_status=parseInt($('#formdata-keyvaleditor').find('.keyvalueeditor-row').last().find('input').attr('data-status'));
+        $('#formdata-keyvaleditor').find('.keyvalueeditor_check_status_top').click(function(index) {
+         //  if(parseInt($(this).find('input').attr('data-status'))==1){
              
             var data_status_next=data_status+1;
             data_status=data_status+1;
@@ -998,7 +1270,7 @@
             $('.append_keyvalueeditor-row').append(keyvalueeditor_string);
             $('#hdData_status').val(data_status_next);
             
-           }
+           //}
         });
        
      });

@@ -347,11 +347,25 @@ class Admin_controller extends CI_Controller {
   //sửa nhà hàng
   public function edit_restaurant_page()
   {
+      $this->load->model('restaurantenum');
+      $this->load->helper('url');
+    
+      //id nhà hàng
+      $id_restaurant=$_GET['id_restaurant'];
+      $link_detail_restaurant = Api_link_enum::$EDIT_RESTAURANT_URL."?id=$id_restaurant";
+      $json_string_detail_restaurant= file_get_contents($link_detail_restaurant);    
+      $json_detail_restaurant = json_decode($json_string_detail_restaurant, true);
+      $data['info_restaurant']=$json_detail_restaurant["Results"];
+    
+    
+    
      //link image upload temp
      $data['BASE_IMAGE_UPLOAD_TEMP_URL']=  Api_link_enum::$BASE_IMAGE_UPLOAD_TEMP_URL;
    //call php upload image temp
      $data['BASE_CALL_UPLOAD_IMAGE_TEMP_URL']=  Api_link_enum::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
-   
+     $data['link_restaurant_frofile']=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
+     
+     
    //danh sách phong cách ẩm thực
      $link_culinary_style = Api_link_enum::$CULINARY_STYLE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_CULINARY_STYLE;
      $json_string_culinary_style = file_get_contents($link_culinary_style);    

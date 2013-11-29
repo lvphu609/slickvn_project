@@ -37,7 +37,7 @@ class Api_link_enum {
   const ADD_USER_API="update_user";
   const ALL_ROLE_API="get_all_role";
   const EDIT_USER_API="update_user";
-
+  const EDIT_RESTAURANT_API="get_restaurant_by_id";
 
 
 
@@ -135,6 +135,7 @@ class Api_link_enum {
     public static $BASE_IMAGE_USER_PROFILE_URL;
     public static $ALL_ROLE_URL;
     public static $EDIT_USER_URL;
+    public static $EDIT_RESTAURANT_URL;
     
     
     
@@ -182,7 +183,8 @@ class Api_link_enum {
       self::$ADD_USER_URL = self::$BASE_API_USER_URL.self::ADD_USER_API.self::FORMAT_JSON ;
       self::$ALL_ROLE_URL = self::$BASE_API_USER_URL.self::ALL_ROLE_API.self::FORMAT_JSON ;
       self::$EDIT_USER_URL = self::$BASE_API_USER_URL.self::EDIT_USER_API.self::FORMAT_JSON ;
-
+      self::$EDIT_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::EDIT_RESTAURANT_API.self::FORMAT_JSON ;
+  
       
       
       self::$PAYMENT_TYPE_LIST_URL= self::$BASE_API_COMMON_URL.self::PAYMENT_TYPE_LIST_API.self::FORMAT_JSON ;
