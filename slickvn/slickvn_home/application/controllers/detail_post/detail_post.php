@@ -53,7 +53,7 @@ class Detail_post extends CI_Controller {
                  $this->load->view('detail_post/content/location_page',$data);
              /*=================END_LOCATION_PAGE=======================================================================================*/ 
              /*==================DETAIL POST======================================================================================*/
-
+                 $data['link_image_post_url']=  Api_link_enum::$BASE_IMAGE_POST_URL;
                  $this->load->view('detail_post/content/detail_post',$data);
              /*=================END DETAIL POST=======================================================================================*/ 
                       

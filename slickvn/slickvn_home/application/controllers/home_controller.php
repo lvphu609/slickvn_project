@@ -106,7 +106,7 @@ class Home_controller extends CI_Controller {
     
 /*==================Danh Sách bài viết hay POST=============================================================================================================*/   
     $link_post = Api_link_enum::$POST_URL."?limit=".Restaurantenum::LIMIT_PAGE_POST."&page=1";
-    var_dump($link_post);
+    //var_dump($link_post);
     $json_string_post= file_get_contents($link_post);    
     $json_post = json_decode($json_string_post, true);
     $data['articles_list']=$json_post["Results"]; 

@@ -3,6 +3,7 @@
 <div id="result_search_post">
   <div class="box_search_post_center">
 <?php 
+  if(is_array($result_search_post)){
     foreach ($result_search_post as $value_result_search_post){
         
         $id                    =$value_result_search_post['id'];
@@ -36,7 +37,7 @@
         echo' 
          <ul>
             <li>
-               <a href="#">
+               <a href="'.$url.'/index.php/detail_post/detail_post?id_post='.$id.'">
                  <div class="left">
                    <img src="'.$BASE_IMAGE_POST_URL.$avatar.'">
                  </div>
@@ -99,6 +100,10 @@
      
      
    }
+  }
+ else {
+    
+ }
 
    //kết quả tìm kiếm thông tìm thấy
    if(count($result_search_post)==0){

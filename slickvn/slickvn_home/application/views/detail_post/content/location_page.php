@@ -1,6 +1,18 @@
 
 <?php $url=  base_url();
- 
+
+    //var_dump($info_post);
+    foreach ($info_post as $value_info_post){
+      $id                  =  $value_info_post['id'];
+      $id_user             =  $value_info_post['id_user'];
+      $title               =  $value_info_post['title'];
+      $title=substr($title,0,50) . '...';
+     
+    
+    
+    }
+    
+  
 
 ?>
 
@@ -11,6 +23,8 @@
       <div class="text_location">
         <div class="icon_grater_than">></div>
         <span><div class="text_detail">Bài viết</div></span>
+        <div class="icon_grater_than">></div>
+        <span><div class="text_detail"><?php echo $title;?></div></span>
       </div>
     </div>
     <div class="line_bottom_location_page"></div>
