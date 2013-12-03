@@ -9,6 +9,10 @@
       $res_id_coupon=             $info_detail_restaurant['id_coupon'];
       $res_name=                  $info_detail_restaurant['name'];
       $res_avatar=                $info_detail_restaurant['avatar'];
+      $res_avatar = explode("/", $res_avatar);
+      $res_avatar_folder_link=$res_avatar[0]."/".$res_avatar[1]."/".$res_avatar[2]."/";
+      $res_avatar=$res_avatar[3];
+     
       //$res_number_view=           $info_detail_restaurant['number_view'];
       //$res_number_assessment=     $info_detail_restaurant['number_assessment'];
       //$res_rate_point=            $info_detail_restaurant['rate_point'];
@@ -25,7 +29,12 @@
       $res_approval_show_carousel=           $info_detail_restaurant['approval_show_carousel'];
       $res_address=               $info_detail_restaurant['address'];
       $res_image_introduce_link=  $info_detail_restaurant['image_introduce_link'];
+      
       $res_image_carousel_link=   $info_detail_restaurant['image_carousel_link'];
+      $res_image_carousel_link = explode("/", $res_image_carousel_link);
+      $res_carousel_folder_link=$res_image_carousel_link[0]."/".$res_image_carousel_link[1]."/".$res_image_carousel_link[2]."/";
+      $res_image_carousel_link=$res_image_carousel_link[3];
+      
       $res_link_to=               $info_detail_restaurant['link_to'];
       $res_phone_number=          $info_detail_restaurant['phone_number'];
       
@@ -117,10 +126,10 @@
         <input type="file" name="photoimg" id="photoimg"  />
         </form>
         <div style="width:100%; height: 100%;" id='preview'>
-          <img src="<?php echo $link_restaurant_frofile.$res_avatar;?>" class="preview" style="width:205px; height:200px;">
-          <input type="hidden" value="<?php echo $res_avatar ;?>" id="image_avatar_post">
+          <img src="<?php echo $link_restaurant_frofile.$res_avatar_folder_link.$res_avatar;?>" class="preview" style="width:205px; height:200px;">
+          <input type="hidden" value="<?php   echo $res_avatar; ?>" id="image_avatar_post">
         </div>
-      
+        <input type="hidden" value="<?php   echo $res_avatar; ?>" id="image_avatar_old">
        
        
      </div>
@@ -146,21 +155,25 @@
      </div>
      <div class="status_active">
         <span class="title_input">TÌNH TRẠNG HOẠT ĐỘNG</span><br>
-        <select class="select_status_active" >
+        
           <?php 
               if(strcmp(strtolower($res_status_active),"đang hoạt động")==0){
                 echo'
-                <option value="đang hoạt động" selected>Đang hoạt động</option>
-                <option value="tạm ngưng">Tạm ngưng</option>';
+                <select class="select_status_active" >  
+                  <option value="đang hoạt động" selected>Đang hoạt động</option>
+                  <option value="tạm ngưng">Tạm ngưng</option>
+                </select>';
               }
               if(strcmp(strtolower($res_status_active), "tạm ngưng")==0){
                 echo'
-                <option value="đang hoạt động" >Đang hoạt động</option>
-                <option value="tạm ngưng" selected>Tạm ngưng</option>';
+                <select class="select_status_active" >  
+                  <option value="đang hoạt động" >Đang hoạt động</option>
+                  <option value="tạm ngưng" selected>Tạm ngưng</option>
+                 </select> ';
               }
           ?>
           
-        </select>
+        
      </div>
 <!--     <div class="facebock_url_profile">
         <span>FACEBOOK URL</span><br>
@@ -259,7 +272,7 @@
       <!--menu nha hàng dùng cho tìm kiếm-->
      <div class="box_select_option">
        <span class="span_title">MENU NHÀ HÀNG</span>
-        <form id="FormAddListing_Culinary_Style">
+        <form id="FormAddListing_Menu">
            <div id="formdata-keyvaleditor-container" class="row" style="margin-left: 0px; display: block;">
               <div id="formdata-keyvaleditor" class="append_keyvalueeditor-row">
                 
@@ -326,61 +339,48 @@
        <span class="span_title">PHONG CÁCH ẨM THỰC</span>
         <form id="FormAddListing_Culinary_Style">
           <ul class="list_index">
-            
-            <?php    
-            
-              // var_dump($res_culinary_style_list);
-               
-            
-            
-               foreach ($culinary_style as $value_culinary_style) {
+           <?php 
+                  foreach ($culinary_style as $value_culinary_style) {
                     foreach ($res_culinary_style_list as $j => $value_res_culinary_style_list) {
 
-                      $id_culinary_style = $value_culinary_style['id'];
+                      $id_culinary_style= $value_culinary_style['id'];
 
                       if( strcmp($value_res_culinary_style_list, $id_culinary_style) == 0){
-                          echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                             '.$value_culinary_style['name'].' <span class="checkboxSelect" id="'.$value_culinary_style['id'].'"></span>
-                           </li>';
+                         echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
+                           '.$value_culinary_style['name'].' <span class="checkboxSelect" id="'.$value_culinary_style['id'].'"></span>
+                            </li>';
                         break;
                       }else{
                          if($j >= (sizeof($res_culinary_style_list)-1) ){
                             echo'<li onclick="return onclickLiCheckListing_Culinary_Style(this);" >
-                               '.$value_culinary_style['name'].' <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
-                             </li>';
+                                '.$value_culinary_style['name'].' <span class="checkbox" id="'.$value_culinary_style['id'].'"></span>
+                              </li>';
                          }
 
                       }
 
                     } 
                  }
-           ?>
+                   ?>
+          
+            
                    
           </ul>
-           
-          
-         <?php 
-           
-         
+            <?php
                 $array_id_culinary_style = array();
-                foreach ($culinary_style as $value) {
-                  $array_id_culinary_style[] = $value['id'];
+                foreach ($culinary_style as $value_culinary_style) {
+                  $array_id_culinary_style[] = $value_culinary_style['id'];
                 };
 
                 //the seam
-                $array_match = array_intersect ( $array_id_culinary_style, $res_culinary_style_list ); 
-                foreach ($array_match as $value_array_match){
-                echo'<input type="hidden" name="arr_culinary_style[]" class="input_culinary_style_class" id="input_culinary_style'.$array_match.'" value="'.$array_match.'"/>';
-
+                $array_match_culinary_style = array_intersect ( $array_id_culinary_style, $res_culinary_style_list ); 
+                foreach ($array_match_culinary_style as $value){
+                  echo'<input type="hidden" name="arr_culinary_style[]" class="input_culinary_style_class" id="input_culinary_style'.$value.'" value="'.$value.'">';
 
                 }
-      //echo'<input type="hidden" name="arr_culinary_style[]" class="input_culinary_style_class" id="input_culinary_style'.$value_array_id_culinary_style.'" value="'.$value_array_id_culinary_style.'"/>';
-  
-        
-
-             
-           ?> 
+            ?>
           
+        
           
           
           
@@ -469,14 +469,14 @@
           
           <?php
                 $array_id_favourite_list = array();
-                foreach ($mode_use_list as $value_mode_use_list) {
-                  $array_id_mode_use_list[] = $value_mode_use_list['id'];
+                foreach ($favourite_list as $value_favourite_list) {
+                  $array_id_favourite_list[] = $value_favourite_list['id'];
                 };
 
                 //the seam
-                $array_match_mode_use_list = array_intersect ( $array_id_mode_use_list, $res_mode_use_list ); 
-                foreach ($array_match_mode_use_list as $value){
-                  echo'<input type="hidden" name="arr_mode_use_list[]" class="input_mode_use_list_class" id="input_mode_use_list'.$value.'" value="'.$value.'">';
+                $array_match_favourite_list = array_intersect ( $array_id_favourite_list, $res_favourite_list ); 
+                foreach ($array_match_favourite_list as $value){
+                  echo'<input type="hidden" name="arr_favourite_list[]" class="input_favourite_list_class" id="input_favourite_list'.$value.'" value="'.$value.'">';
 
                 }
           ?>
@@ -492,15 +492,49 @@
        <span class="span_title">HÌNH THỨC THANH TOÁN</span>
         <form id="FormAddListing_Payment_Type_List">
           <ul class="list_index">
-                <?php 
-                    foreach ($payment_type_list as $value_payment_type_list) {
-                      echo'<li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
-                          '.$value_payment_type_list['name'].'<span class="checkbox" id="'.$value_payment_type_list['id'].'"></span>
-                            </li>';
-                           }
-                ?>
+            <?php 
+            
+                       foreach ($payment_type_list as $value_payment_type_list) {
+                        foreach ($res_payment_type_list as $j => $value_res_payment_type_list) {
+
+                          $id_payment_type_list= $value_payment_type_list['id'];
+
+                          if( strcmp($value_res_payment_type_list, $id_payment_type_list) == 0){
+                              echo'<li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
+                              '.$value_payment_type_list['name'].'<span class="checkboxSelect" id="'.$value_payment_type_list['id'].'"></span>
+                                </li>';
+                            break;
+                          }else{
+                             if($j >= (sizeof($res_payment_type_list)-1) ){
+                                 echo'<li onclick="return onclickLiCheckListing_Payment_Type_List(this);" >
+                                  '.$value_payment_type_list['name'].'<span class="checkbox" id="'.$value_payment_type_list['id'].'"></span>
+                                    </li>';
+                             }
+
+                          }
+
+                        } 
+                     }
+
+                    
+                   ?>
+            
             
           </ul>
+          
+          <?php
+                $array_id_payment_type_list = array();
+                foreach ($payment_type_list as $value_payment_type_list) {
+                  $array_id_payment_type_list[] = $value_payment_type_list['id'];
+                };
+
+                //the seam
+                $array_match_payment_type_list = array_intersect ( $array_id_payment_type_list, $res_payment_type_list ); 
+                foreach ($array_match_payment_type_list as $value){
+                  echo '<input type="hidden" name="arr_payment_type_list[]" class="input_payment_type_list_class" id="input_payment_type_list'.$value.'" value="'.$value.'">';
+                }
+          ?>
+          
         </form>
      </div>
      <!--end hình thức thanh toán-->
@@ -510,17 +544,49 @@
         <span class="span_title">NGOẠI CẢNH</span>
         <form id="FormAddListing_Landscape_List">
           <ul class="list_index">
+             <?php 
             
-               <?php 
-                    foreach ($landscape_list as $value_landscape_list) {
-                      echo'<li onclick="return onclickLiCheckListing_Landscape_List(this);" >
-                          '.$value_landscape_list['name'].'<span class="checkbox" id="'.$value_landscape_list['id'].'"></span>
-                            </li>';
-                           }
-                ?>
+                       foreach ($landscape_list as $value_landscape_list) {
+                        foreach ($res_landscape_list as $j => $value_res_landscape_list) {
+
+                          $id_landscape_list= $value_landscape_list['id'];
+
+                          if( strcmp($value_res_landscape_list, $id_landscape_list) == 0){
+                               echo'<li onclick="return onclickLiCheckListing_Landscape_List(this);" >
+                                '.$value_landscape_list['name'].'<span class="checkboxSelect" id="'.$value_landscape_list['id'].'"></span>
+                                  </li>';
+                            break;
+                          }else{
+                             if($j >= (sizeof($res_landscape_list)-1) ){
+                                echo'<li onclick="return onclickLiCheckListing_Landscape_List(this);" >
+                                '.$value_landscape_list['name'].'<span class="checkbox" id="'.$value_landscape_list['id'].'"></span>
+                                  </li>';
+                             }
+
+                          }
+
+                        } 
+                     }
+
+                    
+               ?>
+              
                   
                    
           </ul>
+           <?php
+                $array_id_landscape_list = array();
+                foreach ($landscape_list as $value_landscape_list) {
+                  $array_id_landscape_list[] = $value_landscape_list['id'];
+                };
+
+                //the seam
+                $array_match_landscape_list = array_intersect ( $array_id_landscape_list, $res_landscape_list ); 
+                foreach ($array_match_landscape_list as $value){
+                  echo '<input type="hidden" name="arr_landscape_list[]" class="input_landscape_list_class" id="input_landscape_list'.$value.'" value="'.$value.'">';
+                  
+                }
+          ?>
         </form>
      </div>
      <!--end ngoại cảnh-->
@@ -531,15 +597,49 @@
         <form id="FormAddListing_Price_Person_List">
           <ul class="list_index">
             
-               <?php 
-                    foreach ($price_person_list as $value_price_person_list) {
-                      echo'<li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
-                          '.$value_price_person_list['name'].'<span class="checkbox" id="'.$value_price_person_list['id'].'"></span>
-                            </li>';
-                           }
-                ?>
+             <?php 
+            
+                      foreach ($price_person_list as $value_price_person_list) {
+                        foreach ($res_price_person_list as $j => $value_res_price_person_list) {
+
+                          $id_price_person_list= $value_price_person_list['id'];
+
+                          if( strcmp($value_res_price_person_list, $id_price_person_list) == 0){
+                                echo'<li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
+                                '.$value_price_person_list['name'].'<span class="checkboxSelect" id="'.$value_price_person_list['id'].'"></span>
+                                  </li>';
+                            break;
+                          }else{
+                             if($j >= (sizeof($res_price_person_list)-1) ){
+                                 echo'<li onclick="return onclickLiCheckListing_Price_Person_List(this);" >
+                                  '.$value_price_person_list['name'].'<span class="checkbox" id="'.$value_price_person_list['id'].'"></span>
+                                    </li>';
+                             }
+
+                          }
+
+                        } 
+                     }
+
+                    
+               ?>
+              
+            
                    
           </ul>
+           <?php
+                $array_id_price_person_list = array();
+                foreach ($price_person_list as $value_price_person_list) {
+                  $array_id_price_person_list[] = $value_price_person_list['id'];
+                };
+
+                //the seam
+                $array_match_price_person_list = array_intersect ( $array_id_price_person_list, $res_price_person_list ); 
+                foreach ($array_match_price_person_list as $value){
+                  echo '<input type="hidden" name="arr_price_person_list[]" class="input_price_person_list_class" id="input_price_person_list'.$value.'" value="'.$value.'">';
+                }
+          ?>
+          
         </form>
      </div>
      <!--end giá trung bình người-->
@@ -549,14 +649,50 @@
        <span class="span_title">CÁC TIÊU CHÍ KHÁC</span>
         <form id="FormAddListing_Other_Criteria_List">
           <ul class="list_index">
+            
+            
                <?php 
-                    foreach ($other_criteria_list as $value_other_criteria_list) {
-                      echo'<li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
-                          '.$value_other_criteria_list['name'].'<span class="checkbox" id="'.$value_other_criteria_list['id'].'"></span>
-                            </li>';
-                           }
-                ?>
+            
+                      foreach ($other_criteria_list as $value_other_criteria_list) {
+                        foreach ($res_other_criteria_list as $j => $value_res_other_criteria_list) {
+
+                          $id_other_criteria_list= $value_other_criteria_list['id'];
+
+                          if( strcmp($value_res_other_criteria_list, $id_other_criteria_list) == 0){
+                                echo'<li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
+                                '.$value_other_criteria_list['name'].'<span class="checkboxSelect" id="'.$value_other_criteria_list['id'].'"></span>
+                                  </li>';
+                            break;
+                          }else{
+                             if($j >= (sizeof($res_other_criteria_list)-1) ){
+                                 echo'<li onclick="return onclickLiCheckListing_Other_Criteria_List(this);" >
+                                  '.$value_price_person_list['name'].'<span class="checkbox" id="'.$value_price_person_list['id'].'"></span>
+                                    </li>';
+                             }
+
+                          }
+
+                        } 
+                     }
+
+                    
+               ?>
+              
           </ul>
+             <?php
+                $array_id_other_criteria_list = array();
+                foreach ($other_criteria_list as $value_other_criteria_list) {
+                  $array_id_other_criteria_list[] = $value_other_criteria_list['id'];
+                };
+
+                //the seam
+                $array_match_other_criteria_list = array_intersect ( $array_id_other_criteria_list, $res_other_criteria_list ); 
+                foreach ($array_match_other_criteria_list as $value){
+                  echo '<input type="hidden" name="arr_other_criteria_list[]" class="input_other_criteria_list_class" id="input_other_criteria_list'.$value.'" value="'.$value.'">';
+                  
+                }
+          ?>
+          
         </form>
      </div>
      <!--end các tiêu chí khác-->
@@ -608,15 +744,18 @@
                     if(count($res_image_introduce_link)!=0){
                       $stt_res_image_introduce_link=1;
                       foreach ($res_image_introduce_link as $value_res_image_introduce_link){
-                       
+                        $image_name=$value_res_image_introduce_link;
+                        $image_name = explode("/", $image_name);
+                        $image_name=$image_name[3];
                         echo' <div class="preview_post" id="preview_post_">
                                 <img style="width:100px; height: 100px;" src="'.$link_restaurant_frofile.$value_res_image_introduce_link.'" class="preview">
+                                <input type="hidden" value="'.$image_name.'" class="img_content_post img_content_post_old" name="img_content_post[]">
                               </div>';
                       }
                     }
                   ?>
                   <div class="preview_post" id="preview_post_1">
-                  </div>;
+                  </div>
                     
                   
                 </div> 
@@ -650,10 +789,10 @@
           
             
             <div style="text-align: center; " id="preview_carousel">
-              <img src="<?php echo $link_restaurant_frofile.$res_image_carousel_link;?>" class="preview" style="width:661px; height:604px;">
+              <img src="<?php echo $link_restaurant_frofile.$res_carousel_folder_link.$res_image_carousel_link;?>" class="preview" style="width:661px; height:604px;">
               <input type="hidden" value="<?php echo $res_image_carousel_link;?>" id="image_carousel_post">
             </div>
-          
+              <input type="hidden" value="<?php echo $res_image_carousel_link;?>" id="image_carousel_old">
        </div>   
       <div class=" box_select_option_noboder">
         <form>
@@ -851,7 +990,14 @@
  
  function onclickSubmit(){
       //alert('hello');
-      var avatar=$('#image_avatar_post').val();
+      var avatar_new=$('#image_avatar_post').val();
+      var avatar_old=$('#image_avatar_old').val();
+      var avatar=avatar_new+','+avatar_old;
+      
+      var carousel_new=$('#image_carousel_post').val();
+      var carousel_old=$('#image_carousel_old').val();
+      var carousel=carousel_new+','+carousel_old;
+      
       //------------------------------------------------------------
       var param_name_restauant=$('.param_name_restauant').val();
       function convertVietnamese(str) { 
@@ -1002,11 +1148,37 @@
                   }
 
             }
+        //danh sach cac hinh su dung trong noi dung gioi thieu    
         string_image_filter=string_image_filter.slice(0,-1);//bỏ ký tự phẩy cuối
+    
+        //lấy chuổi tên image upload củ---------
+        var elem_img_content_post_old = document.getElementsByClassName("img_content_post_old");
+       
+       //đổ chuổi tên image upload củ vào mảng array_img_content_post_old
+        var array_img_content_post_old = new Array();
+        for (var i = 0; i < elem_img_content_post_old.length; ++i) {
+            if (typeof elem_img_content_post_old[i].value !== "undefined") {
+                array_img_content_post_old[i]=elem_img_content_post_old[i].value;
+              }
+            }
+       //so sanh hình củ với nội dung và tìm những image đã xóa
+        var string_image_delete_filter="";
+        for (var i = 0; i < array_img_content_post_old.length; ++i) {
+                if(content.indexOf(array_img_content_post_old[i])==-1)
+                  {
+                    string_image_delete_filter+= array_img_content_post_old[i]+',';
+                  }
+
+            }
+       string_image_delete_filter=string_image_delete_filter.slice(0,-1);
+       if(string_image_delete_filter==""){
+         string_image_delete_filter="null";
+       } 
+            
          
        //chuổi tên hình ảnh gởi lên avatar/carousel/content
-       var carousel=$("#image_carousel_post").val();
-       var str_images=avatar+","+carousel+","+string_image_filter;
+      // var carousel=$("#image_carousel_post").val();
+      // var str_images=avatar+","+carousel+","+string_image_filter;
        var action= "insert";
       
       //========danh sách menu
@@ -1050,7 +1222,7 @@
      var array_elem_price_menu=str_elem_price_menu.split('###');
      var array_elem_select_menu_option=str_elem_select_menu_option.split('###');
     //data sent 
-      var dish_list="";
+     var dish_list="";
        for (var i = 0; i < array_elem_meal_menu.length; ++i) {
          if(array_elem_meal_menu[i]!=""){
            dish_list+=array_elem_meal_menu[i]+'*100#'
@@ -1062,93 +1234,53 @@
          }
          
         }
-        //alert(dish_list);
-        //str_elem_select_menu_option=str_elem_select_menu_option.slice(0,-3);
-     
+     dish_list=dish_list.slice(0,-6);
+       
+     var  status_active =$('.select_status_active').val(); 
+     var  working_time= $('#timepicker_start_working_time').val()+' - '+$('#timepicker_end_working_time').val();
+     var  start_date=$('#start_date').val();
+     var  end_date = $('#end_date').val();
+     var approval_show_carousel=parseInt($('#value_carousel').val());
+     var array_image=avatar+"#"+carousel+"#"+string_image_delete_filter+"#"+string_image_filter
+    /*  var show_example = 'avatar: ' + avatar + '\n' +
+                         'ten nha hang: ' + param_name_restauant + '\n' +
+                         'email: ' + param_email +'\n' +
+                         'address: ' + param_address +'\n' +
+                         'phone number: ' + param_phonenumber+'\n' +
+                         'link website: ' + param_link_website +'\n' +
+                         'Tình trạng hoạt động: '+ status_active +'\n' +
+                         'mô tả ngắn: ' + param_introduce_short_restaurant+'\n'+
+                         'Thời gian làm việc: ' + working_time+'\n'+
+                         'Thời gian bắt đầu đăng ký: ' + start_date+'\n'+
+                         'Thời gian kết thúc đăng ký: ' + end_date+'\n'+
+                         'Menu món ăn: ' + dish_list+'\n'+
+                         'Phong cách ẩm thưc: ' + culinary_style+'\n'+
+                         'Phương thức sử dụng: ' + mode_use_list+'\n'+
+                         'Nhu cầu: ' + favourite_list+'\n'+
+                         'Hình thức thanh toán: ' + payment_type_list+'\n'+
+                         'Ngoại cảnh: ' + landscape_list+'\n'+
+                         'Giá trung bình người: ' + price_person_list+'\n'+
+                         'Các tiêu chí khác: ' + other_criteria_list+'\n'+
+                         'Carousel: ' + carousel+'\n'+
+                         'show carousel: ' + approval_show_carousel+'\n'+
+                         'noi dung gioi thieu: ' + content+'\n'+
+                         'danh sach hinh su dung cho bai viet: ' + string_image_filter+'\n'+
+                         'danh sach image da xoa: ' + string_image_delete_filter+'\n'
+  
+                              ;*/
+                     
+      alert(array_image);
+    
     
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-         
-      /*
-       
-          //array====
-      //---meal
-      var arr_elem_meal_menu = [];//<===
-       for (var i = 0; i < elem_meal_menu.length; ++i) {
-         arr_elem_meal_menu.push(elem_meal_menu[i].value);
-        }
-      //--- description
-       var arr_elem_description_menu=[];//<===
-       for (var i = 0; i < elem_description_menu.length; ++i) {
-         arr_elem_description_menu.push(elem_meal_menu[i].value);
-        }
-      //-- price 
-        var arr_elem_price_menu=[];//<===
-       for (var i = 0; i < elem_price_menu.length; ++i) {
-         arr_elem_price_menu.push(elem_meal_menu[i].value);
-        }
-     //--option  
-        var arr_elem_select_menu_option=[];//<===
-       for (var i = 0; i < elem_select_menu_option.length; ++i) {
-         arr_elem_select_menu_option.push(elem_meal_menu[i].value);
-        }
-     //===>string send
-     var meal_list_menu="";
-      for (var i = 0; i < elem_meal_menu.length; ++i) {
-        if(typeof elem_meal_menu[i]!== "undefined"){
-             meal_list_menu +=arr_elem_meal_menu[i].value+'*100#'
-                             +arr_elem_description_menu[i].value+'*100#'
-                             +arr_elem_price_menu[i].value+'*100#'
-                             +arr_elem_select_menu_option[i].value+'*100#'
-                             +' *101# ';
-       
-          }
-       }
-       alert(meal_list_menu);
-       */   
-      
-  // alert('các tiêu chí khác: '+other_criteria_list);
-   /*
-      alert('image avatar: '+avatar);
-      alert('ten nha hang: '+param_name_restauant);
-      alert('email: '+param_email);
-      alert('adress: '+param_address);
-      alert('phone number: '+param_phonenumber);
-      alert('link website: '+param_link_website);
-      alert('mô tả ngắn: '+param_introduce_short_restaurant);
-      alert('phong cach am thuc: '+culinary_style);
-      alert('phuong thuc su dung: '+mode_use_list);
-      alert('nhu cầu: '+favourite_list);
-      alert('hinh thức thanh toán: '+payment_type_list);
-      alert('ngoai cảnh: '+landscape_list);
-      alert('giá trung bình người: '+price_person_list);
-      alert('các tiêu chí khác: '+other_criteria_list);
-      alert('nội dung bài viết: '+content);
-      alert('mảng hình: '+str_images);
-      alert('action: '+action);
-    
-    */
     
      /*temp*/
-     //var  id_menu_dish = "";//complet
-     var  id_coupon="";
      var  city="TP HCM";
      var  district="Phạm Hùng";
      
-     var  start_date=$('#start_date').val();
-     var  end_date = $('#end_date').val();
-     var  working_time= $('#timepicker_start_working_time').val()+' - '+$('#timepicker_end_working_time').val();
-     var  status_active =$('.select_status_active').val();//tạm ngưng
-     var approval_show_carousel=parseInt($('#value_carousel').val());
+     
+   
+    
      //alert(start_date);
       
      var url_api="http://localhost/slickvn_api_project_xinh/slickvn_api/index.php/restaurant/restaurant_apis/update_restaurant";
@@ -1185,7 +1317,7 @@
                 action: action
 
           }
-     
+   /*  
     $.ajax({
           url: url_api ,
           type: 'POST',
@@ -1202,7 +1334,7 @@
            alert('khong thanh cong');
          }
        });
-    
+    */
  }
 
 
@@ -1213,39 +1345,7 @@
 <div class="append_add_menu_restaurant">
   <div class="remove_add_menu_restaurant_1">
     <script>
-    //thêm menu nhà hàng 
-//     $(function(){
-//        var data_status=parseInt($('#hdData_status').val());
-//        $('.keyvalueeditor_check_status').click(function (){
-//            var get_data_status=parseInt($(this).attr('data-status'));
-//         //   alert(data_status);
-//            
-//
-//            if(get_data_status==data_status){
-//              
-//              data_status=data_status+1;
-//              $('#hdData_status').val(data_status);
-//              var keyvalueeditor_string="<div class=\"keyvalueeditor-row \">\n\
-//                      <input type=\"text\" data-status=\""+data_status+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status\" placeholder=\"Tên món ăn\" name=\"keyvalueeditor-action\" value=\"\">\n\
-//                      <input type=\"text\" data-status=\""+data_status+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status\" placeholder=\"Mô tả\" name=\"keyvalueeditor-action\" value=\"\">\n\
-//                      <input type=\"text\" data-status=\""+data_status+"\" class=\"keyvalueeditor-key keyvalueeditor_check_status\" placeholder=\"Giá\" name=\"keyvalueeditor-action\" value=\"\">\n\
-//                      <select class=\"select_menu_option\"><option value=\"N\">Món bình thường</option>\n\
-//                      <option value=\"Y\">Món đặt biệt</option>\n\
-//                      </select>\n\
-//                     </div>";
-//              $('.append_keyvalueeditor-row').append(keyvalueeditor_string);
-//            //  $('.append_add_menu_restaurant').append(append_add_menu_restaurant);
-//             // $('.remove_add_menu_restaurant').remove();
-//
-//          }
-//            else{
-//              alert('not append');
-//            }
-//
-//
-//
-//        });
-
+      
      $(function(){
         //var data_status=parseInt($('#hdData_status').val());
         var data_status=parseInt($('#formdata-keyvaleditor').find('.keyvalueeditor-row').last().find('input').attr('data-status'));
@@ -1262,11 +1362,6 @@
                       <option value=\"Y\">Món đặt biệt</option>\n\
                       </select>\n\
                      </div>";
-//            var prv_data_status = data_status-1;
-//            prv_data_status=".remove_add_menu_restaurant_"+prv_data_status;
-//            var remove_script= $(prv_data_status).html();
-//            
-//            alert(prv_data_status);
             $('.append_keyvalueeditor-row').append(keyvalueeditor_string);
             $('#hdData_status').val(data_status_next);
             

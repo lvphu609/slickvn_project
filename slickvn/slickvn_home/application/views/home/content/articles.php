@@ -41,7 +41,7 @@
             echo'
                 <div class="box_list">
                   <div class="images">
-                    <a href="#">
+                    <a  href="'.$url.'/index.php/detail_post/detail_post?id_post='.$id.'">
                       <div class="detail_image">
                         <img src="'.$link_image_post_url.$avatar.'" >
 

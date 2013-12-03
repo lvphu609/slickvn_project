@@ -96,6 +96,11 @@ foreach ($all_user as $value_all_user){
 <input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/delete_user";?>" id="hdUrl_delete_user" >
 
 <script>
+  
+   $(document).ready(function () {
+         $('.delete_member').hide();
+      });
+  
   $(".view_edit_user").click(function (){
     var url=$("#hdUrl_edit_user").val();
     var data_value_edit=$(this).attr('data-value_edit');
@@ -103,20 +108,43 @@ foreach ($all_user as $value_all_user){
   });
   $(".delete_user").click(function (){
       $(this).parent().parent().addClass('select_delete');
-      
-      
-      var answer = confirm ("Bạn có chắc muốn xóa dữ liệu đang chọn không?")
-      if (answer){
-       var url=$("#hdUrl_delete_user").val();
-       var data_value_delete=$(this).attr('data-value_delete');
-       window.location=url+"?param_id="+data_value_delete;
+      var url=$("#hdUrl_delete_user").val();
+      var data_value_delete=$(this).attr('data-value_delete');
+   
+      $( ".delete_member" ).dialog({
+          title: "Thông báo", 
+          show: "scale",
+          hide: "explode",
+          closeOnEscape: true,
+          modal: true,
+          minWidth: 200,
+          minHeight: 200,
+
+          resizable: false,
+          height:200,
+          modal: true,
+          buttons: {
+            "Xóa": function() {
+              window.location=url+"?param_id="+data_value_delete;
+              $( this ).dialog( "close" );
+            },
+            "Hủy": function() {
+              $(".delete_user").parent().parent().removeClass('select_delete');
+              $( this ).dialog( "close" );
+            }
+          }
+    
+      });
        
-      }
-      else{
-        $(this).parent().parent().removeClass('select_delete');
-      }
+       
        
   });
   
   
 </script>
+
+  <div class="delete_member" title="Thông báo">  
+    <lable class="label">Bạn có chắc muốn xóa dữ liệu đang chọn không!</lable></br>
+    <!--<button type="button" id="btnYes" class="btn btn-warning">Đồng ý</button>
+    <button type="button" id="btnNo" class="btn btn-warning">Hủy</button>-->
+  </div>

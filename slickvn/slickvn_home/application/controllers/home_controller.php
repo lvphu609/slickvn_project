@@ -470,7 +470,9 @@ class Home_controller extends CI_Controller {
     $json_string = file_get_contents($link);    
     $json = json_decode($json_string, true);
     $data['link_image_post_url']=  Api_link_enum::$BASE_IMAGE_POST_URL;
-    
+    $this->load->helper('url'); 
+    $url=  base_url();
+    //var_dump($url);
     foreach ($json['Results'] as $articles_list) {
             $id=$articles_list['id'];
             $title=$articles_list['title'];
@@ -500,7 +502,7 @@ class Home_controller extends CI_Controller {
             echo'
                 <div class="box_list">
                   <div class="images">
-                    <a href="#">
+                    <a href="'.$url.'/index.php/detail_post/detail_post?id_post='.$id.'">
                       <div class="detail_image">
                         <img src="'.$data['link_image_post_url'].$avatar.'" >
 
