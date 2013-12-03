@@ -24,7 +24,7 @@ class Api_link_enum {
   const FAVOURITE_TYPE_API = "get_base_collection";
   const CAROUSEL_API = "get_all_restaurant_approval_show_carousel";
   const PROMOTION_API = "get_coupon_list";
-  const POST_API = "get_post_list";
+  const POST_API = "get_all_post";
   const DETAIL_RESTAURANT_API="get_detail_restaurant";
   const PRICE_PERSION_API="get_base_collection";
   const CULINARY_STYLE_API="get_base_collection";

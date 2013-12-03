@@ -1,0 +1,16 @@
+#detail_post{
+   float: left;
+   width: 100%;
+   height: auto;
+   margin: 0 auto;
+   background: url('../../../../includes/images/icon/slidebg.png'); 
+  
+}
+
+
+
+#detail_post .detail_post_center{
+  width: 1024px;
+  height: auto;
+  margin: 0 auto;
+}

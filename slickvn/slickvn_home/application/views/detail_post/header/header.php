@@ -6,8 +6,7 @@
     <link type="text/css" href="<?php echo $url; ?>/includes/css/common/menu.css" rel="stylesheet" /> 
     <link type="text/css" href="<?php echo $url; ?>/includes/css/common/footer_content.css" rel="stylesheet" />
     <link type="text/css" href="<?php echo $url; ?>/includes/css/common/detail_post/location_page.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/detail_post/result_search.css" rel="stylesheet" />
-    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/detail_post/result_search_post.css" rel="stylesheet" />
+    <link type="text/css" href="<?php echo $url; ?>/includes/css/common/detail_post/detail_post.css" rel="stylesheet" />
     
     <script src="<?php echo $url; ?>/includes/plugins/smart_gallery/jquery-1.4.4.min.js" type="text/javascript"></script>
     <!--sub banner more, button animation nimble_style css-->
