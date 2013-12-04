@@ -63,6 +63,13 @@
     //<!--css coupon page-->
      if($chosed=="coupon_page"){
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/coupon_page.css">';
+       echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/add_coupon.css">';
+       // <!--time picker-->
+       echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
+       echo '<link rel="stylesheet" href="'.$url.'includes/plugins/date_time_picker/jquery-ui-timepicker-addon.css">';
+       echo '<link rel="stylesheet" href="'.$url.'includes/plugins/date_time_picker/jquery-ui.css">';
+     //  <!--end timepicker-->
+       
      }    
     ?>
     

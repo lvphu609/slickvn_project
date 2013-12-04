@@ -421,15 +421,79 @@ class Admin_controller extends CI_Controller {
   public function coupon_page()
   {
 
-    $data['chosed']="coupon_page";
-    $this->load->helper('url');
-    $this->load->view('admin/header/header_main',$data);
-    $this->load->view('admin/taskbar_top/taskbar_top');
-    $this->load->view('admin/menu/menu_main',$data);
-    //$this->load->view('admin/content/main_page/member_page');
-    $this->load->view('admin/footer/footer_main');
+    
+   
+    
+    //danh sách tất cả các nhà hàng
+     $link_all_restaurant = Api_link_enum::$ALL_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_RESTAURANT_ALL."&page=1";
+     $json_string_all_restaurant= file_get_contents($link_all_restaurant);    
+     $json_all_restaurant = json_decode($json_string_all_restaurant, true);
+     $data['all_restaurant']=$json_all_restaurant["Results"];
+     //var_dump( $data['all_restaurant']);
+      $data['chosed']="coupon_page";
+      $this->load->helper('url');
+      $this->load->view('admin/header/header_main',$data);
+      $this->load->view('admin/taskbar_top/taskbar_top');
+      $this->load->view('admin/menu/menu_main',$data);
+    
+      $this->load->view('admin/content/coupon_page/coupon_page');
+      $this->load->view('admin/footer/footer_main');
+    
+    
     
   }  
+  public function form_add_coupon()
+  {
+      $data['id_res']=$_GET['id_restaurant'];
+      $data['name_res']=$_GET['name_res'];
+      
+      $data['chosed']="coupon_page";
+      $this->load->helper('url');
+      $this->load->view('admin/header/header_main',$data);
+      $this->load->view('admin/taskbar_top/taskbar_top');
+      $this->load->view('admin/menu/menu_main',$data);
+    
+      $this->load->view('admin/content/coupon_page/add_coupon');
+      
+      $this->load->view('admin/footer/footer_main');
+    
+    
+    
+  }  
+    public function add_coupon()
+  {
+    $id_restaurant           =$_POST['id_restaurant'];
+    $value_coupon            =$_POST['value_coupon'];
+    $date_coupon_start       =$_POST['date_coupon_start'];
+    $date_coupon_end         =$_POST['date_coupon_end'];
+    $description             =$_POST['description'];
+    $action="insert";
+    $url=Api_link_enum::$ADD_COUPON_URL;
+    $myvars = 'id_restaurant=' . $id_restaurant . 
+              '&value_coupon=' . $value_coupon.
+              '&start_date=' . $date_coupon_start.
+              '&due_date=' . $date_coupon_end.
+              '&desc=' . $description.
+              '&action=' . $action;
+   // echo $url;
+    $ch = curl_init( $url );
+    curl_setopt( $ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt( $ch, CURLOPT_HEADER, 0);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec( $ch );
+    
+  }  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /*========================TRANG BÀI VIẾT=================================================================*/  
   public function post_page()
   {
