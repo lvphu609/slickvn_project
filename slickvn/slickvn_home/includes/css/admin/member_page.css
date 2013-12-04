@@ -16,8 +16,9 @@
   
 }
 #member_page #content_member_page .member_page_title{
- width: 100%;
+ width: 35%;
  height: auto;
+ float: left;
  
 /* background: #6c7670;*/
 }
@@ -38,9 +39,74 @@
 #member_page #content_member_page .create_new_member{
   width: 190px;
   height: auto;
+  float: left;
   
   /*background: #00BDFF;*/
 }
+#member_page #content_member_page .input_search_member{
+  width: 25%;
+  height: 30px;
+  float: right;
+  border: 1px solid #d4d4d4;
+  /*background: #00BDFF;*/
+}
+#member_page #content_member_page .input_search_member .logo_search{
+  width: 13%;
+  height: 30px;
+  float: left;
+   background: url('../../../includes/images/icon/SLICK FAV ICON.png');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 30px;
+   
+}
+#member_page #content_member_page .input_search_member .box_text_search{
+  width: 74%;
+  height: 30px;
+  float: left;
+  background: #a6e1ec;
+}
+#member_page #content_member_page .input_search_member .box_text_search .input_text_search{
+  width: 100%;
+  height: 30px;
+  float: left;
+  border: 0px solid;
+  padding-left: 10px;
+  
+
+
+  background: #fff;
+  font-size: 15px;
+  font-style: oblique;
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 5px 0 6px 8px;
+  -webkit-appearance: none;
+  
+}
+
+
+#member_page #content_member_page .input_search_member .image_btn_search{
+  width: 13%;
+  height: 30px;
+  float: left;
+  
+  background: url('../../../includes/images/icon/image_btn_search.png'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 65% 20px;
+  cursor: pointer;
+  
+  
+  
+  
+}
+
+
+
+
+
 #member_page #content_member_page .create_new_member a{
   text-decoration: none;
 }
@@ -118,6 +184,11 @@
  /*height:100px; 
  background:#FFA54E;*/
 }
+
+#member_page #content_member_page .member_list .row_color{
+  background: #a6e1ec;
+}
+
 #member_page #content_member_page .member_list .select_delete{
  background: #c9e2b3;
  
@@ -127,6 +198,18 @@
 #member_page #content_member_page .member_list .box_info li{
  height: auto;
  float: left;
+}
+#member_page #content_member_page .member_list .box_info li .index_bole{
+ font-weight: bold;
+ font-size: 15px;
+ font-family: sans-serif, serif;
+}
+
+#member_page #content_member_page .member_list .box_info li .line_index{
+ float: bottom;
+ width: 100%;
+ height: 2px;
+ background: #a6e1ec;
 }
 
 #member_page #content_member_page .member_list .box_info li.stt_member{

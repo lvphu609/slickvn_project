@@ -16,6 +16,17 @@
 <div id="menu_main"  style="height: 2000px;">
   <div class="box_menu">
     <ul>
+      
+      <li>
+        <div class="box_text_detail">
+          <a href="<?php echo $url;?>index.php/">
+            <div class="text">
+              <span><div class="align_center logo_home"></div></span>
+            </div>
+          </a>
+        </div>
+      </li>
+      
       <li>
         <div class="box_text_detail">
           <a href="<?php echo $url;?>index.php/admin/admin_controller">

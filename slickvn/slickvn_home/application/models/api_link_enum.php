@@ -39,6 +39,7 @@ class Api_link_enum {
   const EDIT_USER_API="update_user";
   const EDIT_RESTAURANT_API="get_restaurant_by_id";
   const DETAIL_POST_API="get_detail_post";
+  const SEARCH_MEMBER_API="search_user";
 
 
 
@@ -138,7 +139,7 @@ class Api_link_enum {
     public static $EDIT_USER_URL;
     public static $EDIT_RESTAURANT_URL;
     public static $DETAIL_POST_URL;
-    
+    public static $SEARCH_MEMBER_URL;
     
     
     
@@ -202,7 +203,7 @@ class Api_link_enum {
       self::$SEARCH_FAVOURITE_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_FAVOURITE_API.self::FORMAT_JSON ;
       self::$SEARCH_RESTAURANT_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_RESTAURANT_API.self::FORMAT_JSON ;
       self::$SEARCH_POST_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_POST_API.self::FORMAT_JSON ;
-
+      self::$SEARCH_MEMBER_URL= self::$BASE_API_USER_URL.self::SEARCH_MEMBER_API.self::FORMAT_JSON ;
       
       /*end search*/
        

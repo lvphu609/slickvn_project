@@ -16,6 +16,7 @@
   margin: 0 auto;
   background: url('../../../includes/images/icon/slidebg.png');  
   height: 103px;
+  
 }
 #menu_custom .menu_main{
   height: 103px;
@@ -24,6 +25,7 @@
   padding: 0px;
  /* background: #00620C;*/
   background: url('../../../includes/images/icon/slidebg.png');
+  
 }
 #menu_custom .menu_main .menu_top{
   height: 42px;

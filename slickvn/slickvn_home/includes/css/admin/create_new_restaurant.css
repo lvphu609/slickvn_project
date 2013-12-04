@@ -304,7 +304,7 @@
 }
 #create_new_restaurant #content_create_new_restaurant .box_input .box_select_option .span_title{
   background: #FFF;
-  position: absolute;
+  /*position: absolute;*/
   margin-top: -10px;
   margin-left: 20px;
   color:#0066FF;

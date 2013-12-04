@@ -7,6 +7,9 @@
   min-width:450px;
   position: absolute;
   
+  /*temp*/
+  position: fixed;
+  
 }
 #taskbar_top_box{
   margin: 0 auto;

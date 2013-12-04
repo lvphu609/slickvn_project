@@ -7,7 +7,6 @@
    <div class="member_page_title">
      <span><div class=member_page_text">Danh sách thành viên</div></span>
    </div>
-   <div class="line_title"></div></br>
    <div class="create_new_member">
      <a href="<?php echo $url;?>index.php/admin/admin_controller/create_new_member">
         <div class="btn_create_new_member">
@@ -17,37 +16,54 @@
         </div>
      </a>
    </div>
+   <div class="input_search_member">
+     <div class="logo_search"></div>
+     <div class="box_text_search">
+       <input type="text" placeholder="Tìm kiếm" class="input_text_search" id="input_text_search" />
+     </div>
+     <div class="image_btn_search" id="btn_search_member">
+     </div>
+   </div>
+    
+   <div class="line_title"></div></br>
+   
    <div class="member_list">
      <!--title-->
      <ul class="box_info">
        <li class="stt_member">
-         <span>STT</span>
+         <span class="index_bole">STT</span>
+         <div class="line_index"></div>
        </li>
 <!--       <li class="code_member">
          <span>Mã thành viên</span>
        </li>-->
        <li class="name_member">
-         <span>Họ và tên</span>
+         <span class="index_bole">Họ và tên</span>
+         <div class="line_index"></div>
        </li>
 <!--       <li class="job_member">
          <span>Nghề nghiệp</span>
        </li>-->
        <li class="email_member">
-         <span>Email</span>
+         <span class="index_bole">Email</span>
+         <div class="line_index"></div>
        </li>
        <li class="phonenumber_member">
-         <span>Điện thoại</span>
+         <span class="index_bole">Điện thoại</span>
+         <div class="line_index"></div>
        </li>
 <!--       <li class="company">
          <span>Công ty</span>
        </li>-->
        <li class="update_delete">
+         
        </li>
      </ul>
      
      
 <?php 
 $stt=1;
+if(is_array($all_user)){
 foreach ($all_user as $value_all_user){
       
       $id              =$value_all_user['id'];
@@ -60,9 +76,33 @@ foreach ($all_user as $value_all_user){
       $role_list        =$value_all_user['role_list'];
       $created_date    =$value_all_user['created_date'];
       
+    if($stt%2==0){
+      echo'
+         <ul class="box_info row_color">
+            <li class="stt_member">
+              <span>'.$stt.'</span>
+            </li>
+            <li class="name_member">
+              <span>'.$full_name.'</span>
+            </li>
+            <li class="email_member">
+              <span>'.$email.'</span>
+            </li>
+            <li class="phonenumber_member">
+              <span>'.$phone_number.'</span>
+            </li>
+            <li class="update_delete">
+              <a href="javascript:;" class="view_edit_user"  data-value_edit="'.$id.'"><div class="edit"></div></a>
+              <a href="javascript:;" class="delete_user" data-value_delete="'.$id.'"><div class="delete" ></div></a>  
+            </li>
+          </ul>   
+
+      ';
+    }
+    else{
       
-     echo'
-         <ul class="box_info">
+       echo'
+         <ul class="box_info ">
             <li class="stt_member">
               <span>'.$stt.'</span>
             </li>
@@ -83,9 +123,15 @@ foreach ($all_user as $value_all_user){
 
       ';
       
+    }
+     
+     
+     
+      
   $stt++;
   
-}    
+}
+}
 ?>
      
    </div>
@@ -94,7 +140,7 @@ foreach ($all_user as $value_all_user){
 <?php $url=  base_url(); ?>
 <input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/view_edit_user";?>" id="hdUrl_edit_user" >
 <input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/delete_user";?>" id="hdUrl_delete_user" >
-
+<input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 <script>
   
    $(document).ready(function () {
@@ -140,6 +186,19 @@ foreach ($all_user as $value_all_user){
        
   });
   
+ //search member
+ $('#btn_search_member').click(function (){
+    
+    var input_text_search=$("#input_text_search").val();
+    var url= $("#hidUrl").val();
+    var url_search_member=url+'index.php/search/search/search_member';
+    window.location=url_search_member+"?input_text_search="+input_text_search;
+ 
+ });
+ 
+  
+  
+  
   
 </script>
 
@@ -148,3 +207,4 @@ foreach ($all_user as $value_all_user){
     <!--<button type="button" id="btnYes" class="btn btn-warning">Đồng ý</button>
     <button type="button" id="btnNo" class="btn btn-warning">Hủy</button>-->
   </div>
+

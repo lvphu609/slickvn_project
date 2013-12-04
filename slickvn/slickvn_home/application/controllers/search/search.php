@@ -252,7 +252,36 @@ class Search extends CI_Controller {
     
   }
   
-  
+  public function search_member(){
+    
+    $input_text_search=$_GET['input_text_search'];
+    $input_text_search=  trim($input_text_search);
+    $input_text_search=  urlencode($input_text_search);
+    $this->load->model('restaurantenum');
+    $this->load->helper('url');
+    Api_link_enum::initialize();
+    $key=$input_text_search;
+    
+     $link_search_member = Api_link_enum::$SEARCH_MEMBER_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_USER_ALL."&page=1";
+    // var_dump($link_search_member);
+     $json_string_search_member= file_get_contents($link_search_member);
+     $json_search_member = json_decode($json_string_search_member, true);
+     $data['all_user']=$json_search_member["Results"];
+    // var_dump($data['all_user']);
+    
+     
+      $data['chosed']="member_page";
+      $this->load->helper('url');
+      $this->load->view('admin/header/header_main',$data);
+      $this->load->view('admin/taskbar_top/taskbar_top');
+      $this->load->view('admin/menu/menu_main',$data);
+
+      $this->load->view('admin/content/member_page/member_page',$data);
+      $this->load->view('admin/footer/footer_main');
+     
+   // echo $key;
+    
+  }
   
   
   
