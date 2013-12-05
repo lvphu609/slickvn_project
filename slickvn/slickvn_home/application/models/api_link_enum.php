@@ -41,6 +41,7 @@ class Api_link_enum {
   const DETAIL_POST_API="get_detail_post";
   const SEARCH_MEMBER_API="search_user";
   const ADD_COUPON_API="update_coupon";
+  const UPDATE_RESTAURANT_API="update_restaurant";
 
 
 
@@ -142,6 +143,7 @@ class Api_link_enum {
     public static $DETAIL_POST_URL;
     public static $SEARCH_MEMBER_URL;
     public static $ADD_COUPON_URL;
+    public static $UPDATE_RESTAURANT_URL;
     
     
     
@@ -192,6 +194,7 @@ class Api_link_enum {
       self::$EDIT_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::EDIT_RESTAURANT_API.self::FORMAT_JSON ;
       self::$DETAIL_POST_URL = self::$BASE_API_RESTAURANT_URL.self::DETAIL_POST_API.self::FORMAT_JSON ;
       self::$ADD_COUPON_URL = self::$BASE_API_RESTAURANT_URL.self::ADD_COUPON_API.self::FORMAT_JSON ;
+      self::$UPDATE_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::UPDATE_RESTAURANT_API;
       
       
       
@@ -206,7 +209,7 @@ class Api_link_enum {
       self::$SEARCH_FAVOURITE_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_FAVOURITE_API.self::FORMAT_JSON ;
       self::$SEARCH_RESTAURANT_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_RESTAURANT_API.self::FORMAT_JSON ;
       self::$SEARCH_POST_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_POST_API.self::FORMAT_JSON ;
-      self::$SEARCH_MEMBER_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_MEMBER_API.self::FORMAT_JSON ;
+      self::$SEARCH_MEMBER_URL= self::$BASE_API_USER_URL.self::SEARCH_MEMBER_API.self::FORMAT_JSON ;
       
       /*end search*/
        

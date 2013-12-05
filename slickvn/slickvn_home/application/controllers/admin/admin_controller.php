@@ -266,6 +266,7 @@ class Admin_controller extends CI_Controller {
   {
     //danh sách tất cả các nhà hàng
      $link_all_restaurant = Api_link_enum::$ALL_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_RESTAURANT_ALL."&page=1";
+     //var_dump($link_all_restaurant);
      $json_string_all_restaurant= file_get_contents($link_all_restaurant);    
      $json_all_restaurant = json_decode($json_string_all_restaurant, true);
      $data['all_restaurant']=$json_all_restaurant["Results"];
@@ -353,6 +354,7 @@ class Admin_controller extends CI_Controller {
       //id nhà hàng
       $id_restaurant=$_GET['id_restaurant'];
       $link_detail_restaurant = Api_link_enum::$EDIT_RESTAURANT_URL."?id=$id_restaurant";
+    //  var_dump($link_detail_restaurant);
       $json_string_detail_restaurant= file_get_contents($link_detail_restaurant);    
       $json_detail_restaurant = json_decode($json_string_detail_restaurant, true);
       $data['info_restaurant']=$json_detail_restaurant["Results"];
@@ -417,6 +419,143 @@ class Admin_controller extends CI_Controller {
     
   }  
   
+  public function update_restaurant()
+  {
+    
+    $id_restaurant              =$_POST['id_restaurant'];
+    $dish_list                  =$_POST['dish_list'];
+    $id_menu_dish               =$_POST['id_menu_dish']; 
+    $name                       =$_POST['name'];
+    $address                    =$_POST['address'];
+    $city                       =$_POST['city'];
+    $district                   =$_POST['district'];
+    $array_image                =$_POST['array_image'];
+    $link_to                    =$_POST['link_to'];
+    $phone_number               =$_POST['phone_number'];
+    $working_time               =$_POST['working_time'];
+    $status_active              =$_POST['status_active'];
+    $favourite_list             =$_POST['favourite_list'];
+    $price_person_list          =$_POST['price_person_list'];
+    $culinary_style_list        =$_POST['culinary_style_list'];
+    $mode_use_list              =$_POST['mode_use_list'];
+    $payment_type_list          =$_POST['payment_type_list'];
+    $landscape_list             =$_POST['landscape_list'];
+    $other_criteria_list        =$_POST['other_criteria_list'];
+    $introduce                  =$_POST['introduce'];
+    $start_date                 =$_POST['start_date'];
+    $end_date                   =$_POST['end_date'];
+    $folder_name                =$_POST['folder_name'];
+    $email                      =$_POST['email'];
+    $desc                       =$_POST['desc'];
+    $approval_show_carousel     =$_POST['approval_show_carousel'];
+    
+    
+    $id_restaurant              =urlencode($id_restaurant);
+    $dish_list                  =urlencode($dish_list);
+    $id_menu_dish               =urlencode($id_menu_dish);
+    $name                       =urlencode($name);
+    $address                    =urlencode($address);
+    $city                       =urlencode($city);
+    $district                   =urlencode($district);
+    $array_image                =urlencode($array_image);
+    $link_to                    =urlencode($link_to);
+    $phone_number               =urlencode($phone_number);
+    $working_time               =urlencode($working_time);
+    $status_active              =urlencode($status_active);
+    $favourite_list             =urlencode($favourite_list);
+    $price_person_list          =urlencode($price_person_list);
+    $culinary_style_list        =urlencode($culinary_style_list);
+    $mode_use_list              =urlencode($mode_use_list);
+    $payment_type_list          =urlencode($payment_type_list);
+    $landscape_list             =urlencode($landscape_list);
+    $other_criteria_list        =urlencode($other_criteria_list);
+    $introduce                  =urlencode($introduce);
+    $start_date                 =urlencode($start_date);
+    $end_date                   =urlencode($end_date);
+    $folder_name                =urlencode($folder_name);
+    $email                      =urlencode($email);
+    $desc                       =urlencode($desc);
+    $approval_show_carousel     =urlencode($approval_show_carousel);
+    
+    
+    
+    
+    $action="edit";
+    $url=Api_link_enum::$UPDATE_RESTAURANT_URL;
+    $myvars = 'id=' .   $id_restaurant .
+              '&dish_list=' . $dish_list .
+              '&id_menu_dish=' . $id_menu_dish . 
+              '&name=' . $name .
+              '&address=' . $address . 
+              '&city=' . $city .
+              '&district=' . $district .
+              '&array_image=' . $array_image .
+              '&link_to=' . $link_to .
+              '&phone_number=' . $phone_number . 
+              '&working_time=' . $working_time .
+              '&status_active=' . $status_active . 
+              '&favourite_list=' . $favourite_list .
+              '&price_person_list=' . $price_person_list .
+              '&culinary_style_list=' . $culinary_style_list .
+              '&mode_use_list=' . $mode_use_list .
+              '&payment_type_list=' . $payment_type_list . 
+              '&landscape_list=' . $landscape_list .
+              '&other_criteria_list=' . $other_criteria_list .
+              '&introduce=' . $introduce  .
+              '&start_date=' . $start_date .
+              '&end_date=' . $end_date .
+              '&folder_name=' . $folder_name . 
+              '&email=' . $email .
+              '&desc=' . $desc .
+              '&approval_show_carousel=' .$approval_show_carousel .
+              '&action=' . $action;
+
+     /*$myvars_show_example = 'id=' .   $id_restaurant . "<br>".
+              '&dish_list=' . $dish_list ."<br>".
+              '&id_menu_dish=' . $id_menu_dish . "<br>".
+              '&name=' . $name ."<br>".
+              '&address=' . $address ."<br>".
+              '&city=' . $city ."<br>".
+              '&district=' . $district ."<br>".
+              '&array_image=' . $array_image ."<br>".
+              '&link_to=' . $link_to ."<br>".
+              '&phone_number=' . $phone_number ."<br>".
+              '&working_time=' . $working_time ."<br>".
+              '&status_active=' . $status_active ."<br>".
+              '&favourite_list=' . $favourite_list ."<br>".
+              '&price_person_list=' . $price_person_list ."<br>".
+              '&culinary_style_list=' . $culinary_style_list ."<br>".
+              '&mode_use_list=' . $mode_use_list ."<br>".
+              '&payment_type_list=' . $payment_type_list ."<br>".
+              '&landscape_list=' . $landscape_list ."<br>".
+              '&other_criteria_list=' . $other_criteria_list ."<br>".
+              '&introduce=' . $introduce  ."<br>".
+              '&start_date=' . $start_date ."<br>".
+              '&end_date=' . $end_date ."<br>".
+              '&folder_name=' . $folder_name ."<br>".
+              '&email=' . $email ."<br>".
+              '&desc=' . $desc ."<br>".
+              '&approval_show_carousel=' .$approval_show_carousel ."<br>".
+              '&action=' . $action;
+    echo $myvars_show_example;*/
+    
+ 
+    $ch = curl_init( $url );
+    curl_setopt( $ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt( $ch, CURLOPT_HEADER, 0);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec( $ch );
+    
+    
+  }
+  
+  
+  
+  
+  
+  
 /*========================TRANG KHUYẾN MÃI=================================================================*/  
   public function coupon_page()
   {
@@ -460,7 +599,7 @@ class Admin_controller extends CI_Controller {
     
     
   }  
-    public function add_coupon()
+ public function add_coupon()
   {
     $id_restaurant           =$_POST['id_restaurant'];
     $value_coupon            =$_POST['value_coupon'];
