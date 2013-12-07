@@ -95,7 +95,7 @@ class Home_controller extends CI_Controller {
   /*========================================END_RESTAURANT_LIST====================================================*/
     
   /*========================================PROMOTION==================================================================*/    
-/*    $link_promotion_list = API_Link_Enum::$PROMOTION_URL."?limit=".Restaurantenum::LIMIT_PAGE_PROMOTION."&page=1";
+   /* $link_promotion_list = API_Link_Enum::$PROMOTION_URL."?limit=".Restaurantenum::LIMIT_PAGE_PROMOTION."&page=1";
     $json_string_promotion_list = file_get_contents($link_promotion_list);    
     $json_promotion_list = json_decode($json_string_promotion_list, true);
     $data['promotion_list']=$json_promotion_list["Results"]; 

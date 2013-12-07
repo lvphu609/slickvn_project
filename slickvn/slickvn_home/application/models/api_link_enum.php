@@ -23,7 +23,7 @@ class Api_link_enum {
   const MEAL_TYPE_LIST_API = "get_base_collection";
   const FAVOURITE_TYPE_API = "get_base_collection";
   const CAROUSEL_API = "get_all_restaurant_approval_show_carousel";
-  const PROMOTION_API = "get_coupon_list";
+  const PROMOTION_API = "get_restaurant_coupon_list";
   const POST_API = "get_all_post";
   const DETAIL_RESTAURANT_API="get_detail_restaurant";
   const PRICE_PERSION_API="get_base_collection";
@@ -39,7 +39,6 @@ class Api_link_enum {
   const EDIT_USER_API="update_user";
   const EDIT_RESTAURANT_API="get_restaurant_by_id";
   const DETAIL_POST_API="get_detail_post";
-  const SEARCH_MEMBER_API="search_user";
   const ADD_COUPON_API="update_coupon";
   const UPDATE_RESTAURANT_API="update_restaurant";
 
@@ -72,6 +71,8 @@ class Api_link_enum {
   const SEARCH_FAVOURITE_API="search_restaurant_by_id_base_collection";
   const SEARCH_RESTAURANT_API="search_restaurant_by_name";
   const SEARCH_POST_API="search_post";
+  const SEARCH_MEMBER_API="search_user";
+  const SEARCH_RESTAURANT_BY_COUPON_API="search_restaurant_by_coupon";
   
   /*end search----------*/
 
@@ -144,6 +145,7 @@ class Api_link_enum {
     public static $SEARCH_MEMBER_URL;
     public static $ADD_COUPON_URL;
     public static $UPDATE_RESTAURANT_URL;
+    public static $SEARCH_RESTAURANT_BY_COUPON_URL;
     
     
     
@@ -210,7 +212,7 @@ class Api_link_enum {
       self::$SEARCH_RESTAURANT_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_RESTAURANT_API.self::FORMAT_JSON ;
       self::$SEARCH_POST_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_POST_API.self::FORMAT_JSON ;
       self::$SEARCH_MEMBER_URL= self::$BASE_API_USER_URL.self::SEARCH_MEMBER_API.self::FORMAT_JSON ;
-      
+      self::$SEARCH_RESTAURANT_BY_COUPON_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_RESTAURANT_BY_COUPON_API.self::FORMAT_JSON ;
       /*end search*/
        
       

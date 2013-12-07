@@ -18,14 +18,34 @@
           <div class="box_restaurant_content_custom_center">
           <ul class="append_Promotion">
             <?php 
-              foreach ($promotion_list as $value_promotion_list){
-                $id= $value_promotion_list['id'];
-                $coupon_value=$value_promotion_list['coupon_value'];
-                $deal_to_date=$value_promotion_list['deal_to_date'];
-                $restaurant_name=$value_promotion_list['restaurant_name'];
-                $content=$value_promotion_list['content'];
-                $image_link=$value_promotion_list['image_link'];
-                $link_to=$value_promotion_list['link_to'];
+               var_dump($promotion_list);
+                foreach ($promotion_list as $value_promotion_list){
+//                $id= $value_promotion_list['id'];
+//                $coupon_value=$value_promotion_list['coupon_value'];
+//                $deal_to_date=$value_promotion_list['deal_to_date'];
+//                $restaurant_name=$value_promotion_list['restaurant_name'];
+//                $content=$value_promotion_list['content'];
+//                $image_link=$value_promotion_list['image_link'];
+//                $link_to=$value_promotion_list['link_to'];
+                
+                $id= "asdds";
+                $coupon_value="10";
+                $deal_to_date="12/12/2013";
+                $restaurant_name="hihihi";
+                $content="hihihi";
+                $image_link="hihihi";
+                $link_to="hihihi";
+                
+             /*   
+                $avatar=$value_promotion_list['avatar'];             
+                $id=$value_promotion_list['id'];
+                $name=$value_promotion_list['name'];
+                $desc=$value_promotion_list['desc'];
+                $desc=substr($desc,0,120) . '...';
+                $address=$value_promotion_list['address'];
+                $number_assessment=$value_promotion_list['number_assessment'];
+                $number_like=$value_promotion_list['number_like'];
+                $rate_point=$value_promotion_list['rate_point'];*/
                 
                 
                 echo '
@@ -53,7 +73,7 @@
                 
                 
               }
-            
+       
             ?>
           </ul>
             

@@ -66,10 +66,7 @@
      </div>
      <div class="status_active">
         <span class="title_input">TÌNH TRẠNG HOẠT ĐỘNG</span><br>
-        <select class="select_status_active" >
-          <option value="Đang hoạt động">Đang hoạt động</option>
-          <option value="Tạm ngưng">Tạm ngưng</option>
-        </select>
+       <input class="input_text select_status_active" type="text" placeholder="vd. Đang hoạt động">
      </div>
 <!--     <div class="facebock_url_profile">
         <span>FACEBOOK URL</span><br>
@@ -178,8 +175,8 @@
                   <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Mô tả" readonly name="keyvalueeditor-action" value="">
                   <input type="text" data-status="1" class="keyvalueeditor-key keyvalueeditor_check_status" placeholder="Giá" readonly name="keyvalueeditor-action" value="">
                   <select class="select_menu_option" disabled >
-                    <option value="N">Tùy chọn</option>
-                    <option value="Y">add row</option>
+                    <option value="n">Tùy chọn</option>
+                    <option value="y">add row</option>
                   </select>
                   
                 </div>
@@ -730,9 +727,12 @@
 
             }
         string_image_filter=string_image_filter.slice(0,-1);//bỏ ký tự phẩy cuối
-         
+        if(string_image_filter==""){
+          string_image_filter="null";
+        }
        //chuổi tên hình ảnh gởi lên avatar/carousel/content
        var carousel=$("#image_carousel_post").val();
+      
        var str_images=avatar+","+carousel+","+string_image_filter;
        var action= "insert";
       
@@ -882,9 +882,8 @@
      var url_api=$("#url_post_data").val();
      //alert(dish_list);
      var data={
-                 //avatar:avatar,
+                
                 dish_list : dish_list,
-               // id_menu_dish:id_menu_dish,
                 id_coupon :    id_coupon,          
                 name      :    param_name_restauant,
                 address   :    param_address,           
@@ -908,13 +907,12 @@
                 folder_name: folder_name,
                 email: param_email,
                 desc: param_introduce_short_restaurant,
-                approval_show_carousel: approval_show_carousel ,
-             
-                
+                approval_show_carousel: approval_show_carousel,
                 action: action
 
           }
-  
+         // alert(str_images);
+ 
     $.ajax({
           url: url_api ,
           type: 'POST',

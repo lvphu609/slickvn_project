@@ -60,7 +60,7 @@
       //echo $res_introduce;
       //noi dung gioi thieu, tim va thay the folder_image_introduce_detail_page bang duong dan host
       $res_introduce = htmlspecialchars_decode ($res_introduce);
-      $res_introduce =  str_replace("folder_image_introduce_detail_page",$link_restaurant_frofile, $res_introduce);
+      $res_introduce =  str_replace("folder_image_introduce_detail_page/",$link_restaurant_frofile, $res_introduce);
       
       
       
@@ -311,13 +311,13 @@
                                   <input type="text" data-status="'.$stt_value_res_menu_dist.'" class="keyvalueeditor-key keyvalueeditor_check_status price_menu " placeholder="Giá" name="keyvalueeditor-action" value="'.$value_res_menu_dist['price'].'">
                                   <select class="select_menu_option select_custom_menu ">';
                                   
-                                  if(strcmp($value_res_menu_dist['signature_dish'],"n")==0){
+                                  if(strcmp(strtolower($value_res_menu_dist['signature_dish']),"n")==0){
                                     echo'
                                         <option value="n" selected>Món bình thường</option>
                                         <option value="y">Món đặt biệt</option>
                                       ';
                                   }
-                                 if(strcmp($value_res_menu_dist['signature_dish'],"y")==0){
+                                 if(strcmp(strtolower($value_res_menu_dist['signature_dish']),"y")==0){
                                     echo'
                                         <option value="n">Món bình thường</option>
                                         <option value="y" selected>Món đặt biệt</option>
@@ -1356,8 +1356,9 @@
 
           }
        
-     //alert(folder_name);
-     $.ajax({
+    // alert(dish_list);
+    // alert(content);
+      $.ajax({
           url: url_api ,
           type: 'POST',
           data:data,

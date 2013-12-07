@@ -190,6 +190,7 @@
     var url= $("#hidUrl").val();
     var url_restaurant=url+'index.php/search/search/search_restaurant';
     var url_post=url+'index.php/search/search/search_post';
+    var url_coupon=url+'index.php/search/search/search_restaurant_coupon';
     //search theo nhà hàng
     if(slect_search=="Nhà hàng"){
           window.location=url_restaurant+"?input_text_search="+input_text_search;
@@ -204,7 +205,9 @@
       else //search theo khuyến mãi
       if(slect_search=="Khuyến mãi"){
       
-          alert('chức năng search theo khuyến mãi đang xây dựng');
+          //alert('chức năng search theo khuyến mãi đang xây dựng');
+        window.location=url_coupon+"?input_text_search="+input_text_search;
+      
       
         }
    
