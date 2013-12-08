@@ -1,6 +1,6 @@
 <?php $url=  base_url();
 
- 
+ //var_dump($info_restaurant);
  foreach ($info_restaurant as $info_detail_restaurant) {
    
 
