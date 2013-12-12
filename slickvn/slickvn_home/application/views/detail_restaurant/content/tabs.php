@@ -79,46 +79,93 @@
 <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 
 <script>
-  
-  $(document).ready(function() {
-       
-//     var url =document.URL;
-//     var str= url.substr(0, url.indexOf('index.php')); 
-//      alert(str);
-         //gioi thieu nha hang
-       
-          $("#introduce_restaurant").css({
-            display: "block",
-            width: "734px",
-            marginLeft: "10px",
-            marginRight: "10px",
-            height: "auto",
-            float: "left",
-            background: "#FFF",
-            marginBottom: "20px",
-            marginTop: "20px",
-            visibility: ""
+  /*     var url =document.URL;
+         var str= url.substr(0, url.indexOf('index.php')); 
+         alert(str);*/
+ <?php 
+      if(empty($_GET['comment_res'])){
+          echo '
+                      $(document).ready(function() {
+                   //gioi thieu nha hang
 
-          });
-        
-        
-         $("#info_restaurant").css({
-            display: "none"
-          
-        });
-        //tiện ích
-         $("#utilities_restaurant").css({
-            display: "none"
-          
-        });
-        //binh luận
-         $("#comment_restaurant").css({
-            display: "none"
-          
-        });
+                    $("#introduce_restaurant").css({
+                      display: "block",
+                      width: "734px",
+                      marginLeft: "10px",
+                      marginRight: "10px",
+                      height: "auto",
+                      float: "left",
+                      background: "#FFF",
+                      marginBottom: "20px",
+                      marginTop: "20px",
+                      visibility: ""
+
+                    });
+
+
+                   $("#info_restaurant").css({
+                      display: "none"
+
+                  });
+                  //tiện ích
+                   $("#utilities_restaurant").css({
+                      display: "none"
+
+                  });
+                  //binh luận
+                   $("#comment_restaurant").css({
+                      display: "none"
+
+                  });
+
+
+             });
+
+          ';
+        }
+        if(!empty($_GET['comment_res'])){
+          echo '
+                   $(document).ready(function() {
+                   //gioi thieu nha hang
+
+                    $("#introduce_restaurant").css({
+                      display: "none"
+
+                    });
+
+
+                   $("#info_restaurant").css({
+                      display: "none"
+
+                  });
+                  //tiện ích
+                   $("#utilities_restaurant").css({
+                      display: "none"
+
+                  });
+                  //binh luận
+                   $("#comment_restaurant").css({
+                      display: "block",
+                      width: "734px",
+                      marginLeft: "10px",
+                      marginRight: "10px",
+                      height: "auto",
+                      float: "left",
+                      background: "#FFF",
+                      marginBottom: "20px",
+                      marginTop: "20px",
+                      visibility: ""
+
+                  });
+
+
+             });
+
+          ';
+        }
     
-    
-   });
+ ?>
+  
   
   
   
@@ -348,7 +395,13 @@
       <div class="menu">
         <ul id="ul_menu">
           <a href="javascript:;" id="btn_introduce">
-            <li id="status_clicked_1" class="active">
+            <li id="status_clicked_1" 
+                <?php if(empty($_GET['comment_res'])){
+                  echo 'class="active"';
+                }
+                
+                ?>
+                >
               <span>GIỚI THIỆU</span><i></i>
             </li>
           </a>
@@ -363,7 +416,11 @@
             </li>
           </a>
           <a href="javascript:;" id="btn_comment_restaurant">
-            <li id="status_clicked_4" class="">
+            <li id="status_clicked_4" 
+              <?php if(!empty($_GET['comment_res'])){
+                  echo 'class="active"';
+                }
+              ?>>
               <span>BÌNH LUẬN</span>
             </li>
           </a>

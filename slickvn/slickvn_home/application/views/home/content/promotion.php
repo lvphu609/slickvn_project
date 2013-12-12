@@ -14,12 +14,15 @@
        <div class="box_restaurant_content">
            <!--masonry  class="masonry js-masonry"-->
         <div class="box_restaurant_content_custom_center">
-          <ul class="append_newest_restaurant thumb_grid ul_alight_center"  >
+          <ul class="append_coupon_restaurant thumb_grid ul_alight_center"  >
           <!--
             Purpose: Get API new restaurant list 
             Author: Vinh Phu
             Version: 28/10/2013
           !-->
+          <input type="hidden" value="1" id="number_page_coupon"> 
+          <?php $url=  base_url(); ?>
+          <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
           <script type="text/javascript" src="<?php echo $url."includes/js/time_left/remaining.js";?>"></script>
             <?php 
              //  var_dump($promotion_list);
@@ -49,6 +52,7 @@
                   $stt_timer++;
                   
                 }
+                
             ?>
           <?php 
          // var_dump($newest_restaurant['0']);
@@ -121,13 +125,18 @@
               ';
             
              $stt_coupon++;
-           }         
-            ?> 
+           }
+           
+           echo '<div id="remove_input_stt">';
+           echo '<input type="hidden"  id="stt_timer" value="'.$stt_timer.'">';
+           echo '<input type="hidden" id="stt_coupon" value="'.$stt_coupon.'">';
+           echo '</div>';
+        ?> 
         </ul>
-        <ul id="more_Newest_Restaurant">
+        <ul id="more_Coupon">
            <li class="li_more">
-               <a href="javascript:;" id="btn_More_Newest_Restaurant">
-                    <div id="remove_button_more" class="button_more_noload">
+               <a href="javascript:;" id="btn_More_Coupon">
+                    <div id="remove_button_more_coupon" class="button_more_noload">
                       <div class="text"><span>&nbsp;</span></div>
                     </div>
                 </a>
@@ -137,62 +146,51 @@
     </div>
  </div>
 
-    
 
-    
-<!--zoom hover-->
-<div id="niceThumb_append">
-  <div id="niceThumb_remove">
-    <script>
-        $(function(){
-          niceThumb_Grid ();
-        });
-    </script>
-   </div>
-</div>
-<!--zoom hover-->
-         
-         
-<!--javascrip append <li> to <ul>-->
-<input type="hidden" value="1" id="number_page_newest_restaurant"> 
-<?php $url=  base_url(); ?>
-<input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 
+<div id="remove_script_more_coupon_1">
 <script>
 
   $(function(){
-    var page_this = parseInt($('#number_page_newest_restaurant').val());
-    var page_next= page_this; 
-    $('#btn_More_Newest_Restaurant').click(function() {
-     // more_Newest_Restaurant();
-      page_next= page_next+1;
-      //alert(page_next);
-      $("#remove_button_more").removeClass('button_more_noload');
-      $("#remove_button_more").addClass('button_more_loading');
-      $("#niceThumb_remove").remove();
-      
-      var dataThumb = "<div id=\"niceThumb_remove\"><script>$(function(){niceThumb_Grid ();});<\/script></div>";
-      
+    var page_this_coupon = parseInt($('#number_page_coupon').val());
+    var page_next_coupon= page_this_coupon; 
+    $('#btn_More_Coupon').click(function() {
+      page_next_coupon= page_next_coupon+1;
+      $("#remove_button_more_coupon").removeClass('button_more_noload');
+      $("#remove_button_more_coupon").addClass('button_more_loading');
       var url = $('#hidUrl').val();
-      $.post( url + "index.php/home_controller/more_Newest_Restaurant", 
-               { page: page_next}, function(data){                                   
-                                  $('.append_newest_restaurant').append(data);
-                                  $('#niceThumb_append').append(dataThumb);
-                                  $("#remove_button_more").removeClass('button_more_loading');
-                                  $("#remove_button_more").addClass('button_more_noload');
+      var stt_timer=$("#stt_timer").last().val();
+      var stt_coupon=$("#stt_coupon").last().val();
+      $.post( url + "index.php/home_controller/more_Promotion", 
+               { page_promotion: page_next_coupon,
+                 stt_timer: stt_timer,
+                 stt_coupon: stt_coupon
+                
+                 }, function(data){
                                   if(data==""){
                                     //alert('het');
-                                    $("#more_Newest_Restaurant").remove();
+                                    $("#more_Coupon").remove();
+                                    $("#remove_script_more_coupon_"+page_this_coupon).remove();
                                   }
+                                  $('.append_coupon_restaurant').append(data);
+                                  $("#remove_button_more_coupon").removeClass('button_more_loading');
+                                  $("#remove_button_more_coupon").addClass('button_more_noload');
+                                  $('#number_page_coupon').val(page_next_coupon);
+                                  $('#remove_input_stt').remove();
+                                  $("#remove_script_more_coupon_"+page_this_coupon).remove();
                                   
-                                  });
-      
-        
-
+               });
     });
     
   }); 
+  
+  
+  
 </script>   
 <!--end javascrip append <li> to <ul>-->
+</div>
+
+
+
  </div>
 </div>

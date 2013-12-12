@@ -22,8 +22,7 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
     $data['newest_restaurant']=$json_newest_res["Results"];
     $this->load->helper('url');
     $url=  base_url();
-    $link_restaurant_frofile=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
-    
+    $url_res_frofile=Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
     //var_dump($link_newest_res);
     echo'
            <div id="append_Res_Newest_List">
@@ -36,13 +35,17 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
 
                      ';
      
-             foreach($data['newest_restaurant'] as $value_res_newest){
+            foreach($data['newest_restaurant'] as $value_res_newest){
+            
              $avatar=$value_res_newest['avatar'];             
              $id=$value_res_newest['id'];
              $name=$value_res_newest['name'];
              
              $desc=$value_res_newest['desc'];
              $desc=substr($desc,0,120) . '...';
+             //$desc="ádad ád ád ád ád ád ád ád ";
+             //$desc=word_limiter($desc, 4);
+
              
              $address=$value_res_newest['address'];
              $number_assessment=$value_res_newest['number_assessment'];
@@ -51,14 +54,14 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
              
             
               echo'
-               <li>            
+               <li >            
                 <div class="detail_box">
                            <div class="img_item">
                              <a href="'.$url.'/index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'">
-                                 <img style="width=40px; height=40px;" class="big" src="'.$link_restaurant_frofile.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
+                                 <img style="width=40px; height=40px;" class="big" src="'.$url_res_frofile.$avatar.'" >
                              </a>
                              <div id="remove_comment_like_animate" class="">
-                                <a href="#">
+                                <a href="'.$url.'/index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'&comment_res=true">
                                   <div class ="image_bg_comment_animate">
                                       <div class ="image_comment_animate">
                                       </div>
@@ -112,7 +115,7 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
                                //iamges avatar restaurant
                               echo '<div class="avartar_restaurant">
                                       <a href="#">
-                                          <img src="'.$link_restaurant_frofile.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
+                                          <img src="'.$url_res_frofile.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
                                       </a>                            
                                     </div>';
                                 //name
@@ -133,7 +136,7 @@ class Append_restaurant_newest_Grid_controller extends CI_Controller {
               ';
             
              
-           }                     
+           }         
         
       echo'   </ul>
                     <ul id="more_Newest_Restaurant">

@@ -425,42 +425,172 @@ class Home_controller extends CI_Controller {
     $page=$_POST['page_promotion'];
     $this->load->model('restaurantenum');
     $link = Api_link_enum::$PROMOTION_URL."?limit=".Restaurantenum::LIMIT_PAGE_PROMOTION."&page=".$page;
+    //var_dump($link);
     $json_string = file_get_contents($link);    
     $json = json_decode($json_string, true);
+    $this->load->helper('url');
+    $url=  base_url();
+    $url_res_frofile=  Api_link_enum::$BASE_PROFILE_RESTAURANT_URL;
     
-    foreach ($json['Results'] as $promotion_list){
-                $id= $promotion_list['id'];
-                $coupon_value=$promotion_list['coupon_value'];
-                $deal_to_date=$promotion_list['deal_to_date'];
-                $restaurant_name=$promotion_list['restaurant_name'];
-                $content=$promotion_list['content'];
-                $image_link=$promotion_list['image_link'];
-                $link_to=$promotion_list['link_to'];
-                
-                
-                echo '
-                      <li>
-                        <div class="detail_box">
-                                <div class="promotion_custom">
-                                  <div class="img_item">
-                                      <a href="'.$link_to.'">
-                                        <img src="'.$image_link.'" title="'.$restaurant_name.'" alt="'.$restaurant_name.'" >
-                                      </a>
+    $stt_timer=$_POST['stt_timer'];
+    $stt_coupon=$_POST['stt_coupon'];
+   if(is_array($json['Results'])&&sizeof($json['Results'])>0){ 
+    foreach ($json['Results'] as $value_promotion_item1){
+      $due_date1=$value_promotion_item1['coupon_due_date']; 
+      $due_date1=date("j F, Y H:i:s", strtotime($due_date1)); 
+
+      echo'<script type="text/javascript">  
+            var timer = setInterval(function(){
+
+              var seconds = remaining.getSeconds(\''.$due_date1.'\');
+
+             // var remainingTime = remaining.getString(seconds, null, true);
+               var remainingTime = remaining.getString(seconds);
+              //var remainingTime = remaining.getStringDigital(seconds);
+
+              if (remainingTime == \'\') {
+                $(\'#remaining_'.$stt_timer.'\').html(\'đã hết!\');
+                clearInterval(timer);
+              } else {
+                $(\'#remaining_'.$stt_timer.'\').html(remainingTime);
+              }
+
+            }, 100);
+          </script>';
+      $stt_timer++;
+
+    }
+    
+    
+    
+    foreach ($json['Results'] as $value_promotion_item2){
+             $avatar=$value_promotion_item2['avatar'];             
+             $id=$value_promotion_item2['id'];
+             $name=$value_promotion_item2['name'];
+             
+             $desc=$value_promotion_item2['desc'];
+             $desc=substr($desc,0,120) . '...';
+             //$desc="ádad ád ád ád ád ád ád ád ";
+             //$desc=word_limiter($desc, 4);
+
+             
+             $address=$value_promotion_item2['address'];
+             $number_assessment=$value_promotion_item2['number_assessment'];
+             $number_like=$value_promotion_item2['number_like'];
+             $rate_point=$value_promotion_item2['rate_point'];
+             
+            
+              echo'
+               <li >            
+                <div class="detail_box">
+                           <div class="img_item">
+                             <a href="'.$url.'/index.php/detail_restaurant/detail_restaurant?id_restaurant='.$id.'">
+                                 <img style="width=40px; height=40px;" class="big" src="'.$url_res_frofile.$avatar.'" >
+                             </a>
+                            </div>
+                            <div id="time_left">
+                              <span>thời gian khuyến mãi còn lại
+                               <div id="remaining_'.$stt_coupon.'"></div>
+                              </span>
+                            </div>     
+                       ';
+                   
+                      echo'<div class="introduce_restaurant">
+                             <span>
+                              '.$desc.'
+                             </span>     
+                          </div>';
+                           echo' 
+                           <div class="info_restaurant"> ';
+                              
+                              //line
+                              echo'<div class="line"></div>';
+                              
+                               //iamges avatar restaurant
+                              echo '<div class="avartar_restaurant">
+                                      <a href="#">
+                                          <img src="'.$url_res_frofile.$avatar.'" title="Sweet cherry cafe" alt="Sweet cherry cafe" >
+                                      </a>                            
+                                    </div>';
+                                //name
+                                echo'
+                                  <div class="title_address">
+                                     <div class="title">
+                                      <a href="#"><span>'.$name.'</span></a>
+                                     </div>';
+                                //address   
+                                echo'<div class="address">'.
+                                         $address
+                                     .'</div>                                       
                                   </div>
-                                  <div class="info_promotion">
-                                        <div class="title">
-                                           <a href="'.$link_to.'">'.$restaurant_name.'</a>
-                                        </div>
-                                        <div class="info_promotion">
-                                           '.$content.'
-                                        </div>
-                                  </div>
-                               </div>
-                       </div> 
-                     </li>
-                ';
-                
-        }
+                                  
+                             </div>
+                          </div>  
+              </li>
+              ';
+            $stt_coupon++;
+           }
+    
+        echo '<div id="remove_input_stt">';
+          echo '<input type="hidden"  id="stt_timer" value="'.$stt_timer.'">';
+          echo '<input type="hidden" id="stt_coupon" value="'.$stt_coupon.'">';
+        echo '</div>';
+       
+       
+       
+       echo' <div id="remove_script_more_coupon_'.$page.'">
+        <script>
+
+          $(function(){
+            var page_this_coupon = parseInt($(\'#number_page_coupon\').val());
+            var page_next_coupon= page_this_coupon; 
+            $(\'#btn_More_Coupon\').click(function() {
+              page_next_coupon= page_next_coupon+1;
+              $("#remove_button_more_coupon").removeClass(\'button_more_noload\');
+              $("#remove_button_more_coupon").addClass(\'button_more_loading\');
+              var url = $(\'#hidUrl\').val();
+              var stt_timer=$("#stt_timer").val();
+              var stt_coupon=$("#stt_coupon").val();
+              $.post( url + "index.php/home_controller/more_Promotion", 
+                       { page_promotion: page_next_coupon,
+                         stt_timer: stt_timer,
+                         stt_coupon: stt_coupon
+
+                         }, function(data){  
+                                         if(data==""){
+                                          //alert(\'het\');
+                                          $("#more_Coupon").remove();
+                                          $("#remove_script_more_coupon_"+page_this_coupon).remove();
+                                        }
+                                        $(\'.append_coupon_restaurant\').append(data);
+                                        $("#remove_button_more_coupon").removeClass(\'button_more_loading\');
+                                        $("#remove_button_more_coupon").addClass(\'button_more_noload\');
+                                        $(\'#number_page_coupon\').val(page_next_coupon);
+                                        $(\'#remove_input_stt\').remove();
+                                        $("#remove_script_more_coupon_"+page_this_coupon).remove();
+                                          
+
+                       });
+            });
+
+          }); 
+
+
+
+        </script>   
+        <!--end javascrip append <li> to <ul>-->
+        </div>';
+    }
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
   }
   
   public function more_Post(){
