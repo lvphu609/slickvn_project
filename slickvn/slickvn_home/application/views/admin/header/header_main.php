@@ -50,11 +50,21 @@
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/restaurant_page.css">';
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/create_new_restaurant.css">';
        
+     
+       
       // <!--time picker-->
        echo '<script src="'.$url.'includes/plugins/date_time_picker/jquery-1.10.2.min.js"></script>';
        echo '<link rel="stylesheet" href="'.$url.'includes/plugins/date_time_picker/jquery-ui-timepicker-addon.css">';
        echo '<link rel="stylesheet" href="'.$url.'includes/plugins/date_time_picker/jquery-ui.css">';
      //  <!--end timepicker-->
+       
+       //jquery show dialog
+       echo '<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+             <script type="text/javascript" src="http://localhost/slick_temp_api//includes/jquery/jquery-2.0.3.js"></script>
+             <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+             <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+           ';  
+       
         
      }    
     ?>
@@ -77,6 +87,9 @@
     //<!--css post page-->
      if($chosed=="post_page"){
        echo'<link rel="stylesheet" href="'.$url.'includes/css/admin/post_page.css">';
+       // <!--ckeditor-->
+       echo '<script src="'.$url.'includes/plugins/ckeditor/ckeditor.js"></script>';
+       // <!--end ckeditor-->
      }    
     ?>
     

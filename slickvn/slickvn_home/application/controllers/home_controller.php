@@ -96,6 +96,7 @@ class Home_controller extends CI_Controller {
     
   /*========================================PROMOTION==================================================================*/    
     $link_promotion_list = API_Link_Enum::$PROMOTION_URL."?limit=".Restaurantenum::LIMIT_PAGE_PROMOTION."&page=1";
+   // var_dump($link_promotion_list);
     $json_string_promotion_list = file_get_contents($link_promotion_list);    
     $json_promotion_list = json_decode($json_string_promotion_list, true);
     $data['promotion_list']=$json_promotion_list["Results"]; 
@@ -425,7 +426,7 @@ class Home_controller extends CI_Controller {
     $page=$_POST['page_promotion'];
     $this->load->model('restaurantenum');
     $link = Api_link_enum::$PROMOTION_URL."?limit=".Restaurantenum::LIMIT_PAGE_PROMOTION."&page=".$page;
-    //var_dump($link);
+   // var_dump($link);  
     $json_string = file_get_contents($link);    
     $json = json_decode($json_string, true);
     $this->load->helper('url');
@@ -434,12 +435,20 @@ class Home_controller extends CI_Controller {
     
     $stt_timer=$_POST['stt_timer'];
     $stt_coupon=$_POST['stt_coupon'];
+    
+  //  $count_coupon=
+            
+            
+            
+            
    if(is_array($json['Results'])&&sizeof($json['Results'])>0){ 
     foreach ($json['Results'] as $value_promotion_item1){
       $due_date1=$value_promotion_item1['coupon_due_date']; 
       $due_date1=date("j F, Y H:i:s", strtotime($due_date1)); 
 
-      echo'<script type="text/javascript">  
+      echo'
+      
+        <script type="text/javascript">  
             var timer = setInterval(function(){
 
               var seconds = remaining.getSeconds(\''.$due_date1.'\');
@@ -468,7 +477,7 @@ class Home_controller extends CI_Controller {
              $id=$value_promotion_item2['id'];
              $name=$value_promotion_item2['name'];
              
-             $desc=$value_promotion_item2['desc'];
+             $desc=$value_promotion_item2['coupon_desc'];
              $desc=substr($desc,0,120) . '...';
              //$desc="ádad ád ád ád ád ád ád ád ";
              //$desc=word_limiter($desc, 4);
@@ -532,8 +541,9 @@ class Home_controller extends CI_Controller {
            }
     
         echo '<div id="remove_input_stt">';
-          echo '<input type="hidden"  id="stt_timer" value="'.$stt_timer.'">';
+          echo '<input  type="hidden" id="stt_timer" value="'.$stt_timer.'">';
           echo '<input type="hidden" id="stt_coupon" value="'.$stt_coupon.'">';
+          echo '<input type="hidden" value="'.$page.'" id="number_page_coupon">'; 
         echo '</div>';
        
        
@@ -567,8 +577,13 @@ class Home_controller extends CI_Controller {
                                         $("#remove_button_more_coupon").addClass(\'button_more_noload\');
                                         $(\'#number_page_coupon\').val(page_next_coupon);
                                         $(\'#remove_input_stt\').remove();
-                                        $("#remove_script_more_coupon_"+page_this_coupon).remove();
-                                          
+                                       // $("#remove_script_more_coupon_"+page_this_coupon).remove();
+                                 // document.getElementById("remove_script_more_coupon_"+page_this_coupon).innerHTML="";
+                                  document.getElementById("remove_script_more_coupon_"+page_this_coupon).disabled = true;
+                                    var nodes = document.getElementById("remove_script_more_coupon_1").getElementsByTagName('*');
+                                    for(var i = 0; i < nodes.length; i++){
+                                        nodes[i].disabled = true;
+                                    }
 
                        });
             });
@@ -578,13 +593,11 @@ class Home_controller extends CI_Controller {
 
 
         </script>   
-        <!--end javascrip append <li> to <ul>-->
+      
         </div>';
     }
     
-    
-   
-    
+  
     
     
     

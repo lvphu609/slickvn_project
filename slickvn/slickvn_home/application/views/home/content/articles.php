@@ -12,26 +12,27 @@
    <div class="articles_list">
      <div class="articles_list_custom_center"  id="append_More_Post">
        <?php
-       foreach ($articles_list as $value_articles_list) {
-            $id=$value_articles_list['id'];
-            $title=$value_articles_list['title'];
-            $id_user=$value_articles_list['id_user'];
-            $avatar=$value_articles_list['avatar'];
-            $address=$value_articles_list['address'];
-            $content=$value_articles_list['content'];
+       if(is_array($articles_list)&&  sizeof($articles_list)>0){
+       foreach ($articles_list as $value_articles_item) {
+            $id=$value_articles_item['id'];
+            $title=$value_articles_item['title'];
+            $id_user=$value_articles_item['id_user'];
+            $avatar=$value_articles_item['avatar'];
+            $address=$value_articles_item['address'];
+            $content=$value_articles_item['content'];
             //$number_view=$articles_list['number_view'];
             $number_view=0;
            // $note=$value_articles_list['note'];
           //  $authors=$value_articles_list['authors'];
-            $created_date=$value_articles_list['created_date'];
+            $created_date=$value_articles_item['created_date'];
             
-            $favourite_type_list=$value_articles_list['favourite_type_list'];
+            $favourite_type_list=$value_articles_item['favourite_type_list'];
             $favourite_type_list=substr($favourite_type_list, 1); 
     
-            $price_person_list=$value_articles_list['price_person_list'];
+            $price_person_list=$value_articles_item['price_person_list'];
             $price_person_list=substr($price_person_list, 1); 
             
-            $culinary_style=$value_articles_list['culinary_style_list'];
+            $culinary_style=$value_articles_item['culinary_style_list'];
             $culinary_style=substr($culinary_style, 1); 
 //            $culinary_style=substr($culinary_style, 1); 
             $rate_point=5;
@@ -90,7 +91,7 @@
             ';
             
        }     
-       
+       }
        ?>
       
        

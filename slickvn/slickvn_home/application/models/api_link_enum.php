@@ -41,9 +41,9 @@ class Api_link_enum {
   const DETAIL_POST_API="get_detail_post";
   const ADD_COUPON_API="update_coupon";
   const UPDATE_RESTAURANT_API="update_restaurant";
-
-
-
+  const DELETE_RESTAURANT_API="update_restaurant";
+  const COUPON_OF_RESTAURANT_API="get_coupon_of_restaurant";
+  const DELETE_COUPON_OF_RESTAURANT_API="update_coupon";
 
 
 
@@ -73,7 +73,7 @@ class Api_link_enum {
   const SEARCH_POST_API="search_post";
   const SEARCH_MEMBER_API="search_user";
   const SEARCH_RESTAURANT_BY_COUPON_API="search_restaurant_by_coupon";
-  
+  const ADMIN_SEARCH_RESTAURANT_API="search_restaurant";
   /*end search----------*/
 
 
@@ -146,9 +146,17 @@ class Api_link_enum {
     public static $ADD_COUPON_URL;
     public static $UPDATE_RESTAURANT_URL;
     public static $SEARCH_RESTAURANT_BY_COUPON_URL;
+    public static $DELETE_RESTAURANT_URL;
+    public static $ADMIN_SEARCH_RESTAURANT_URL;
+    public static $COUPON_OF_RESTAURANT_URL;
+    public static $DELETE_COUPON_OF_RESTAURANT_URL;
+
     
-    
-    
+
+
+
+
+
     public static function initialize()
     {  
       /*url*/
@@ -197,6 +205,11 @@ class Api_link_enum {
       self::$DETAIL_POST_URL = self::$BASE_API_RESTAURANT_URL.self::DETAIL_POST_API.self::FORMAT_JSON ;
       self::$ADD_COUPON_URL = self::$BASE_API_RESTAURANT_URL.self::ADD_COUPON_API.self::FORMAT_JSON ;
       self::$UPDATE_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::UPDATE_RESTAURANT_API;
+      self::$DELETE_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::DELETE_RESTAURANT_API;
+      self::$COUPON_OF_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::COUPON_OF_RESTAURANT_API.self::FORMAT_JSON;
+      self::$DELETE_COUPON_OF_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::DELETE_COUPON_OF_RESTAURANT_API;
+
+      
       
       
       
@@ -213,6 +226,8 @@ class Api_link_enum {
       self::$SEARCH_POST_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_POST_API.self::FORMAT_JSON ;
       self::$SEARCH_MEMBER_URL= self::$BASE_API_USER_URL.self::SEARCH_MEMBER_API.self::FORMAT_JSON ;
       self::$SEARCH_RESTAURANT_BY_COUPON_URL= self::$BASE_API_RESTAURANT_URL.self::SEARCH_RESTAURANT_BY_COUPON_API.self::FORMAT_JSON ;
+      self::$ADMIN_SEARCH_RESTAURANT_URL= self::$BASE_API_RESTAURANT_URL.self::ADMIN_SEARCH_RESTAURANT_API.self::FORMAT_JSON ;
+      
       /*end search*/
        
       

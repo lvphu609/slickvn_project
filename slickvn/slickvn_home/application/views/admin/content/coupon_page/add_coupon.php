@@ -1,14 +1,14 @@
 <?php $url=  base_url();?>
 
 
-<div id="create_new_member">
-  <div id="content_create_new_member">
-   <div class="create_new_member_title">
-     <span><div class=create_new_member_text"><?php echo $name_res;?></div></span>
+<div id="create_new_coupon">
+  <div id="content_create_new_coupon">
+   <div class="create_new_coupon_title">
+     <span><div class=create_new_coupon_text"><?php echo $name_res;?></div></span>
    </div>
    <div class="line_title"></div></br>
    
-   <div class="member_info_title">
+   <div class="coupon_info_title">
      <span>Thông tin khuyến mãi</span>
    </div>
    
@@ -53,7 +53,7 @@
      </div>
 
      <div class="line_title"></div></br>
-     <div class="introduce_member_profile">
+     <div class="introduce_coupon_profile">
         <span>MÔ TẢ THÔNG TIN KHUYẾN MÃI</span><br>
         <textarea id="param_description" class="input_textarea" name=""></textarea>
      </div>
@@ -74,22 +74,170 @@
        </a>
      </div>
      
+     <div class="list_coupon_of_res">
+      
+     <!--title-->
+     <ul class="box_info field_title_restaurant">
+       <li class="stt_restaurant">
+         <span class="index_bole">STT</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="stt_chose">
+         <span class="index_bole">Chọn</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="phonenumber_restaurant">
+         <span class="index_bole">Ngày tạo</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="phonenumber_restaurant">
+         <span class="index_bole">Mô tả khuyến mãi</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="email_restaurant">
+         <span class="index_bole">Giá trị (%)</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="phonenumber_restaurant">
+         <span class="index_bole">Thời gian bắt đầu</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="phonenumber_restaurant">
+         <span class="index_bole">Thời gian kết thúc</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="email_restaurant">
+         <span class="index_bole">Trạng thái</span>
+         <div class="line_index"></div>
+       </li>
+       <li class="update_delete">
+       </li>
+     </ul>
+     
+     
+     <?php 
+     
+       $stt=1;
+         if(is_array($coupon_of_restaurant)&&  sizeof($coupon_of_restaurant)>0){
+           foreach ($coupon_of_restaurant as $value) {             
+              $id                =$value['id'];
+              $id_restaurant     =$value['id_restaurant'];
+              $value_coupon      =$value['value_coupon'];
+              $coupon_start_date =$value['coupon_start_date'];
+              $coupon_due_date   =$value['coupon_due_date'];
+              $coupon_desc       =$value['coupon_desc'];
+              $updated_date      =$value['updated_date'];  
+              $created_date      =$value['created_date'];  
+              $status_coupon      =$value['status_coupon']; 
+              if(strcmp($status_coupon,"TRUE")==0){
+                $status_coupon="còn hạn";
+              }
+              else $status_coupon="hết hạn";
+              //$is_use=$value['is_use'];
+              $is_use=1;
+              $input_status="";
+              if(strcmp($is_use,'1')==0){
+                $input_status="checked";
+              }
+              
+              
+             if($stt%2==0){
+              echo '
+                <ul class="box_info row_color">
+                    <li class="stt_restaurant">
+                      <span >'.$stt.'</span>
+                    </li>
+                     <li class="stt_chose">
+                      <span >
+                       <input type="checkbox" '.$input_status.' disabled>
+                      </span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_start_date.'</span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_desc.'</span>
+                    </li>
+                    <li class="email_restaurant">
+                      <span >'.$value_coupon.'</span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_start_date.'</span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_due_date.'</span>
+                    </li>
+                    <li class="email_restaurant">
+                      <span >'.$status_coupon.'</span>
+                    </li>
+                    <li class="update_delete">
+                        <a href="javascript:;" class="view_edit_restaurant" data-value_edit="'.$id.'"><div class="edit"></div></a>
+                        <a href="javascript:;" class="delete_coupon" data-value_delete="'.$id.'"><div class="delete"></div></a>  
+                    </li>
+                  </ul>
+              ';
+             }
+             else{
+                 echo '
+                <ul class="box_info field_title_restaurant">
+                    <li class="stt_restaurant">
+                      <span >'.$stt.'</span>
+                    </li>
+                    <li class="stt_chose">
+                      <span >
+                        <input type="checkbox" '.$input_status.' disabled>
+                      </span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_start_date.'</span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_desc.'</span>
+                    </li>
+                   
+                    <li class="email_restaurant">
+                      <span >'.$value_coupon.'</span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_start_date.'</span>
+                    </li>
+                    <li class="phonenumber_restaurant">
+                      <span >'.$coupon_due_date.'</span>
+                    </li>
+                    <li class="email_restaurant">
+                      <span >'.$status_coupon.'</span>
+                    </li>
+                    <li class="update_delete">
+                        <a href="javascript:;" class="view_edit_restaurant" data-value_edit="'.$id.'"><div class="edit"></div></a>
+                        <a href="javascript:;" class="delete_coupon" data-value_delete="'.$id.'"><div class="delete"></div></a>  
+                    </li>
+                  </ul>
+              ';
+               
+             } 
+              $stt++;
+           }
+                 
+         }
+      ?>
+     </div>
    </div>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
   </div>
 </div>
+<?php $url=  base_url(); ?>
+<input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/edit_restaurant_page";?>" id="hdUrl_edit_coupon" >
+<input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/delete_coupon_of_restaurant";?>" id="hdUrl_delete_coupon" >
+<input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 <input type="hidden" value="<?php echo $id_res;?>" id="param_id_restaurant" >
-<input type="hidden" value="<?php echo $url;?>" id="hdUrl" >
+
+
+
+
 <script>
+    $(document).ready(function () {
+         $('.dialog_delete_coupon').hide();
+      });
+  
   function  submit_save_info_coupon(){
      var param_id_restaurant=$('#param_id_restaurant').val();
      var param_value_coupon=$('#param_value_coupon').val();
@@ -98,7 +246,7 @@
      var param_description=$('#param_description').val();
      
      
-     var url=$("#hdUrl").val();
+     var url=$("#hidUrl").val();
      var url_api=url+"index.php/admin/admin_controller/add_coupon";
      var data={
               id_restaurant:  param_id_restaurant,
@@ -114,7 +262,7 @@
           data:data,
           success: function(data){
              alert('them thanh cong');
-             window.location=url+"index.php/admin/admin_controller/coupon_page";
+            location.reload();
           },
 
          //timeout:5000,
@@ -130,5 +278,77 @@
   
   }
   
+
+  
+  $(".view_edit_restaurant").click(function (){
+    var url=$("#hdUrl_edit_restaurant").val();
+    var data_value_edit=$(this).attr('data-value_edit');
+   // window.location=url+"?id_restaurant="+data_value_edit;
+  });
+  $(".delete_coupon").click(function (){
+      $(this).parent().parent().addClass('select_delete');
+      var url=$("#hdUrl_delete_coupon").val();
+      var data_value_delete=$(this).attr('data-value_delete');
+   
+      $( ".dialog_delete_coupon" ).dialog({
+          title: "Thông báo", 
+          show: "scale",
+          hide: "explode",
+          closeOnEscape: true,
+          modal: true,
+          minWidth: 200,
+          minHeight: 200,
+
+          resizable: false,
+          height:200,
+          modal: true,
+          buttons: {
+            "Xóa": function() {
+              
+              var url_delete=url
+               $.ajax({
+                  url: url_delete,
+                  type: 'POST',
+                  data:{ id_coupon:data_value_delete},
+                  success: function(data){
+                    location.reload();
+                  },
+                 error: function(a,textStatus,b){
+                   alert('không xóa được');
+                 }
+               });
+              $( this ).dialog( "close" );
+            },
+            "Hủy": function() {
+              $(".delete_coupon").parent().parent().removeClass('select_delete');
+              $( this ).dialog( "close" );
+            }
+          }
+    
+      });
+       
+       
+       
+  });
+  
+ //search restaurant
+ $('#btn_search_restaurant').click(function (){
+    
+    var input_text_search=$("#input_text_search").val();
+    var url= $("#hidUrl").val();
+    var url_search_member=url+'index.php/search/search/admin_search_restaurant';
+    window.location=url_search_member+"?input_text_search="+input_text_search;
+ 
+ });
+ 
+  
+  
+  
   
 </script>
+
+  <div class="dialog_delete_coupon" title="Thông báo">  
+    <lable class="label">Bạn có chắc muốn xóa dữ liệu đang chọn không!</lable></br>
+    <!--<button type="button" id="btnYes" class="btn btn-warning">Đồng ý</button>
+    <button type="button" id="btnNo" class="btn btn-warning">Hủy</button>-->
+  </div>

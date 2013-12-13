@@ -24,7 +24,7 @@ class Restaurantenum {
   const IMAGE_LINK = 'image_link';
   const LIMIT_PAGE_NEWEST_RESTAURANT = 9;
   const LIMIT_PAGE_ORTHER_RESTAURANT = 9;
-  const LIMIT_PAGE_PROMOTION = 1;
+  const LIMIT_PAGE_PROMOTION = 4;
   const LIMIT_PAGE_POST = 3;
   const LIMIT_PAGE_RESTAURANT_ALL = 15;
   const LIMIT_SEARCH_POST=10;

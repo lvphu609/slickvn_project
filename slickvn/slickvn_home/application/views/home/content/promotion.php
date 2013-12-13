@@ -20,13 +20,14 @@
             Author: Vinh Phu
             Version: 28/10/2013
           !-->
-          <input type="hidden" value="1" id="number_page_coupon"> 
+         
           <?php $url=  base_url(); ?>
           <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
           <script type="text/javascript" src="<?php echo $url."includes/js/time_left/remaining.js";?>"></script>
             <?php 
              //  var_dump($promotion_list);
                 $stt_timer=1;
+             if(is_array($promotion_list)&&  sizeof($promotion_list)>0){   
                 foreach ($promotion_list as $value_promotion_item){
                   $due_date=$value_promotion_item['coupon_due_date']; 
                   $due_date=date("j F, Y H:i:s", strtotime($due_date)); 
@@ -52,18 +53,19 @@
                   $stt_timer++;
                   
                 }
-                
+             }
             ?>
           <?php 
          // var_dump($newest_restaurant['0']);
             $stt_coupon=1;
+          if(is_array($promotion_list)&&  sizeof($promotion_list)>0){ 
             foreach ($promotion_list as $value_promotion_item){
             
              $avatar=$value_promotion_item['avatar'];             
              $id=$value_promotion_item['id'];
              $name=$value_promotion_item['name'];
              
-             $desc=$value_promotion_item['desc'];
+             $desc=$value_promotion_item['coupon_desc'];
              $desc=substr($desc,0,120) . '...';
              //$desc="ádad ád ád ád ád ád ád ád ";
              //$desc=word_limiter($desc, 4);
@@ -126,10 +128,11 @@
             
              $stt_coupon++;
            }
-           
+          }  
            echo '<div id="remove_input_stt">';
            echo '<input type="hidden"  id="stt_timer" value="'.$stt_timer.'">';
            echo '<input type="hidden" id="stt_coupon" value="'.$stt_coupon.'">';
+           echo '<input type="hidden" value="1" id="number_page_coupon">'; 
            echo '</div>';
         ?> 
         </ul>
@@ -152,10 +155,12 @@
 <script>
 
   $(function(){
-    var page_this_coupon = parseInt($('#number_page_coupon').val());
-    var page_next_coupon= page_this_coupon; 
+   
     $('#btn_More_Coupon').click(function() {
+      var page_this_coupon = parseInt($('#number_page_coupon').val());
+      var page_next_coupon= page_this_coupon; 
       page_next_coupon= page_next_coupon+1;
+     // alert(page_next_coupon);
       $("#remove_button_more_coupon").removeClass('button_more_noload');
       $("#remove_button_more_coupon").addClass('button_more_loading');
       var url = $('#hidUrl').val();
@@ -172,13 +177,21 @@
                                     $("#more_Coupon").remove();
                                     $("#remove_script_more_coupon_"+page_this_coupon).remove();
                                   }
+                                  else{
                                   $('.append_coupon_restaurant').append(data);
                                   $("#remove_button_more_coupon").removeClass('button_more_loading');
                                   $("#remove_button_more_coupon").addClass('button_more_noload');
                                   $('#number_page_coupon').val(page_next_coupon);
                                   $('#remove_input_stt').remove();
-                                  $("#remove_script_more_coupon_"+page_this_coupon).remove();
-                                  
+                                  //$("#remove_script_more_coupon_"+page_this_coupon).remove();
+                                   document.getElementById("remove_script_more_coupon_1").disabled = true;
+                                    var nodes = document.getElementById("remove_script_more_coupon_1").getElementsByTagName('*');
+                                    for(var i = 0; i < nodes.length; i++){
+                                        nodes[i].disabled = true;
+                                    }
+                               //document.getElementById("remove_script_more_coupon_"+page_this_coupon).innerHTML="";
+
+                                  }
                });
     });
     

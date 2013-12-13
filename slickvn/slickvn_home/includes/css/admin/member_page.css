@@ -176,10 +176,10 @@
 
 #member_page #content_member_page .member_list .box_info{
  width: 100%;
- height: auto;
+ height: 50px;
  list-style: none;
  float: left;
- margin-top: 20px;;
+ text-align: center;
  
  /*height:100px; 
  background:#FFA54E;*/
@@ -189,15 +189,11 @@
   background: #a6e1ec;
 }
 
-#member_page #content_member_page .member_list .select_delete{
- background: #c9e2b3;
- 
- /*height:100px; 
- background:#FFA54E;*/
-}
+
 #member_page #content_member_page .member_list .box_info li{
  height: auto;
  float: left;
+ margin-top: 15px;
 }
 #member_page #content_member_page .member_list .box_info li .index_bole{
  font-weight: bold;
@@ -277,4 +273,7 @@
  background: url('../../../includes/images/icon/delete_member.png');
  background-repeat: no-repeat;
  background-position: center;
+}
+#member_page #content_member_page .member_list .select_delete{
+ background: #c9e2b3;
 }

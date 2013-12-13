@@ -15,6 +15,7 @@
             Version: 28/10/2013
           !-->
           <?php 
+         if(is_array($orther_restaurant)&&  sizeof($orther_restaurant)>0){
              foreach($orther_restaurant as $value_res_orther){
              $avatar=$value_res_orther['avatar'];             
              $id=$value_res_orther['id'];
@@ -112,7 +113,9 @@
               ';
             
              
-           }         
+           }
+           
+         }
             ?>
           
         </ul>

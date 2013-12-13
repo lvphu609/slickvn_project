@@ -63,7 +63,7 @@
      
 <?php 
 $stt=1;
-if(is_array($all_user)){
+if(is_array($all_user)&&  sizeof($all_user)>0){
 foreach ($all_user as $value_all_user){
       
       $id              =$value_all_user['id'];
@@ -191,7 +191,7 @@ foreach ($all_user as $value_all_user){
     
     var input_text_search=$("#input_text_search").val();
     var url= $("#hidUrl").val();
-    var url_search_member=url+'index.php/search/search/search_member';
+    var url_search_member=url+'index.php/search/search/admin_search_member';
     window.location=url_search_member+"?input_text_search="+input_text_search;
  
  });

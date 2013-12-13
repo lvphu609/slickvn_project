@@ -11,13 +11,15 @@
             <span class="title_link">MÓN ĂN</span><br><br>
             <ul>
               <?php 
-                foreach ($meal_list as $value_meal_list){                  
+               if(is_array($meal_list)&&  sizeof($meal_list)>0){
+                foreach ($meal_list as $value_meal_item){                  
                   echo '<li>
-                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$value_meal_list['name'].'">
-                                 <span>'.$value_meal_list['name'].'
+                           <a href="'.$url.'index.php/search/search/search_meal?meal_name='.$value_meal_item['name'].'">
+                                 <span>'.$value_meal_item['name'].'
                            </a>
                         </li>';
                 }
+               }
               
               ?>  
             </ul>
@@ -26,12 +28,14 @@
             <span class="title_link">NHU CẦU</span><br><br>
             <ul>
                <?php 
-                foreach ($favourite_list as $value_favourite_list){                  
-                  echo '<li>
-                          <a href="'.$url.'index.php/search/search/search_favourite?favourite_id='.$value_favourite_list['id'].'">
-                                  '.$value_favourite_list['name'].'                           
-                           </a>
-                         </li>';
+                if(is_array($favourite_list)&&  sizeof($favourite_list)>0){
+                  foreach ($favourite_list as $value_favourite_item){                  
+                    echo '<li>
+                            <a href="'.$url.'index.php/search/search/search_favourite?favourite_id='.$value_favourite_item['id'].'">
+                                    '.$value_favourite_item['name'].'                           
+                             </a>
+                           </li>';
+                  }
                 }
               
               ?> 

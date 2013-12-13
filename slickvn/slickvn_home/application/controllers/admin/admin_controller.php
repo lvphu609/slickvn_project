@@ -283,6 +283,49 @@ class Admin_controller extends CI_Controller {
     
   }  
   
+   public function delete_restaurant()
+  {
+     
+    $id=$_GET['id_restaurant'];
+    
+    //xoa
+    $action="delete";
+    $url=Api_link_enum::$DELETE_RESTAURANT_URL;
+    
+    $myvars = 'id=' . $id . '&action=' . $action;
+    $ch = curl_init( $url );
+    curl_setopt( $ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt( $ch, CURLOPT_HEADER, 0);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec( $ch );
+     
+     
+    //danh sách tất cả các nhà hàng
+     $link_all_restaurant = Api_link_enum::$ALL_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_RESTAURANT_ALL."&page=1";
+     //var_dump($link_all_restaurant);
+     $json_string_all_restaurant= file_get_contents($link_all_restaurant);    
+     $json_all_restaurant = json_decode($json_string_all_restaurant, true);
+     $data['all_restaurant']=$json_all_restaurant["Results"];
+     //var_dump( $data['all_restaurant']);
+    
+    $data['chosed']="restaurant_page";
+    $this->load->helper('url');
+    $this->load->view('admin/header/header_main',$data);
+    $this->load->view('admin/taskbar_top/taskbar_top');
+    $this->load->view('admin/menu/menu_main',$data);
+    
+    $this->load->view('admin/content/restaurant_page/restaurant_page');
+    $this->load->view('admin/footer/footer_main');
+    
+  }  
+  
+  
+  
+  
+  
+  
     //trang thêm nhà hàng mới
  public function create_new_restaurant()
   {
@@ -557,14 +600,19 @@ class Admin_controller extends CI_Controller {
   
   
 /*========================TRANG KHUYẾN MÃI=================================================================*/  
-  public function coupon_page()
-  {
+  
+public function coupon_restaurant_list(){
+  
+  
+  
+}
 
-    
-   
+public function coupon_page()
+  {
     
     //danh sách tất cả các nhà hàng
      $link_all_restaurant = Api_link_enum::$ALL_RESTAURANT_URL."?limit=".Restaurantenum::LIMIT_PAGE_RESTAURANT_ALL."&page=1";
+    // var_dump($link_all_restaurant);
      $json_string_all_restaurant= file_get_contents($link_all_restaurant);    
      $json_all_restaurant = json_decode($json_string_all_restaurant, true);
      $data['all_restaurant']=$json_all_restaurant["Results"];
@@ -591,9 +639,14 @@ class Admin_controller extends CI_Controller {
       $this->load->view('admin/header/header_main',$data);
       $this->load->view('admin/taskbar_top/taskbar_top');
       $this->load->view('admin/menu/menu_main',$data);
-    
-      $this->load->view('admin/content/coupon_page/add_coupon');
       
+      //danh sách tất cả các nhà hàng
+      $link_coupon_of_restaurant = Api_link_enum::$COUPON_OF_RESTAURANT_URL."?id_restaurant=".$data['id_res'];
+      $json_string_coupon_of_restaurant= file_get_contents($link_coupon_of_restaurant);
+      $json_coupon_of_restaurant = json_decode($json_string_coupon_of_restaurant, true);
+      $data['coupon_of_restaurant']=$json_coupon_of_restaurant["Results"];
+     // var_dump($data['coupon_of_restaurant']);
+      $this->load->view('admin/content/coupon_page/add_coupon',$data);
       $this->load->view('admin/footer/footer_main');
     
     
@@ -625,6 +678,28 @@ class Admin_controller extends CI_Controller {
     
   }  
   
+   public function delete_coupon_of_restaurant()
+  {
+     $id=$_POST['id_coupon'];
+    
+    //xoa
+    $action="delete";
+    $url=Api_link_enum::$DELETE_COUPON_OF_RESTAURANT_URL;
+    
+    $myvars = 'id=' . $id . '&action=' . $action;
+    $ch = curl_init( $url );
+    curl_setopt( $ch, CURLOPT_POST, 1);
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt( $ch, CURLOPT_HEADER, 0);
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec( $ch );
+    
+    
+    
+    
+  }  
+  
   
   
   
@@ -636,13 +711,44 @@ class Admin_controller extends CI_Controller {
 /*========================TRANG BÀI VIẾT=================================================================*/  
   public function post_page()
   {
-
+    
+    
+    
+     //link image upload temp
+     $data['BASE_IMAGE_UPLOAD_TEMP_URL']=  Api_link_enum::$BASE_IMAGE_UPLOAD_TEMP_URL;
+     //call php upload image temp
+     $data['BASE_CALL_UPLOAD_IMAGE_TEMP_URL']=  Api_link_enum::$BASE_CALL_UPLOAD_IMAGE_TEMP_URL;
+     $data['INSERT_POST_URL']=  Api_link_enum::$INSERT_POST_URL;
+    
+    $link_favourite_list = Api_link_enum::$FAVOURITE_TYPE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_FAVOURITE;
+    $json_string_favourite_list = file_get_contents($link_favourite_list);    
+    $json_favourite_list = json_decode($json_string_favourite_list, true);
+    $data['favourite_list']=$json_favourite_list["Results"];    
+    
+     //lay danh sach price_persion (gia trung binh nguoi)
+    $link_price_persion = Api_link_enum::$PRICE_PERSION_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_PRICE_PERSION;
+    
+    $json_string_price_persion = file_get_contents($link_price_persion);    
+    $json_price_persion = json_decode($json_string_price_persion, true);
+    $data['price_persion']=$json_price_persion["Results"];
+     
+   //lay danh sach phong cach am thuc culinary_style
+     $link_culinary_style = Api_link_enum::$CULINARY_STYLE_URL.Api_link_enum::COLLECTION_NAME.Api_link_enum::COLLECTION_CULINARY_STYLE;
+     //var_dump($link_culinary_style);
+     $json_string_culinary_style = file_get_contents($link_culinary_style);    
+     $json_culinary_style = json_decode($json_string_culinary_style, true);
+     $data['culinary_style']=$json_culinary_style["Results"];
+    
+    
+    
+    
+    
     $data['chosed']="post_page";
     $this->load->helper('url');
     $this->load->view('admin/header/header_main',$data);
     $this->load->view('admin/taskbar_top/taskbar_top');
     $this->load->view('admin/menu/menu_main',$data);
-    //$this->load->view('admin/content/main_page/member_page');
+    $this->load->view('admin/content/post_page/post_page');
     $this->load->view('admin/footer/footer_main');
     
   } 

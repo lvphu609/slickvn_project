@@ -16,6 +16,7 @@
       
           <?php 
          // var_dump($newest_restaurant['0']);
+          if(is_array($newest_restaurant)&&  sizeof($newest_restaurant)>0){
             foreach($newest_restaurant as $value_res_newest){
             
              $avatar=$value_res_newest['avatar'];             
@@ -117,7 +118,8 @@
               ';
             
              
-           }         
+           } 
+          }
             ?> 
         </ul>
         <ul id="more_Newest_Restaurant">

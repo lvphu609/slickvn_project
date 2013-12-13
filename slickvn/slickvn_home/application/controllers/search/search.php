@@ -318,7 +318,7 @@ class Search extends CI_Controller {
     
   }
   
-  public function search_member(){
+  public function admin_search_member(){
     
     $input_text_search=$_GET['input_text_search'];
     $input_text_search=  trim($input_text_search);
@@ -348,8 +348,68 @@ class Search extends CI_Controller {
    // echo $key;
     
   }
+   public function admin_search_restaurant(){
+    
+    $input_text_search=$_GET['input_text_search'];
+    $input_text_search=  trim($input_text_search);
+    $input_text_search=  urlencode($input_text_search);
+    $this->load->model('restaurantenum');
+    $this->load->helper('url');
+    Api_link_enum::initialize();
+    $key=$input_text_search;
+    
+     $link_search_restaurant = Api_link_enum::$ADMIN_SEARCH_RESTAURANT_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_USER_ALL."&page=1";
+    // var_dump($link_search_restaurant);
+     $json_string_search_restaurant= file_get_contents($link_search_restaurant);
+     $json_search_restaurant = json_decode($json_string_search_restaurant, true);
+     $data['all_restaurant']=$json_search_restaurant["Results"];
+    // var_dump($data['all_user']);
+    
+     
+      $data['chosed']="restaurant_page";
+      $this->load->helper('url');
+      $this->load->view('admin/header/header_main',$data);
+      $this->load->view('admin/taskbar_top/taskbar_top');
+      $this->load->view('admin/menu/menu_main',$data);
+
+      $this->load->view('admin/content/restaurant_page/restaurant_page',$data);
+      $this->load->view('admin/footer/footer_main');
+     
+   // echo $key;
+    
+  }
   
-  
+     public function admin_search_restaurant_coupon(){
+    
+    $input_text_search=$_GET['input_text_search'];
+    $input_text_search=  trim($input_text_search);
+    $input_text_search=  urlencode($input_text_search);
+    $this->load->model('restaurantenum');
+    $this->load->helper('url');
+    Api_link_enum::initialize();
+    $key=$input_text_search;
+    
+     $link_search_restaurant = Api_link_enum::$ADMIN_SEARCH_RESTAURANT_URL."?key=".$key."&limit=".Restaurantenum::LIMIT_PAGE_USER_ALL."&page=1";
+    // var_dump($link_search_restaurant);
+     $json_string_search_restaurant= file_get_contents($link_search_restaurant);
+     $json_search_restaurant = json_decode($json_string_search_restaurant, true);
+     $data['all_restaurant']=$json_search_restaurant["Results"];
+    // var_dump($data['all_user']);
+    
+     
+      $data['chosed']="coupon_page";
+      $this->load->helper('url');
+      $this->load->view('admin/header/header_main',$data);
+      $this->load->view('admin/taskbar_top/taskbar_top');
+      $this->load->view('admin/menu/menu_main',$data);
+
+      $this->load->view('admin/content/coupon_page/coupon_page',$data);
+      $this->load->view('admin/footer/footer_main');
+     
+   // echo $key;
+   
+       
+  }
   
 }
 
