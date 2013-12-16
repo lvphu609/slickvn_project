@@ -57,7 +57,9 @@
         <span>MÔ TẢ THÔNG TIN KHUYẾN MÃI</span><br>
         <textarea id="param_description" class="input_textarea" name=""></textarea>
      </div>
-    
+     <div class="introduce_coupon_profile">
+       <input type="checkbox" id="param_check_show_coupon"> <span>Hiện thông tin khuyến mãi trên trang home</span>
+     </div>
      
      
      
@@ -133,8 +135,8 @@
                 $status_coupon="còn hạn";
               }
               else $status_coupon="hết hạn";
-              //$is_use=$value['is_use'];
-              $is_use=1;
+              $is_use=$value['is_use'];
+              
               $input_status="";
               if(strcmp($is_use,'1')==0){
                 $input_status="checked";
@@ -171,7 +173,7 @@
                       <span >'.$status_coupon.'</span>
                     </li>
                     <li class="update_delete">
-                        <a href="javascript:;" class="view_edit_restaurant" data-value_edit="'.$id.'"><div class="edit"></div></a>
+                        <a href="javascript:;" class="view_edit_restaurant" data-value_edit="'.$id.'" data-value_name_res="'.$name_res.'"><div class="edit"></div></a>
                         <a href="javascript:;" class="delete_coupon" data-value_delete="'.$id.'"><div class="delete"></div></a>  
                     </li>
                   </ul>
@@ -208,7 +210,7 @@
                       <span >'.$status_coupon.'</span>
                     </li>
                     <li class="update_delete">
-                        <a href="javascript:;" class="view_edit_restaurant" data-value_edit="'.$id.'"><div class="edit"></div></a>
+                        <a href="javascript:;" class="view_edit_restaurant" data-value_edit="'.$id.'"  data-value_name_res="'.$name_res.'"><div class="edit"></div></a>
                         <a href="javascript:;" class="delete_coupon" data-value_delete="'.$id.'"><div class="delete"></div></a>  
                     </li>
                   </ul>
@@ -224,27 +226,65 @@
    </div>
   </div>
 </div>
+
+<!--dialog-->
+
+<div class="dialog_delete_coupon" title="Thông báo">  
+    <lable class="label">Bạn có chắc muốn xóa dữ liệu đang chọn không!</lable></br>
+    <!--<button type="button" id="btnYes" class="btn btn-warning">Đồng ý</button>
+    <button type="button" id="btnNo" class="btn btn-warning">Hủy</button>-->
+  </div>
+
+
+<div class="dialog_edit_coupon" title="Sửa thông tin khuyến mãi">  
+ 
+</div>
+
+
+<!--end dialog-->
+
+
+
+
+
+
+
+
+
+
+
+
 <?php $url=  base_url(); ?>
-<input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/edit_restaurant_page";?>" id="hdUrl_edit_coupon" >
+<input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/form_edit_coupon_of_restaurant";?>" id="hdUrl_edit_coupon" >
 <input type="hidden" value="<?php echo $url."index.php/admin/admin_controller/delete_coupon_of_restaurant";?>" id="hdUrl_delete_coupon" >
 <input type="hidden" value="<?php echo $url;?>" id="hidUrl"> 
 <input type="hidden" value="<?php echo $id_res;?>" id="param_id_restaurant" >
-
-
-
-
+<input type="hidden" value="0" id="param_status_checked" >
 <script>
     $(document).ready(function () {
          $('.dialog_delete_coupon').hide();
+         $('.dialog_edit_coupon').hide();
       });
-  
+   $('#param_check_show_coupon').click(function (){
+       var test=$('#param_status_checked').val();
+       
+       if(parseInt(test)==0){
+         $('#param_status_checked').val('1');
+       }
+       if(parseInt(test)==1){
+         $('#param_status_checked').val('0');
+       }
+       
+     });
   function  submit_save_info_coupon(){
      var param_id_restaurant=$('#param_id_restaurant').val();
      var param_value_coupon=$('#param_value_coupon').val();
      var param_date_coupon_start=$('#param_date_coupon_start').val();
      var param_date_coupon_end=$('#param_date_coupon_end').val();
      var param_description=$('#param_description').val();
-     
+     //param_check_show_coupon
+     var is_use=$('#param_status_checked').val();
+    
      
      var url=$("#hidUrl").val();
      var url_api=url+"index.php/admin/admin_controller/add_coupon";
@@ -253,7 +293,8 @@
               value_coupon:  param_value_coupon,
               date_coupon_start:  param_date_coupon_start,
               date_coupon_end:  param_date_coupon_end,
-              description:  param_description
+              description:  param_description,
+              is_use:is_use
           }
   
      $.ajax({
@@ -261,7 +302,8 @@
           type: 'POST',
           data:data,
           success: function(data){
-             alert('them thanh cong');
+             //alert(data);
+             
             location.reload();
           },
 
@@ -281,8 +323,41 @@
 
   
   $(".view_edit_restaurant").click(function (){
-    var url=$("#hdUrl_edit_restaurant").val();
+    var url=$("#hdUrl_edit_coupon").val();
     var data_value_edit=$(this).attr('data-value_edit');
+    var value_name_res=$(this).attr('data-value_name_res');
+    $('.remove_edit_coupon').remove();
+    var data={
+      id_coupon:data_value_edit
+    };
+     $.ajax({
+          url: url ,
+          type: 'POST',
+          data:data,
+          success: function(data){
+            $('.dialog_edit_coupon').append(data);
+            $( ".dialog_edit_coupon" ).dialog({
+                  title: value_name_res, 
+                  show: "scale",
+                  hide: "explode",
+                  closeOnEscape: true,
+                  modal: true,
+                  minWidth: 800,
+                  minHeight: 500,
+
+                  resizable: false,
+                  modal: true,});
+    
+          },
+
+         //timeout:5000,
+         error: function(a,textStatus,b){
+           alert('khong gọi được form sửa thông tin');
+         }
+       });
+    
+    
+    
    // window.location=url+"?id_restaurant="+data_value_edit;
   });
   $(".delete_coupon").click(function (){
@@ -347,8 +422,4 @@
   
 </script>
 
-  <div class="dialog_delete_coupon" title="Thông báo">  
-    <lable class="label">Bạn có chắc muốn xóa dữ liệu đang chọn không!</lable></br>
-    <!--<button type="button" id="btnYes" class="btn btn-warning">Đồng ý</button>
-    <button type="button" id="btnNo" class="btn btn-warning">Hủy</button>-->
-  </div>
+  

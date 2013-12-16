@@ -642,6 +642,7 @@ public function coupon_page()
       
       //danh sách tất cả các nhà hàng
       $link_coupon_of_restaurant = Api_link_enum::$COUPON_OF_RESTAURANT_URL."?id_restaurant=".$data['id_res'];
+      //var_dump($link_coupon_of_restaurant);
       $json_string_coupon_of_restaurant= file_get_contents($link_coupon_of_restaurant);
       $json_coupon_of_restaurant = json_decode($json_string_coupon_of_restaurant, true);
       $data['coupon_of_restaurant']=$json_coupon_of_restaurant["Results"];
@@ -659,13 +660,31 @@ public function coupon_page()
     $date_coupon_start       =$_POST['date_coupon_start'];
     $date_coupon_end         =$_POST['date_coupon_end'];
     $description             =$_POST['description'];
+    $is_use                  =$_POST['is_use'];
+    
     $action="insert";
+   /* echo $id_restaurant."<br>".$value_coupon."<br>".
+            $date_coupon_start."<br>".$date_coupon_end."<br>".
+            $description."<br>".$is_use;*/
+    $id_restaurant           =  urlencode($id_restaurant);
+    $value_coupon            =  urlencode($value_coupon);
+    $date_coupon_start       = urlencode($date_coupon_start);
+    $date_coupon_end         =urlencode($date_coupon_end);
+    $description             =urlencode($description);
+    $is_use                  =urlencode($is_use);
+
+    $action=urlencode($action);
+    //echo $is_use;
+    
+    
+    
     $url=Api_link_enum::$ADD_COUPON_URL;
     $myvars = 'id_restaurant=' . $id_restaurant . 
               '&value_coupon=' . $value_coupon.
               '&start_date=' . $date_coupon_start.
               '&due_date=' . $date_coupon_end.
               '&desc=' . $description.
+              '&is_use=' . $is_use.
               '&action=' . $action;
    // echo $url;
     $ch = curl_init( $url );
@@ -675,6 +694,7 @@ public function coupon_page()
     curl_setopt( $ch, CURLOPT_HEADER, 0);
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
     $response = curl_exec( $ch );
+    
     
   }  
   
@@ -695,12 +715,214 @@ public function coupon_page()
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
     $response = curl_exec( $ch );
     
+  }  
+   public function edit_coupon()
+    {
+              $id                       =$_POST['id_coupon'];
+              $id_restaurant           =$_POST['id_restaurant'];
+              $value_coupon            =$_POST['value_coupon'];
+              $date_coupon_start       =$_POST['date_coupon_start'];
+              $date_coupon_end         =$_POST['date_coupon_end'];
+              $description             =$_POST['description'];
+              $is_use                  =$_POST['is_use'];
+              $action="edit";
+              
+              $id                      =urlencode($id);
+              $id_restaurant           =  urlencode($id_restaurant);
+              $value_coupon            =  urlencode($value_coupon);
+              $date_coupon_start       = urlencode($date_coupon_start);
+              $date_coupon_end         =urlencode($date_coupon_end);
+              $description             =urlencode($description);
+              $is_use                  =urlencode($is_use);
+              $action=urlencode($action);
+              
+              $url=Api_link_enum::$EDIT_COUPON_URL;
+              $myvars = 'id=' . $id. 
+                        '&id_restaurant=' . $id_restaurant . 
+                        '&value_coupon=' . $value_coupon.
+                        '&start_date=' . $date_coupon_start.
+                        '&due_date=' . $date_coupon_end.
+                        '&desc=' . $description.
+                        '&is_use=' . $is_use.
+                        '&action=' . $action;
+             // echo $url;
+              $ch = curl_init( $url );
+              curl_setopt( $ch, CURLOPT_POST, 1);
+              curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+              curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+              curl_setopt( $ch, CURLOPT_HEADER, 0);
+              curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+              $response = curl_exec( $ch );
     
-    
+              
+      
+    }
+    public function form_edit_coupon_of_restaurant()
+      {
+       $id=$_POST['id_coupon'];
+     $link_get_info_coupon = Api_link_enum::$GET_INFO_COUPON_URL."?id_coupon=".$id;
+     // var_dump($link_get_info_coupon);
+      $json_string_get_info_coupon= file_get_contents($link_get_info_coupon);
+      $json_get_info_coupon = json_decode($json_string_get_info_coupon, true);
+      $data['info_coupon']=$json_get_info_coupon["Results"];
+      if(is_array($data['info_coupon'])&&sizeof($data['info_coupon'])>0){
+           foreach ($data['info_coupon'] as $value) {             
+              $id                =$value['id'];
+              $id_restaurant     =$value['id_restaurant'];
+              $value_coupon      =$value['value_coupon'];
+              $coupon_start_date =$value['coupon_start_date'];
+              $coupon_due_date   =$value['coupon_due_date'];
+              $coupon_desc       =$value['coupon_desc'];
+              $updated_date      =$value['updated_date'];  
+              $is_use=$value['is_use'];
+              
+              $input_status="";
+              if(strcmp($is_use,'1')==0){
+                $input_status="checked";
+              }
+              
+              
+          echo '<div class="remove_edit_coupon">
+          <input type="hidden" value="'.$id.'" id="param_id_coupon">
+          <input type="hidden" value="'.$id_restaurant.'" id="param_id_restaurant_edit" >
+            
+
+          <input type="hidden" value="'.$is_use.'" id="param_status_checked_edit" >
+          <div id="create_new_coupon" style="width: 90%;" >
+            <div id="content_create_new_coupon" style="margin-left: 5%; margin-top: -1%; width: 100%;">
+                  <div class="coupon_info_title">
+                    <span>Thông tin khuyến mãi</span>
+                  </div>
+
+                  <div class="box_input">
+                    <div class="name_profile" style="width: 30%;">
+                       <span>GIÁ TRỊ KHUYẾN MÃI (%)*</span><br>
+                       <input id="param_value_coupon_edit" class="input_text" type="text" placeholder="vd. 50" name="" value="'.$value_coupon.'" >
+                    </div>
+                    <div class="job_profile" style="width: 30%;">
+                       <span>THỜI GIAN BẮT ĐẦU*</span><br>
+                        <div class="date_time_picker">
+                           <div>
+                              <input value="'.$coupon_start_date.'" id="param_date_coupon_start_edit" class="input_text" type="text" placeholder="vd. 1/1/2014" name="">
+                           </div>					
+                          <script defer="true">
+                           $(\'#param_date_coupon_start_edit\').datetimepicker({
+                                 timeFormat: "hh:mm:00",
+                                 dateFormat: "dd-mm-yy"
+                           });
+                           </script>
+                         </div>
+                    </div>
+                    <div class="phone_number_profile" style="width: 30%;">
+                       <span>THỜI GIAN KẾT THÚC*</span><br>
+                       <div class="date_time_picker">
+                         <div>
+                             <input value="'.$coupon_due_date.'" id="param_date_coupon_end_edit" class="input_text" type="text" placeholder="vd. 30/12/2014" name="">
+                         </div>					
+                         <script defer="true">
+                         $(\'#param_date_coupon_end_edit\').datetimepicker({
+
+                             timeFormat: "hh:mm:00",
+                             dateFormat: "dd-mm-yy"
+                         });
+                         </script>
+                       </div>
+
+
+                    </div>
+
+                    <div class="line_title"></div></br>
+                    <div class="introduce_coupon_profile"  >
+                       <span>MÔ TẢ THÔNG TIN KHUYẾN MÃI</span><br>
+                       <textarea id="param_description_edit" class="input_textarea" name="">
+                          '.$coupon_desc.'
+                        </textarea>
+                    </div>
+                    <div class="introduce_coupon_profile" >
+                      <input '.$input_status.' type="checkbox" id="param_check_show_coupon_edit"> <span>Hiện thông tin khuyến mãi trên trang home</span>
+                    </div>
+
+
+
+                    <div class="btn_save_cancel">
+                      <a href="javascript:;" onclick="return submit_save_info_coupon_edit()">
+                       <div class="btn_save">
+                         <lable><div class="center_text">Lưu</div></lable>
+                       </div>
+                      </a>
+                      <a href="javascript:;" onclick="return submit_cancle_edit()">
+                       <div class="btn_cancel">
+                         <lable><div class="center_text">Hủy</div></lable>
+                       </div>
+                      </a>
+                    </div>
+             </div>
+          </div>
+        </div>
+        <script>
+          function submit_cancle_edit(){
+           $( ".dialog_edit_coupon" ).dialog( "close" ); 
+          }
+           $(\'#param_check_show_coupon_edit\').click(function (){
+            var test=$(\'#param_status_checked_edit\').val();
+
+            if(parseInt(test)==0){
+              $(\'#param_status_checked_edit\').val(\'1\');
+            }
+            if(parseInt(test)==1){
+              $(\'#param_status_checked_edit\').val(\'0\');
+            }
+
+          });
+
+          function submit_save_info_coupon_edit(){
+             var param_id_restaurant=$(\'#param_id_restaurant_edit\').val();
+             var param_value_coupon=$(\'#param_value_coupon_edit\').val();
+             var param_date_coupon_start=$(\'#param_date_coupon_start_edit\').val();
+             var param_date_coupon_end=$(\'#param_date_coupon_end_edit\').val();
+             var param_description=$(\'#param_description_edit\').val();
+             var param_check_show_coupon=$(\'#param_status_checked_edit\').val();
+             var param_id_coupon=$("#param_id_coupon").val();
+
+             var url=$("#hidUrl").val();
+             var url_api=url+"index.php/admin/admin_controller/edit_coupon";
+             var data={
+                      id_coupon: param_id_coupon,
+                      id_restaurant:  param_id_restaurant,
+                      value_coupon:  param_value_coupon,
+                      date_coupon_start:  param_date_coupon_start,
+                      date_coupon_end:  param_date_coupon_end,
+                      description:  param_description,
+                      is_use:param_check_show_coupon
+                  }
+
+             $.ajax({
+                  url: url_api ,
+                  type: \'POST\',
+                  data:data,
+                  success: function(data){
+                     location.reload();
+                    // alert(data);
+                  },
+
+                 //timeout:5000,
+                 error: function(a,textStatus,b){
+                   alert(\'khong thanh cong\');
+                 }
+               });
+          }
+        </script>
+       </div>';
+              
+              
+              
+           }
+      }
+      
+   
+  
     
   }  
-  
-  
   
   
   

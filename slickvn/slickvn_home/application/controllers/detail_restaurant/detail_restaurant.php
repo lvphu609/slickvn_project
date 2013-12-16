@@ -26,7 +26,7 @@ class Detail_restaurant extends CI_Controller {
     if($_GET['id_restaurant']!=NULL){  //nếu id khác null
     $id_restaurant=$_GET['id_restaurant'];
     $link_detail_restaurant = Api_link_enum::$DETAIL_RESTAURANT_URL."?id=$id_restaurant";
-   // var_dump($link_detail_restaurant);
+    //var_dump($link_detail_restaurant);
     $json_string_detail_restaurant= file_get_contents($link_detail_restaurant);    
     $json_detail_restaurant = json_decode($json_string_detail_restaurant, true);
     $data['info_restaurant']=$json_detail_restaurant["Results"];

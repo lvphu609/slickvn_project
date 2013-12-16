@@ -17,8 +17,8 @@ class Check_login extends CI_Controller {
   {
     $email=$_POST['email'];
     $password=$_POST['password'];
-    
-    $url = 'http://localhost/slickvn_api_project_xinh/slickvn_api/index.php/user/user_apis/login/format/json';
+    $password=  md5($password);
+    $url=Api_link_enum::$USER_LOGIN_URL;
     $myvars = 'email=' . $email . '&password=' . $password;
 
     $ch = curl_init( $url );

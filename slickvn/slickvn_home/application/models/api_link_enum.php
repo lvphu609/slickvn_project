@@ -44,8 +44,9 @@ class Api_link_enum {
   const DELETE_RESTAURANT_API="update_restaurant";
   const COUPON_OF_RESTAURANT_API="get_coupon_of_restaurant";
   const DELETE_COUPON_OF_RESTAURANT_API="update_coupon";
-
-
+  const GET_INFO_COUPON_API="get_coupon_of_restaurant_by_id";
+  const EDIT_COUPON_API="update_coupon";
+  const USER_LOGIN_API="login";
 
   const LINK_RESTAURANT_PROFILE = "slickvn_api_project_xinh/slickvn_api/restaurant_profile/"; //link image in restaurant profile
   const LINK_IMAGE_POST = "slickvn_api_project_xinh/slickvn_api/posts/";  //link image post
@@ -150,11 +151,11 @@ class Api_link_enum {
     public static $ADMIN_SEARCH_RESTAURANT_URL;
     public static $COUPON_OF_RESTAURANT_URL;
     public static $DELETE_COUPON_OF_RESTAURANT_URL;
+    public static $GET_INFO_COUPON_URL;
+    public static $EDIT_COUPON_URL;
+    public static $USER_LOGIN_URL;
 
     
-
-
-
 
 
     public static function initialize()
@@ -208,7 +209,12 @@ class Api_link_enum {
       self::$DELETE_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::DELETE_RESTAURANT_API;
       self::$COUPON_OF_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::COUPON_OF_RESTAURANT_API.self::FORMAT_JSON;
       self::$DELETE_COUPON_OF_RESTAURANT_URL = self::$BASE_API_RESTAURANT_URL.self::DELETE_COUPON_OF_RESTAURANT_API;
+      self::$GET_INFO_COUPON_URL = self::$BASE_API_RESTAURANT_URL.self::GET_INFO_COUPON_API.self::FORMAT_JSON;
+      self::$EDIT_COUPON_URL = self::$BASE_API_RESTAURANT_URL.self::EDIT_COUPON_API.self::FORMAT_JSON;
+      self::$USER_LOGIN_URL = self::$BASE_API_USER_URL.self::USER_LOGIN_API.self::FORMAT_JSON ;
 
+      
+      
       
       
       

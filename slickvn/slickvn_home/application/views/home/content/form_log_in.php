@@ -170,8 +170,8 @@
                            alert('Bạn nhập sai tên hoặc mật khẩu');
                          }
                          else{
-                           alert('đăng nhập thành công');
-                           //alert(data);
+                           //alert('đăng nhập thành công');
+                           alert(data);
                          }
 
                 });

@@ -34,40 +34,40 @@
           <ul>
             <li>
               <span>Họ và tên</span><br>
-              <input style="padding-left: 10px;" type="text" placeholder="Họ và tên">
+              <input id="param_name" style="padding-left: 10px;" type="text" placeholder="Họ và tên">
             </li>
             <li>
               <span>Email</span><br>
-              <input style="padding-left: 10px;" type="text" placeholder="Email">
+              <input id="param_email" style="padding-left: 10px;" type="text" placeholder="Email">
             </li>
             <li>
               <span>Mật khẩu</span><br>
-              <input style="padding-left: 10px;" type="password" placeholder="Mật khẩu">
+              <input id="param_password" style="padding-left: 10px;" type="password" placeholder="Mật khẩu">
             </li>
             <li>
               <span>Xác nhận mật khẩu</span><br>
-              <input style="padding-left: 10px;" type="password" placeholder="Xác nhận mật khẩu">
+              <input id="param_again_password" style="padding-left: 10px;" type="password" placeholder="Xác nhận mật khẩu">
             </li>
             <li>
               <span>Điện thoại</span><br>
-              <input style="padding-left: 10px;" type="text" placeholder="Điện thoại">
+              <input id="param_phone_number" style="padding-left: 10px;" type="text" placeholder="Điện thoại">
             </li>
             <li>
               <span>Địa chỉ</span><br>
-              <input style="padding-left: 10px;" type="text" placeholder="Địa chỉ">
+              <input id="param_address" style="padding-left: 10px;" type="text" placeholder="Địa chỉ">
             </li>
             <li>
               <span>Tỉnh/Thành phố</span><br>
-              <select style="padding-left: 10px;" >
+              <select id="param_city" style="padding-left: 10px;" >
                 <option >Chọn thành phố</option>
                 <option>Hà Nội</option>
                 <option>TP.Hồ Chí Minh</option>
-                <option>Vũng Tàu</option>
+                <option>TP.Cần Thơ</option>
                 <option>Khác</option>
               </select>
             </li>
           </ul>
-             <input type="checkbox" class="checkbox"><span class="agree">Tôi đồng ý với các điều khoản sử dụng</span>
+             <input id="param_confirm" type="checkbox" class="checkbox"><span class="agree">Tôi đồng ý với các điều khoản sử dụng</span>
           <!--end input-->
         </div>
         <div class="line_1">
@@ -80,7 +80,7 @@
         </div>
         <div class="box_btn_sign_up">
           <div id="home-section-projects" >
-            <a href="#" class="more-info">
+            <a href="javascript:;" class="more-info">
               <div class="btn_sign_up">
                 <div class="image"></div>
                 <div class="text"><span>Đăng ký</span></div>
@@ -166,3 +166,12 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  $(".btn_sign_up").click(function (){
+    
+    alert('ok');
+    
+  });
+</script>
